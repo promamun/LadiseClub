@@ -1,0 +1,47 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "dashboard",
+      "badge": [
+        "primary",
+        "5"
+      ],
+      "submenu": [
+        {
+          "url": "admin/dashboard",
+          "name": "Analytics",
+          "slug": "dashboard-analytics"
+        }
+      ]
+    },
+    {
+      "menuHeader": "Apps & Pages"
+    },
+    {
+      "name": "Users",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "app-user",
+      "submenu": [
+        {
+          "url": "admin/user/list",
+          "name": "List",
+          "slug": "user-list"
+        }
+      ]
+    },
+    {
+      "name": "Roles & Permissions",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "slug": "app-access",
+      "submenu": [
+        {
+          "url": "admin/roles",
+          "name": "Roles",
+          "slug": "user-access-roles"
+        }
+      ]
+    }
+  ]
+}
