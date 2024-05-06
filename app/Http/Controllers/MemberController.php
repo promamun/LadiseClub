@@ -22,7 +22,8 @@ class MemberController extends Controller
     public function index()
     {
         try {
-            return view('content.member.memberlist');
+          $data = Member::all();
+            return view('content.member.memberlist', compact('data'));
         } catch (Exception $exception) {
             return redirect()->back();
         }
@@ -41,13 +42,13 @@ class MemberController extends Controller
     {
         try {
             $data = Member::find($id);
-            return view("view", compact('data'));
+            return view("content.member.memberEdit", compact('data'));
         } catch (Exception $exception) {
             return redirect()->back();
         }
     }
 
-    public function delete(Request $request)
+    public function deleteMember(Request $request)
     {
         try {
             $data = Member::findOrFail($request->id);
@@ -99,7 +100,7 @@ class MemberController extends Controller
     }
     }
 
-    public function update(Request $request, $id)
+    public function updateMember(Request $request, $id)
     {
         try {
             $data = Member::find($id);
@@ -121,20 +122,20 @@ class MemberController extends Controller
                 $file->move("/member", $fileName);
             }
             $data->Update([
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'designation' => $request->input('designation'),
-                'phone' => $request->input('phone'),
-                'mobile' => $request->input('mobile'),
-                'fax' => $request->input('fax'),
-                'facebook' => $request->input('facebook'),
-                'twiter' => $request->input('twiter'),
-                'linkdin' => $request->input('linkdin'),
-                'instagram' => $request->input('instagram'),
-                'personal_website' => $request->input('personal_website'),
-                'image' => $fileName
+              'name' => $request->input('name'),
+              'designation' => $request->input('designation'),
+              'image' => $fileName,
+              'description' => $request->input('description'),
+              'phone' => $request->input('phone'),
+              'mobile' => $request->input('mobile'),
+              'fax' => $request->input('fax'),
+              'facebook' => $request->input('facebook'),
+              'twitter' => $request->input('twitter'),
+              'linkedin' => $request->input('linkedin'),
+              'instagram' => $request->input('instagram'),
+              'personal_website' => $request->input('personal_website'),
             ]);
-            return redirect()->route('name');
+            return redirect()->route('member-list');
         } catch (ValidationException $validationException) {
             return redirect()->back()->with('error', $validationException->getMessage());
         } catch (Exception $exception) {
