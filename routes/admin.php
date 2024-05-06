@@ -58,8 +58,8 @@ Route::middleware('auth')->group(function () {
   Route::group(['prefix' => 'member'], function () {
     // API Routes
     Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
-    Route::post('/update/{id}', [MemberController::class, 'member_update'])->name('member.update');
-    Route::post('/delete', [MemberController::class, 'member_delete'])->name('member.delete');
+    Route::post('/update/{id}', [MemberController::class, 'updateMember'])->name('member.update');
+    Route::post('/delete', [MemberController::class, 'deleteMember'])->name('member.delete');
     //View Routes
     Route::get('/', [MemberController::class, 'index'])->name('member-list');
     Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');

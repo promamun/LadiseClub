@@ -33,7 +33,7 @@
 
 @section('content')
 
-<div class="row">  
+<div class="row">
   <!-- Projects table -->
   <div class="col-12 col-xl-12 col-sm-12 order-1 order-lg-2 mb-6 mb-lg-0">
     <div class="card">
@@ -50,6 +50,18 @@
               <th>Action</th>
             </tr>
           </thead>
+          <tbody>
+            @foreach ($data as $item)
+            <tr>
+              <td></td>
+              <th></th>
+              <td>Name</td>
+              <td>Leader</td>
+              <td>Team</td>
+              <td class="w-px-200">Status</td>
+            </tr>
+            @endforeach
+          </tbody>
         </table>
       </div>
     </div>
