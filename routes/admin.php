@@ -12,6 +12,7 @@ use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\apps\UserList;
 use App\Http\Controllers\apps\AccessRoles;
 use App\Http\Controllers\cards\CardGamifications;
+use App\Http\Controllers\MemberController;
 
 Route::get('/login', [LoginBasic::class, 'index'])->name('admin.login');
 Route::post('/auth-login', [LoginBasic::class, 'AdminLoginRequest'])->name('admin.login.request');
@@ -23,7 +24,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/all-routes', [RollsController::class, 'AllRoutes'])->name('AllRoutes');
   Route::get('/user-list', [UserList::class, 'allUserList'])->name('user-list');
   Route::get('/user-role-list', [RollsController::class, 'userRoleList'])->name('user-role-list');
-///test route
+  ///test route
   Route::get('/user-permission', [RollsController::class, 'userPermissionList'])->name('user-permission');
 // user Routes
   Route::middleware('canAccessUser')->group(function () {
@@ -56,13 +57,13 @@ Route::middleware('auth')->group(function () {
 // member Routes
   Route::group(['prefix' => 'member'], function () {
     // API Routes
-    // Route::post('/store', [MemberController::class, 'member_store'])->name('member.store');
-    // Route::post('/update/{id}', [MemberController::class, 'member_update'])->name('member.update');
-    // Route::post('/delete', [MemberController::class, 'member_delete'])->name('member.delete');
-    // //View Routes
-    // Route::get('/', [MemberController::class, 'members'])->name('members');
-    // Route::get('/add', [MemberController::class, 'member_add'])->name('member.add');
-    // Route::get('/edit/{id}', [MemberController::class, 'member_edit'])->name('member.edit');
-    // Route::get('/view/{id}', [MemberController::class, 'member_view'])->name('member.view');
+    Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
+    Route::post('/update/{id}', [MemberController::class, 'member_update'])->name('member.update');
+    Route::post('/delete', [MemberController::class, 'member_delete'])->name('member.delete');
+    //View Routes
+    Route::get('/', [MemberController::class, 'index'])->name('member-list');
+    Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');
+    Route::get('/edit/{id}', [MemberController::class, 'editMember'])->name('member.edit');
+    Route::get('/view/{id}', [MemberController::class, 'member_view'])->name('member.view');
   });
 });
