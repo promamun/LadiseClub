@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Member;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class MemberController extends Controller
 {
+    public function membersList(){
+      try{
+        $members = Member::get();
+        return response()->json(['data' => $members]);
+      }catch(\Exception $exception){
+        return response()->json(['error'=>$exception->getMessage()]);
+      }
+    }
     public function index()
     {
         try {
@@ -68,7 +77,7 @@ class MemberController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
-            $file->move("/member", $fileName);
+            $file->move("member/", $fileName);
         }
         Member::create([
             'name' => $request->input('name'),
@@ -131,5 +140,14 @@ class MemberController extends Controller
         } catch (Exception $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
+    }
+    public function member_delete($id){
+      try{
+        $member = Member::findOrFail($id);
+        $member->delete();
+        return response()->json(['success'=>'Member Delete Success'],200);
+      }catch(\Exception $exception){
+        return response()->json(['error'=>$exception->getMessage()]);
+      }
     }
 }

@@ -1,14 +1,14 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Analytics')
+@section('title', 'Members')
 
 @section('vendor-style')
 @vite([
-  'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
-  'resources/assets/vendor/libs/swiper/swiper.scss',
   'resources/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.scss',
   'resources/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.scss',
-  'resources/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.scss'
+  'resources/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.scss',
+  'resources/assets/vendor/libs/animate-css/animate.scss',
+  'resources/assets/vendor/libs/sweetalert2/sweetalert2.scss'
 ])
 @endsection
 
@@ -22,31 +22,33 @@
   'resources/assets/vendor/libs/apex-charts/apexcharts.js',
   'resources/assets/vendor/libs/swiper/swiper.js',
   'resources/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js',
+  'resources/assets/vendor/libs/sweetalert2/sweetalert2.js'
   ])
 @endsection
 
 @section('page-script')
 @vite([
-  'resources/assets/js/dashboards-analytics.js'
+  'resources/assets/js/member-list.js',
+  'resources/assets/js/extended-ui-sweetalert2.js'
 ])
 @endsection
 
 @section('content')
 
-<div class="row">  
+<div class="row">
   <!-- Projects table -->
   <div class="col-12 col-xl-12 col-sm-12 order-1 order-lg-2 mb-6 mb-lg-0">
     <div class="card">
       <div class="card-datatable table-responsive">
-        <table class="datatables-projects table border-top">
+        <table class="datatables-members table border-top">
           <thead>
             <tr>
               <th></th>
               <th></th>
               <th>Name</th>
-              <th>Leader</th>
-              <th>Team</th>
-              <th class="w-px-200">Status</th>
+              <th>Designation</th>
+              <th>Image</th>
+              <th>Phone</th>
               <th>Action</th>
             </tr>
           </thead>
