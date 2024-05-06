@@ -42,6 +42,23 @@
           "slug": "user-access-roles"
         }
       ]
+    },
+    {
+      "name": "Member",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "member",
+      "submenu": [
+        {
+          "url": "admin/member",
+          "name": "Member List",
+          "slug": "member-list"
+        },
+        {
+          "url": "admin/member/add",
+          "name": "Member add",
+          "slug": "member-add"
+        }
+      ]
     }
   ]
 }
