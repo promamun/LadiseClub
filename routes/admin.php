@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
     // API Routes
     Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
     Route::post('/update/{id}', [MemberController::class, 'updateMember'])->name('member.update');
-    Route::post('/delete', [MemberController::class, 'deleteMember'])->name('member.delete');
+    Route::get('/delete/{id}', [MemberController::class, 'deleteMember'])->name('member.delete');
     //View Routes
     Route::get('/', [MemberController::class, 'index'])->name('member-list');
     Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');
@@ -68,9 +68,9 @@ Route::middleware('auth')->group(function () {
   // memberCategory Routes
   Route::group(['prefix' => 'member-category'], function () {
     // API Routes
-    Route::post('/store', [MemberController::class, 'store'])->name('memberCategory.store');
-    Route::post('/update/{id}', [MemberController::class, 'update'])->name('memberCategory.update');
-    Route::post('/delete', [MemberController::class, 'delete'])->name('memberCategory.delete');
+    Route::post('/store', [MemberController::class, 'storeMemberCategory'])->name('memberCategory.store');
+    Route::post('/update/{id}', [MemberController::class, 'updateMemberCategory'])->name('memberCategory.update');
+    Route::get('/delete/{id}', [MemberController::class, 'deleteMemberCategory'])->name('memberCategory.delete');
     //View Routes
     Route::get('/', [MemberController::class, 'MemberCategory'])->name('memberCategory-list');
     Route::get('/add', [MemberController::class, 'addMemberCategory'])->name('memberCategory-add');
