@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/user-role-list', [RollsController::class, 'userRoleList'])->name('user-role-list');
   ///test route
   Route::get('/user-permission', [RollsController::class, 'userPermissionList'])->name('user-permission');
-// user Routes
+  // user Routes
   Route::middleware('canAccessUser')->group(function () {
     Route::group(['prefix' => 'user'], function () {
       // API Routes
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
       Route::get('/view/{id}', [AdminController::class, 'user_view'])->name('user-view');
     });
   });
-// role permission Routes
+  // role permission Routes
   Route::group(['prefix' => 'roles'], function () {
     // API Routes
     Route::post('/store', [RollsController::class, 'roles_store'])->name('roles-store');
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [RollsController::class, 'roles_edit'])->name('roles-edit');
     Route::get('/view/{id}', [RollsController::class, 'roles_view'])->name('roles-view');
   });
-// member Routes
+  // member Routes
   Route::group(['prefix' => 'member'], function () {
     // API Routes
     Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
@@ -64,6 +64,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [MemberController::class, 'index'])->name('member-list');
     Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');
     Route::get('/edit/{id}', [MemberController::class, 'editMember'])->name('member.edit');
-    Route::get('/view/{id}', [MemberController::class, 'member_view'])->name('member.view');
+  });
+  // memberCategory Routes
+  Route::group(['prefix' => 'member-category'], function () {
+    // API Routes
+    Route::post('/store', [MemberController::class, 'store'])->name('memberCategory.store');
+    Route::post('/update/{id}', [MemberController::class, 'update'])->name('memberCategory.update');
+    Route::post('/delete', [MemberController::class, 'delete'])->name('memberCategory.delete');
+    //View Routes
+    Route::get('/', [MemberController::class, 'MemberCategory'])->name('memberCategory-list');
+    Route::get('/add', [MemberController::class, 'addMemberCategory'])->name('memberCategory-add');
+    Route::get('/edit/{id}', [MemberController::class, 'editMemberCategory'])->name('memberCategory.edit');
   });
 });

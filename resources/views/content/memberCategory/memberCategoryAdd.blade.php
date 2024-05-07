@@ -57,7 +57,7 @@
                                 <div class="col">
                                     <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
                                     <input type="file" class="form-control" id="image" placeholder="image Here"
-                                       name="image" aria-label="image">
+                                        name="image" aria-label="image">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -98,8 +98,9 @@
                                 <div class="col">
                                     <label class="form-label" for="linkedin">Linkedin</label><span class="text-info">
                                         (optional)</span>
-                                    <input type="text" class="form-control" id="linkedin" placeholder="linkedin Here"
-                                        value="{{ old('linkedin') }}" name="linkedin" aria-label="linkedin">
+                                    <input type="text" class="form-control" id="linkedin"
+                                        placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin"
+                                        aria-label="linkedin">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -148,11 +149,11 @@
                             </button>
                         </div>
                         <div class="fallback">
-                          <input name="file" type="file" />
-                      </div>
+                            <input name="file" type="file" />
+                        </div>
                     </form>
-                      <!-- Media -->
-                      <div class="card mb-4">
+                    <!-- Media -->
+                    <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0 card-title">Media</h5>
                             <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
