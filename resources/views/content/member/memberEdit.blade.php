@@ -32,6 +32,18 @@
         <div class="row">
             <!-- First column-->
             <div class="col-12 col-lg-12">
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12">
                 <!-- Product Information -->
                 <div class="card mb-4">
                     <form action="{{ route('member.update', $data->id) }}" method="POST" enctype="multipart/form-data">
@@ -40,6 +52,23 @@
                         </div>
                         @csrf
                         <div class="card-body">
+                          <div class="row mb-3">
+                            <!-- Multiple -->
+                            <div class="col-md-6 mb-4">
+                                <label for="select2Multiple" class="form-label">Select Member Category</label><span class="text-danger">*</span>
+                                <select id="select2Multiple" name="category_id[]" class="select2 form-select" multiple required>
+                                  @foreach ($memberCategory as $item)
+                                  <option {{ $data->members->contains('id', $item->id) ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                              @endforeach
+
+                                </select>
+                            </div>
+                            <div class="col">
+                              <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
+                              <input type="file" class="form-control" id="image" placeholder="image Here"
+                                  name="image" aria-label="image">
+                          </div>
+                        </div>
                             <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label" for="name">Name</label><span class="text-danger">*</span>
@@ -50,14 +79,7 @@
                                     <label class="form-label" for="designation">Designation</label><span
                                         class="text-danger">*</span>
                                     <input type="text" class="form-control" id="designation" placeholder="Designation"
-                                        value="{{ old('designation')?? $data->designation }}" name="designation" aria-label="Product title">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
-                                    <input type="file" class="form-control" id="image" placeholder="image Here"
-                                       name="image" aria-label="image">
+                                        value="{{ old('designation')?? $data->designation}}" name="designation" aria-label="designation title">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -119,59 +141,19 @@
                                 </div>
                             </div>
                             <!-- Description -->
-                            <div>
-                                <label class="form-label">Description (Optional)</label>
-                                <div class="form-control p-0 pt-1">
-                                    <div class="comment-toolbar border-0 border-bottom">
-                                        <div class="d-flex justify-content-start">
-                                            <span class="ql-formats me-0">
-                                                <button class="ql-bold"></button>
-                                                <button class="ql-italic"></button>
-                                                <button class="ql-underline"></button>
-                                                <button class="ql-list" value="ordered"></button>
-                                                <button class="ql-list" value="bullet"></button>
-                                                <button class="ql-link"></button>
-                                                <button class="ql-image"></button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="comment-editor border-0 pb-4" id="ecommerce-category-description">
-
-                                    </div>
-
-                                </div>
-                            </div>
+                             <!-- Description -->
+                             <div class="col-12">
+                              <label class="form-label" for="bootstrap-maxlength-example2">Textarea</label>
+                              <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example"
+                                  rows="3" maxlength="255" spellcheck="false"></textarea>
+                          </div>
                         </div>
                         <div>
                             <button class="btn btn-primary">
                                 Update
                             </button>
                         </div>
-                        <div class="fallback">
-                          <input name="file" type="file" />
-                      </div>
                     </form>
-                      <!-- Media -->
-                      <div class="card mb-4">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 card-title">Media</h5>
-                            <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
-                        </div>
-                        <div class="card-body">
-                            <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                                <div class="dz-message needsclick">
-                                    <p class="fs-4 note needsclick pt-3 mb-1">Drag and drop your image here</p>
-                                    <p class="text-muted d-block fw-normal mb-2">or</p>
-                                    <span class="note needsclick btn bg-label-primary d-inline" id="btnBrowse">Browse
-                                        image</span>
-                                </div>
-                                <div class="fallback">
-                                    <input name="file" type="file" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /Media -->
                 </div>
                 <!-- /Product Information -->
             </div>

@@ -35,7 +35,8 @@ class MemberController extends Controller
     public function addMember()
     {
         try {
-            return view("content.member.memberadd");
+          $memberCategory = MemberCategory::all();
+            return view("content.member.memberadd", compact('memberCategory'));
         } catch (Exception $exception) {
             return redirect()->back();
         }
@@ -44,8 +45,9 @@ class MemberController extends Controller
     public function editMember($id)
     {
         try {
-            $data = Member::find($id);
-            return view("content.member.memberEdit", compact('data'));
+            $data = Member::with('members')->findOrFail($id);
+            $memberCategory = MemberCategory::all();
+            return view("content.member.memberEdit", compact(['data', 'memberCategory']));
         } catch (Exception $exception) {
             return redirect()->back();
         }
@@ -55,12 +57,13 @@ class MemberController extends Controller
     {
         try {
             $data = Member::findOrFail($request->id);
+            $data->members()->detach();
             $data->delete();
             return response()->json(['success' => true]);
         } catch (Exception $exception) {
             return response()->json([
                 'status' => 'fail',
-                'message' => $exception->getMessage()
+                'error' => $exception->getMessage()
             ]);
         }
     }
@@ -71,10 +74,20 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'designation' => 'required|string',
-            'image' => 'required'
+            'image' => 'required',
+            'category_id' => 'required|array',
+            'description' => 'nullable|string|min:10|max:50',
+            'phone' => 'nullable|string|min:11|max:14',
+            'mobile' => 'nullable|string|min:11|max:14',
+            'fax' => 'nullable|string',
+            'facebook' => ['nullable', 'url'],
+            'twitter' => ['nullable', 'url'],
+            'linkedin' => ['nullable', 'url'],
+            'instagram' => ['nullable', 'url'],
+            'personal_website' => ['nullable', 'url'],
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->with(['error'=>$validator->getMessageBag()])->withInput();
         }
 
         $fileName = null;
@@ -83,7 +96,7 @@ class MemberController extends Controller
             $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
             $file->move("member/", $fileName);
         }
-        Member::create([
+        $member=Member::create([
             'name' => $request->input('name'),
             'designation' => $request->input('designation'),
             'image' => $fileName,
@@ -97,9 +110,10 @@ class MemberController extends Controller
             'instagram' => $request->input('instagram'),
             'personal_website' => $request->input('personal_website'),
         ]);
-        return redirect()->route('member-list');
+        $member->members()->attach($request->input('category_id'));
+        return redirect()->route('member-list')->with(['success'=>"Member Create Successfully"],200);
     } catch (Exception $exception) {
-      return redirect()->back();
+      return redirect()->back()->with(['error'=> $exception->getMessage()])->withInput();
     }
   }
   public function updateMember(Request $request, $id)
@@ -108,7 +122,17 @@ class MemberController extends Controller
       $data = Member::find($id);
       $request->validate([
         'name' => 'required|string',
-        'designation' => 'required|string'
+        'designation' => 'required|string',
+        'category_id' => 'required|array',
+        'description' => 'nullable|string|min:10|max:50',
+        'phone' => 'nullable|string|min:11|max:14',
+        'mobile' => 'nullable|string|min:11|max:14',
+        'fax' => 'nullable|string',
+        'facebook' => ['nullable', 'url'],
+        'twitter' => ['nullable', 'url'],
+        'linkedin' => ['nullable', 'url'],
+        'instagram' => ['nullable', 'url'],
+        'personal_website' => ['nullable', 'url'],
       ]);
       $fileName = $data->image;
       if ($request->hasFile('image')) {
@@ -137,11 +161,12 @@ class MemberController extends Controller
         'instagram' => $request->input('instagram'),
         'personal_website' => $request->input('personal_website'),
       ]);
-      return redirect()->route('member-list');
+      $data->members()->sync($request->input('category_id'));
+      return redirect()->route('member-list')->with(['success'=>"Member Update Successfully"],200);
     } catch (ValidationException $validationException) {
-      return redirect()->back()->with('error', $validationException->getMessage());
+      return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
-      return redirect()->back()->with('error', $exception->getMessage());
+      return redirect()->back()->with('error', $exception->getMessage())->withInput();
     }
   }
   //member Category

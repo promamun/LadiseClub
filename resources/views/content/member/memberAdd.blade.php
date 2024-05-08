@@ -3,22 +3,15 @@
 @section('title', 'Add Member')
 
 @section('vendor-style')
-    @vite(['resources/assets/vendor/libs/quill/typography.scss','resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
+    @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
 @endsection
 
 @section('vendor-script')
-    @vite(['resources/assets/vendor/libs/quill/katex.js',
-    'resources/assets/vendor/libs/quill/quill.js',
-    'resources/assets/vendor/libs/select2/select2.js',
-    'resources/assets/vendor/libs/dropzone/dropzone.js',
-    'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js',
-     'resources/assets/vendor/libs/flatpickr/flatpickr.js',
-     'resources/assets/vendor/libs/tagify/tagify.js',
-     ])
+    @vite(['resources/assets/vendor/libs/quill/katex.js', 'resources/assets/vendor/libs/quill/quill.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js', 'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js', 'resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/tagify/tagify.js'])
 @endsection
 
 @section('page-script')
-    @vite(['resources/assets/js/app-ecommerce-product-add.js','resources/assets/js/forms-editors.js'])
+    @vite(['resources/assets/js/app-ecommerce-product-add.js', 'resources/assets/js/forms-editors.js'])
 @endsection
 
 @section('content')
@@ -39,6 +32,17 @@
         <div class="row">
             <!-- First column-->
             <div class="col-12 col-lg-12">
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
                     <form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data">
@@ -47,6 +51,22 @@
                         </div>
                         @csrf
                         <div class="card-body">
+                            <div class="row mb-3">
+                                <!-- Multiple -->
+                                <div class="col-md-6 mb-4">
+                                    <label for="select2Multiple" class="form-label">Select Member Category</label><span class="text-danger">*</span>
+                                    <select id="select2Multiple" name="category_id[]" class="select2 form-select" multiple required>
+                                      @foreach ($memberCategory as $data)
+                                      <option value="{{$data->id }}">{{ $data->name }}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
+                                <div class="col">
+                                  <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
+                                  <input type="file" class="form-control" id="image" placeholder="image Here"
+                                      name="image" aria-label="image">
+                              </div>
+                            </div>
                             <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label" for="name">Name</label><span class="text-danger">*</span>
@@ -58,13 +78,6 @@
                                         class="text-danger">*</span>
                                     <input type="text" class="form-control" id="designation" placeholder="Designation"
                                         value="{{ old('designation') }}" name="designation" aria-label="Product title">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
-                                    <input type="file" class="form-control" id="image" placeholder="image Here"
-                                       name="image" aria-label="image">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -91,8 +104,9 @@
                                 <div class="col">
                                     <label class="form-label" for="facebook">Facebook</label><span class="text-info">
                                         (optional)</span>
-                                    <input type="text" class="form-control" id="facebook" placeholder="facebook Here"
-                                        value="{{ old('facebook') }}" name="facebook" aria-label="facebook">
+                                    <input type="text" class="form-control" id="facebook"
+                                        placeholder="facebook Here" value="{{ old('facebook') }}" name="facebook"
+                                        aria-label="facebook">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -105,8 +119,9 @@
                                 <div class="col">
                                     <label class="form-label" for="linkedin">Linkedin</label><span class="text-info">
                                         (optional)</span>
-                                    <input type="text" class="form-control" id="linkedin" placeholder="linkedin Here"
-                                        value="{{ old('linkedin') }}" name="linkedin" aria-label="linkedin">
+                                    <input type="text" class="form-control" id="linkedin"
+                                        placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin"
+                                        aria-label="linkedin">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -127,12 +142,14 @@
                             </div>
                             <!-- Description -->
                             <div class="col-12">
-                              <label class="form-label" for="bootstrap-maxlength-example2">Textarea</label>
-                              <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example" rows="3" maxlength="255" spellcheck="false"></textarea>
+                                <label class="form-label" for="bootstrap-maxlength-example2">Textarea</label>
+                                <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example"
+                                    rows="3" maxlength="255" spellcheck="false"></textarea>
                             </div>
                         </div>
                         <div class="pt-4 mb-3 float-lg-end">
-                          <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
+                            <button type="submit"
+                                class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
                         </div>
                     </form>
                 </div>
