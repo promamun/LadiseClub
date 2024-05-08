@@ -3,15 +3,22 @@
 @section('title', 'Add Member')
 
 @section('vendor-style')
-    @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
+    @vite(['resources/assets/vendor/libs/quill/typography.scss','resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
 @endsection
 
 @section('vendor-script')
-    @vite(['resources/assets/vendor/libs/quill/katex.js', 'resources/assets/vendor/libs/quill/quill.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js', 'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js', 'resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/tagify/tagify.js'])
+    @vite(['resources/assets/vendor/libs/quill/katex.js',
+    'resources/assets/vendor/libs/quill/quill.js',
+    'resources/assets/vendor/libs/select2/select2.js',
+    'resources/assets/vendor/libs/dropzone/dropzone.js',
+    'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js',
+     'resources/assets/vendor/libs/flatpickr/flatpickr.js',
+     'resources/assets/vendor/libs/tagify/tagify.js',
+     ])
 @endsection
 
 @section('page-script')
-    @vite(['resources/assets/js/app-ecommerce-product-add.js'])
+    @vite(['resources/assets/js/app-ecommerce-product-add.js','resources/assets/js/forms-editors.js'])
 @endsection
 
 @section('content')
@@ -119,64 +126,19 @@
                                 </div>
                             </div>
                             <!-- Description -->
-                            <div>
-                                <label class="form-label">Description (Optional)</label>
-                                <div class="form-control p-0 pt-1">
-                                    <div class="comment-toolbar border-0 border-bottom">
-                                        <div class="d-flex justify-content-start">
-                                            <span class="ql-formats me-0">
-                                                <button class="ql-bold"></button>
-                                                <button class="ql-italic"></button>
-                                                <button class="ql-underline"></button>
-                                                <button class="ql-list" value="ordered"></button>
-                                                <button class="ql-list" value="bullet"></button>
-                                                <button class="ql-link"></button>
-                                                <button class="ql-image"></button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="comment-editor border-0 pb-4" id="ecommerce-category-description">
-
-                                    </div>
-
-                                </div>
+                            <div class="col-12">
+                              <label class="form-label" for="bootstrap-maxlength-example2">Textarea</label>
+                              <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example" rows="3" maxlength="255" spellcheck="false"></textarea>
                             </div>
                         </div>
-                        <div>
-                            <button class="btn btn-primary">
-                                Add
-                            </button>
+                        <div class="pt-4 mb-3 float-lg-end">
+                          <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
                         </div>
-                        <div class="fallback">
-                          <input name="file" type="file" />
-                      </div>
                     </form>
-                      <!-- Media -->
-                      <div class="card mb-4">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 card-title">Media</h5>
-                            <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
-                        </div>
-                        <div class="card-body">
-                            <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                                <div class="dz-message needsclick">
-                                    <p class="fs-4 note needsclick pt-3 mb-1">Drag and drop your image here</p>
-                                    <p class="text-muted d-block fw-normal mb-2">or</p>
-                                    <span class="note needsclick btn bg-label-primary d-inline" id="btnBrowse">Browse
-                                        image</span>
-                                </div>
-                                <div class="fallback">
-                                    <input name="file" type="file" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /Media -->
                 </div>
                 <!-- /Product Information -->
             </div>
             <!-- /Second column -->
         </div>
     </div>
-
 @endsection
