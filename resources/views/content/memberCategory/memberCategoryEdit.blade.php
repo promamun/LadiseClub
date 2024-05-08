@@ -17,7 +17,8 @@
                 <h4 class="mb-1 mt-3">Member Category Edit</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-3">
-                <a href="{{ route('memberCategory-list') }}"><button type="submit" class="btn btn-primary">Member Categoy List</button></a>
+                <a href="{{ route('memberCategory-list') }}"><button type="submit" class="btn btn-primary">Member Categoy
+                        List</button></a>
             </div>
         </div>
         <div class="row">
@@ -38,22 +39,10 @@
                                         value="{{ old('name') ?? $data->name }}" name="name" aria-label="Product title">
                                 </div>
                             </div>
-                            <div class="col">
-                              <small class="text-light fw-medium d-block">In Active</small>
-                              <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" checked name="status" id="inlineRadio2"
-                                      value="Active" />
-                                  <label class="form-check-label" for="inlineRadio2">Active</label>
-                              </div>
-                              <div class="form-check form-check-inline mt-3">
-                                  <input class="form-check-input" type="radio" name="status" id="inlineRadio1"
-                                      value="In Active" />
-                                  <label class="form-check-label" for="inlineRadio1">In Active</label>
-                              </div>
-                          </div>
                         </div>
-                        <div class="float-md-end">
-                          <button class="btn btn-outline-success waves-effect ">Update Member Category</button>
+                        <div class="pt-4 mb-3 float-lg-end">
+                            <button class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update Member
+                                Category</button>
                         </div>
                     </form>
                 </div>

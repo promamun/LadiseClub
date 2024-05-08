@@ -47,24 +47,10 @@
                                     <input type="text" class="form-control" id="name" placeholder="Name Here"
                                         value="{{ old('name') }}" name="name" aria-label="Product title">
                                 </div>
-
-                            </div>
-                            <div class="col">
-                                <small class="text-light fw-medium d-block">In Active</small>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" checked name="status" id="inlineRadio2"
-                                        value="option2" />
-                                    <label class="form-check-label" for="inlineRadio2">Active</label>
-                                </div>
-                                <div class="form-check form-check-inline mt-3">
-                                    <input class="form-check-input" type="radio" name="status" id="inlineRadio1"
-                                        value="option1" />
-                                    <label class="form-check-label" for="inlineRadio1">In Active</label>
-                                </div>
                             </div>
                         </div>
-                        <div class="float-md-end">
-                            <button class="btn btn-outline-success waves-effect ">Add Member Category</button>
+                        <div class="pt-4 mb-3 float-lg-end">
+                            <button class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Add Member Category</button>
                         </div>
                     </form>
                 </div>

@@ -204,8 +204,7 @@ class MemberController extends Controller
         'name' => 'required|string'
       ]);
       MemberCategory::create([
-        'name' => $request->input('name'),
-        'status' => $request->input('status')
+        'name' => $request->input('name')
       ]);
       return redirect()->route('memberCategory-list');
     } catch (ValidationException $validationException) {
@@ -223,8 +222,7 @@ class MemberController extends Controller
         'name' => 'required|string'
       ]);
       $data->Update([
-        'name' => $request->input('name'),
-        'status' => $request->input('status')
+        'name' => $request->input('name')
       ]);
       return redirect()->route('memberCategory-list');
     } catch (ValidationException $validationException) {

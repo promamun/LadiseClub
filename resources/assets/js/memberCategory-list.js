@@ -21,7 +21,6 @@
         { data: '' },
         { data: 'id' },
         { data: 'name' },
-        { data: 'status' },
         { data: '',
           render: function (data, type, full, meta) {
             var editUrl = assetsPath + 'admin/member-category/edit/' + full.id; // Assuming full.id contains the member's ID

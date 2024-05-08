@@ -72,7 +72,7 @@
         },
         {
           "url": "admin/member-category/add",
-          "name": "Member add",
+          "name": "Member Category add",
           "slug": "memberCategory-add"
         }
       ]
