@@ -12,6 +12,7 @@ use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\apps\UserList;
 use App\Http\Controllers\apps\AccessRoles;
 use App\Http\Controllers\cards\CardGamifications;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MemberController;
 
 Route::get('/login', [LoginBasic::class, 'index'])->name('admin.login');
@@ -75,5 +76,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [MemberController::class, 'MemberCategory'])->name('memberCategory-list');
     Route::get('/add', [MemberController::class, 'addMemberCategory'])->name('memberCategory-add');
     Route::get('/edit/{id}', [MemberController::class, 'editMemberCategory'])->name('memberCategory.edit');
+  });
+  // gallery Routes
+Route::group(['prefix' => 'gallery'],function(){
+  // API Routes
+  Route::post('/store',[GalleryController::class,'storeGallery'])->name('gallery.store');
+  Route::post('/update/{id}',[GalleryController::class, 'updateGallery'])->name('gallery.update');
+  Route::get('/delete/{id}',[GalleryController::class, 'deleteGallery'])->name('gallery.delete');
+  //View Routes
+  Route::get('/', [GalleryController::class, 'index'])->name('gallery-list');
+  Route::get('/add', [GalleryController::class, 'addGallery'])->name('gallery-add');
+  Route::get('/edit/{id}', [GalleryController::class, 'editGallery'])->name('gallery.edit');
   });
 });

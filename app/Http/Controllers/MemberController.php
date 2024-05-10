@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Member;
 
+use Illuminate\Http\Request;
+
 use App\Models\MemberCategory;
 
-use Illuminate\Database\Eloquent\Casts\Json;
-
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Validation\ValidationException;
 
 class MemberController extends Controller

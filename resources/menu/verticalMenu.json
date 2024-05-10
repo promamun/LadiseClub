@@ -72,8 +72,25 @@
         },
         {
           "url": "admin/member-category/add",
-          "name": "Member Category add",
+          "name": "Member Category Add",
           "slug": "memberCategory-add"
+        }
+      ]
+    },
+    {
+      "name": "Gallery",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "gallery",
+      "submenu": [
+        {
+          "url": "admin/gallery",
+          "name": "Gallery List",
+          "slug": "gallery-list"
+        },
+        {
+          "url": "admin/gallery/add",
+          "name": "Gallery Add",
+          "slug": "gallery-add"
         }
       ]
     }

@@ -148,8 +148,7 @@
                             </div>
                         </div>
                         <div class="pt-4 mb-3 float-lg-end">
-                            <button type="submit"
-                                class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Submit</button>
                         </div>
                     </form>
                 </div>
