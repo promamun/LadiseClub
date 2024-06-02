@@ -120,8 +120,7 @@
                                     <label class="form-label" for="linkedin">Linkedin</label><span class="text-info">
                                         (optional)</span>
                                     <input type="text" class="form-control" id="linkedin"
-                                        placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin"
-                                        aria-label="linkedin">
+                                        placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin" aria-label="linkedin">
                                 </div>
                             </div>
                             <div class="row mb-3">

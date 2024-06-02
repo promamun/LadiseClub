@@ -22,5 +22,4 @@
     <div id="app">
         <role-cards></role-cards>
     </div>
-
 @endsection
