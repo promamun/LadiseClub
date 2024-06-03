@@ -93,6 +93,40 @@
           "slug": "gallery-add"
         }
       ]
+    },
+    {
+      "name": "Event",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "event",
+      "submenu": [
+        {
+          "url": "admin/event",
+          "name": "Event List",
+          "slug": "event-list"
+        },
+        {
+          "url": "admin/event/add",
+          "name": "Event Add",
+          "slug": "event-add"
+        }
+      ]
+    },
+    {
+      "name": "Notice",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "notice",
+      "submenu": [
+        {
+          "url": "admin/notice",
+          "name": "Notice List",
+          "slug": "notice-list"
+        },
+        {
+          "url": "admin/notice/add",
+          "name": "Notice Add",
+          "slug": "notice-add"
+        }
+      ]
     }
   ]
 }

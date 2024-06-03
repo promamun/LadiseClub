@@ -5,12 +5,12 @@
 (function () {
   //  For Datatable
   // --------------------------------------------------------------------
-  var dt_projects_table = $('.datatables-gallery');
+  var dt_projects_table = $('.datatables-event');
   var assetsPath = document.querySelector('meta[name="assetPath"]').getAttribute('content');
   if (dt_projects_table.length) {
     var dt_project = dt_projects_table.DataTable({
       ajax: {
-        url: '/api/gallery-list',
+        url: '/api/event-list',
         type: 'GET',
         dataType: 'json',
         dataSrc: 'data' // If your API returns data within a specific key, specify it here
@@ -28,7 +28,7 @@
                 '<div class="avatar avatar-xl">' +
                 '<img src="' +
                 assetsPath +
-                'gallery/' +
+                'event/' +
                 $team +
                 '" alt="Avatar" class="rounded-circle pull-up">' +
                 '</div>';
@@ -38,8 +38,8 @@
         },
         { data: '',
           render: function (data, type, full, meta) {
-            var editUrl = assetsPath + 'admin/gallery/edit/' + full.id; // Assuming full.id contains the member's ID
-            var deleteUrl = assetsPath + 'admin/gallery/delete/' + full.id; // Assuming full.id contains the member's ID
+            var editUrl = assetsPath + 'admin/event/edit/' + full.id; // Assuming full.id contains the member's ID
+            var deleteUrl = assetsPath + 'admin/event/delete/' + full.id; // Assuming full.id contains the member's ID
             return (
               '<div class="d-inline-block">' +
               '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></a>' +
@@ -86,7 +86,7 @@
       lengthMenu: [5, 10, 25, 50, 75, 100],
       buttons: [
         {
-          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New Gallery</span>',
+          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New Event</span>',
           className: 'create-new btn btn-primary waves-effect waves-light'
         }
       ],
@@ -95,7 +95,7 @@
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of "' + data['name'] + '" gallery';
+              return 'Details of "' + data['name'] + '" event';
             }
           }),
           type: 'column',
@@ -123,11 +123,11 @@
         }
       }
     });
-    $('div.head-label').html('<h5 class="card-title mb-0">Gallery</h5>');
+    $('div.head-label').html('<h5 class="card-title mb-0">Event</h5>');
   }
   // Add event listener to the button to navigate to the URL
   $('.create-new').on('click', function() {
-    var addUrl = assetsPath+'admin/gallery/add';
+    var addUrl = assetsPath+'admin/event/add';
     window.location.href = addUrl;
   });
 

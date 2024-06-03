@@ -1,19 +1,21 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\apps\UserList;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\authentications\ForgotPasswordBasic;
+use App\Http\Controllers\RollsController;
+use App\Http\Controllers\apps\AccessRoles;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\layouts\NavbarFull;
+use App\Http\Controllers\dashboard\Analytics;
+use App\Http\Controllers\event\EventController;
+use App\Http\Controllers\cards\CardGamifications;
+use App\Http\Controllers\notice\NoticeController;
+use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
-use App\Http\Controllers\RollsController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboard\Analytics;
-use App\Http\Controllers\layouts\NavbarFull;
-use App\Http\Controllers\layouts\NavbarFullSidebar;
-use App\Http\Controllers\apps\UserList;
-use App\Http\Controllers\apps\AccessRoles;
-use App\Http\Controllers\cards\CardGamifications;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\MemberController;
+use App\Http\Controllers\authentications\ForgotPasswordBasic;
 
 Route::get('/login', [LoginBasic::class, 'index'])->name('admin.login');
 Route::post('/auth-login', [LoginBasic::class, 'AdminLoginRequest'])->name('admin.login.request');
@@ -78,14 +80,38 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [MemberController::class, 'editMemberCategory'])->name('memberCategory.edit');
   });
   // gallery Routes
-Route::group(['prefix' => 'gallery'],function(){
-  // API Routes
-  Route::post('/store',[GalleryController::class,'storeGallery'])->name('gallery.store');
-  Route::post('/update/{id}',[GalleryController::class, 'updateGallery'])->name('gallery.update');
-  Route::get('/delete/{id}',[GalleryController::class, 'deleteGallery'])->name('gallery.delete');
-  //View Routes
-  Route::get('/', [GalleryController::class, 'index'])->name('gallery-list');
-  Route::get('/add', [GalleryController::class, 'addGallery'])->name('gallery-add');
-  Route::get('/edit/{id}', [GalleryController::class, 'editGallery'])->name('gallery.edit');
+  Route::group(['prefix' => 'gallery'], function () {
+    // API Routes
+    Route::post('/store', [GalleryController::class, 'storeGallery'])->name('gallery.store');
+    Route::post('/update/{id}', [GalleryController::class, 'updateGallery'])->name('gallery.update');
+    Route::get('/delete/{id}', [GalleryController::class, 'deleteGallery'])->name('gallery.delete');
+    //View Routes
+    Route::get('/', [GalleryController::class, 'index'])->name('gallery-list');
+    Route::get('/add', [GalleryController::class, 'addGallery'])->name('gallery-add');
+    Route::get('/edit/{id}', [GalleryController::class, 'editGallery'])->name('gallery.edit');
+  });
+  // event Routes
+  Route::group(['prefix' => 'event'], function () {
+    // API Routes
+    Route::post('/store', [EventController::class, 'storeEvent'])->name('event.store');
+    Route::post('/update/{id}', [EventController::class, 'updateEvent'])->name('event.update');
+    Route::get('/delete/{id}', [EventController::class, 'deleteEvent'])->name('event.delete');
+    //View Routes
+    Route::get('/', [EventController::class, 'index'])->name('event-list');
+    Route::get('/add', [EventController::class, 'addEvent'])->name('event-add');
+    Route::get('/edit/{id}', [EventController::class, 'editEvent'])->name('event.edit');
+    Route::get('/view/{id}', [EventController::class, 'viewEvent'])->name('event.view');
+  });
+  // notice Routes
+  Route::group(['prefix' => 'notice'], function () {
+    // API Routes
+    Route::post('/store', [NoticeController::class, 'storeNotice'])->name('notice.store');
+    Route::post('/update/{id}', [NoticeController::class, 'updateNotice'])->name('notice.update');
+    Route::get('/delete/{id}', [NoticeController::class, 'deleteNotice'])->name('notice.delete');
+    //View Routes
+    Route::get('/', [NoticeController::class, 'index'])->name('notice-list');
+    Route::get('/add', [NoticeController::class, 'addNotice'])->name('notice-add');
+    Route::get('/edit/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
+    Route::get('/view/{id}', [NoticeController::class, 'viewNotice'])->name('notice.view');
   });
 });

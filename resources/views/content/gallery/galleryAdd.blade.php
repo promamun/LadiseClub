@@ -1,7 +1,7 @@
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Add Member')
+@section('title', 'Add Gallery')
 
 @section('vendor-style')
     @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
@@ -49,7 +49,7 @@
               <div class="card mb-4">
                   <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
                       <div class="card-header">
-                          <h5 class="card-title mb-0">title</h5>
+                          <h5 class="card-title mb-0">Gallery</h5>
                       </div>
                       @csrf
                       <div class="card-body">
