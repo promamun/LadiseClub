@@ -110,6 +110,23 @@
           "slug": "event-add"
         }
       ]
+    },
+    {
+      "name": "Notice",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "notice",
+      "submenu": [
+        {
+          "url": "admin/notice",
+          "name": "Notice List",
+          "slug": "notice-list"
+        },
+        {
+          "url": "admin/notice/add",
+          "name": "Notice Add",
+          "slug": "notice-add"
+        }
+      ]
     }
   ]
 }

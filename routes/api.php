@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\event\EventController;
+use App\Http\Controllers\notice\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ use App\Http\Controllers\event\EventController;
   Route::get('/member-category-list', [MemberController::class, 'memberCategoryList'])->name('memberCategory.list');
   Route::get('/gallery-list', [GalleryController::class, 'galleryList'])->name('gallery.list');
   Route::get('/event-list', [EventController::class, 'eventList'])->name('event.list');
+  Route::get('/notice-list', [NoticeController::class, 'noticeList'])->name('notice.list');
 // });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

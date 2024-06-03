@@ -49,7 +49,7 @@
               <div class="card mb-4">
                   <form action="{{ route('event.store') }}" method="POST" enctype="multipart/form-data">
                       <div class="card-header">
-                          <h5 class="card-title mb-0">title</h5>
+                          <h5 class="card-title mb-0">Event</h5>
                       </div>
                       @csrf
                       <div class="card-body">

@@ -11,6 +11,7 @@ use App\Http\Controllers\layouts\NavbarFull;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\event\EventController;
 use App\Http\Controllers\cards\CardGamifications;
+use App\Http\Controllers\notice\NoticeController;
 use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
@@ -100,5 +101,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/add', [EventController::class, 'addEvent'])->name('event-add');
     Route::get('/edit/{id}', [EventController::class, 'editEvent'])->name('event.edit');
     Route::get('/view/{id}', [EventController::class, 'viewEvent'])->name('event.view');
+  });
+  // notice Routes
+  Route::group(['prefix' => 'notice'], function () {
+    // API Routes
+    Route::post('/store', [NoticeController::class, 'storeNotice'])->name('notice.store');
+    Route::post('/update/{id}', [NoticeController::class, 'updateNotice'])->name('notice.update');
+    Route::get('/delete/{id}', [NoticeController::class, 'deleteNotice'])->name('notice.delete');
+    //View Routes
+    Route::get('/', [NoticeController::class, 'index'])->name('notice-list');
+    Route::get('/add', [NoticeController::class, 'addNotice'])->name('notice-add');
+    Route::get('/edit/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
+    Route::get('/view/{id}', [NoticeController::class, 'viewNotice'])->name('notice.view');
   });
 });

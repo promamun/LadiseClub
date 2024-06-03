@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\event;
+namespace App\Http\Controllers\notice;
 
 use Exception;
-use App\Models\Event;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 
-class EventController extends Controller
+class NoticeController extends Controller
 {
-  public function eventList()
+  public function noticeList()
   {
     try {
-      $event = Event::get();
-      return response()->json(['data' => $event]);
+      $notice = Notice::get();
+      return response()->json(['data' => $notice]);
     } catch (Exception $exception) {
       return response()->json(['error' => $exception->getMessage()]);
     }
@@ -22,35 +22,35 @@ class EventController extends Controller
   public function index()
   {
     try {
-      return view('content.event.eventList');
+      return view('content.notice.noticeList');
     } catch (Exception $exception) {
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
     }
   }
 
-  public function addEvent()
+  public function addNotice()
   {
     try {
-      return view('content.event.eventAdd');
+      return view("content.notice.noticeAdd");
     } catch (Exception $exception) {
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
     }
   }
 
-  public function editEvent($id)
+  public function editNotice($id)
   {
     try {
-      $data = Event::findOrFail($id);
-      return view('content.event.eventEdit', compact('data'));
+      $data = Notice::findOrFail($id);
+      return view("content.notice.noticeEdit", compact('data'));
     } catch (Exception $exception) {
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
     }
   }
 
-  public function deleteEvent(Request $request)
+  public function deleteNotice(Request $request)
   {
     try {
-      $data = Event::findOrFail($request->id);
+      $data = Notice::findOrFail($request->id);
       $data->delete();
       return response()->json(['success' => true]);
     } catch (Exception $exception) {
@@ -61,23 +61,26 @@ class EventController extends Controller
     }
   }
 
-  public function storeEvent(Request $request)
+  public function storeNotice(Request $request)
   {
     try {
       $request->validate([
+        'name' => 'required|string',
         'image' => 'required|image'
       ]);
       $fileName = null;
       if ($request->hasFile('image')) {
         $file = $request->file('image');
-        $fileName =  date('Ymdhis') . '_' .$file->getClientOriginalName();
-        $file->move("event/", $fileName);
+        $fileName = date('Ymdhis') . '_' .$file->getClientOriginalName();
+        $file->move("notice/", $fileName);
       }
-      Event::create([
+      Notice::create([
         'name' => $request->input('name'),
+        'short_description' => $request->input('short_description'),
+        'description' => $request->input('description'),
         'image' => $fileName
       ]);
-      return redirect()->route('event-list')->with(['success' => "Event Create Successfully"], 200);
+      return redirect()->route('notice-list')->with(['success' => "Notice Create Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -85,27 +88,32 @@ class EventController extends Controller
     }
   }
 
-  public function updateEvent(Request $request, $id)
+  public function updateNotice(Request $request, $id)
   {
     try {
-      $data = Event::findOrFail($id);
+      $data = Notice::findOrFail($id);
+      $request->validate([
+        'name' => 'required|string'
+      ]);
       $fileName = $data->image;
       if ($request->hasFile('image')) {
         $request->validate([
           'image' => 'required|image'
         ]);
-        if (file_exists(public_path('event/' . $fileName))) {
-          unlink(public_path('event/' . $fileName));
+        if (file_exists(public_path('notice/' . $fileName))) {
+          unlink(public_path('notice/' . $fileName));
         }
         $file = $request->file('image');
         $fileName = date('Ymdhis') . '_' .$file->getClientOriginalName();
-        $file->move("event/", $fileName);
+        $file->move("notice/", $fileName);
       }
       $data->update([
         'name' => $request->input('name'),
+        'short_description' => $request->input('short_description'),
+        'description' => $request->input('description'),
         'image' => $fileName
       ]);
-      return redirect()->route('event-list')->with(['success' => "Event Update Successfully"], 200);
+      return redirect()->route('notice-list')->with(['success' => "Notice Update Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
