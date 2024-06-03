@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $role = Role::where('name', 'administrator' )->first();
         $data = User::create([
             'name'=> "arif",
-            'email'=> " ",
+            'email'=> "arifbillahshobuz@gmail.com",
             'password'=> Hash::make("admin1234"),
             'is_admin'=> "2",
             ]);

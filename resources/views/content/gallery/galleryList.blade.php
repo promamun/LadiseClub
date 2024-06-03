@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Members')
+@section('title', 'Event')
 
 @section('vendor-style')
 @vite([

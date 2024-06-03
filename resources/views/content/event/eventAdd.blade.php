@@ -1,7 +1,7 @@
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Add Gallery')
+@section('title', 'Add Event')
 
 @section('vendor-style')
     @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
@@ -23,10 +23,10 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
             <div class="d-flex flex-column justify-content-center">
-                <h4 class="mb-1 mt-3">Add a new Gallery</h4>
+                <h4 class="mb-1 mt-3">Add a new Event</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-3">
-                <a href="{{ route('gallery-list') }}"><button type="submit" class="btn btn-primary">Gellery List</button></a>
+                <a href="{{ route('event-list') }}"><button type="submit" class="btn btn-primary">Event List</button></a>
             </div>
         </div>
         <div class="row">
@@ -47,7 +47,7 @@
           <div class="col-12 col-lg-12">
               <!-- Product Information -->
               <div class="card mb-4">
-                  <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
+                  <form action="{{ route('event.store') }}" method="POST" enctype="multipart/form-data">
                       <div class="card-header">
                           <h5 class="card-title mb-0">title</h5>
                       </div>

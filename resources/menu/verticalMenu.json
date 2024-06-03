@@ -93,6 +93,23 @@
           "slug": "gallery-add"
         }
       ]
+    },
+    {
+      "name": "Event",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "event",
+      "submenu": [
+        {
+          "url": "admin/event",
+          "name": "Event List",
+          "slug": "event-list"
+        },
+        {
+          "url": "admin/event/add",
+          "name": "Event Add",
+          "slug": "event-add"
+        }
+      ]
     }
   ]
 }
