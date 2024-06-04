@@ -64,9 +64,12 @@ class NoticeController extends Controller
   public function storeNotice(Request $request)
   {
     try {
+      // dd($request->input('date'));
       $request->validate([
         'name' => 'required|string',
-        'image' => 'required|image'
+        'image' => 'required|image',
+        'description' => 'required',
+        'date' => 'required'
       ]);
       $fileName = null;
       if ($request->hasFile('image')) {
@@ -76,8 +79,8 @@ class NoticeController extends Controller
       }
       Notice::create([
         'name' => $request->input('name'),
-        'short_description' => $request->input('short_description'),
         'description' => $request->input('description'),
+        'date' => $request->input('date'),
         'image' => $fileName
       ]);
       return redirect()->route('notice-list')->with(['success' => "Notice Create Successfully"], 200);
@@ -93,7 +96,9 @@ class NoticeController extends Controller
     try {
       $data = Notice::findOrFail($id);
       $request->validate([
-        'name' => 'required|string'
+        'name' => 'required|string',
+        'description' => 'required',
+        'date' => 'required'
       ]);
       $fileName = $data->image;
       if ($request->hasFile('image')) {
@@ -109,8 +114,8 @@ class NoticeController extends Controller
       }
       $data->update([
         'name' => $request->input('name'),
-        'short_description' => $request->input('short_description'),
         'description' => $request->input('description'),
+        'date' => $request->input('date'),
         'image' => $fileName
       ]);
       return redirect()->route('notice-list')->with(['success' => "Notice Update Successfully"], 200);

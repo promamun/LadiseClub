@@ -5,12 +5,12 @@
 (function () {
   //  For Datatable
   // --------------------------------------------------------------------
-  var dt_projects_table = $('.datatables-notice');
+  var dt_projects_table = $('.datatables-facilitie');
   var assetsPath = document.querySelector('meta[name="assetPath"]').getAttribute('content');
   if (dt_projects_table.length) {
     var dt_project = dt_projects_table.DataTable({
       ajax: {
-        url: '/api/notice-list',
+        url: '/api/facilitie-list',
         type: 'GET',
         dataType: 'json',
         dataSrc: 'data' // If your API returns data within a specific key, specify it here
@@ -28,7 +28,7 @@
                 '<div class="avatar avatar-xl">' +
                 '<img src="' +
                 assetsPath +
-                'notice/' +
+                'facilitie/' +
                 $team +
                 '" alt="Avatar" class="rounded-circle pull-up">' +
                 '</div>';
@@ -36,29 +36,10 @@
             return $output;
           }
         },
-        {
-          data: 'date',
-          render: function (data, type, full, meta) {
-              var date = new Date(full['date']);
-
-              var options = {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                  hour: 'numeric',
-                  minute: 'numeric',
-                  hour12: true,
-                  timeZone: 'Asia/Dhaka'  // Set the time zone to Dhaka, Bangladesh
-              };
-
-              var formattedDate = date.toLocaleString('en-US', options);
-              return formattedDate;
-          }
-      },
         { data: '',
           render: function (data, type, full, meta) {
-            var editUrl = assetsPath + 'admin/notice/edit/' + full.id; // Assuming full.id contains the member's ID
-            var deleteUrl = assetsPath + 'admin/notice/delete/' + full.id; // Assuming full.id contains the member's ID
+            var editUrl = assetsPath + 'admin/facilitie/edit/' + full.id; // Assuming full.id contains the member's ID
+            var deleteUrl = assetsPath + 'admin/facilitie/delete/' + full.id; // Assuming full.id contains the member's ID
             return (
               '<div class="d-inline-block">' +
               '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></a>' +
@@ -105,7 +86,7 @@
       lengthMenu: [5, 10, 25, 50, 75, 100],
       buttons: [
         {
-          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New Notice</span>',
+          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New Facilitie</span>',
           className: 'create-new btn btn-primary waves-effect waves-light'
         }
       ],
@@ -114,7 +95,7 @@
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of "' + data['name'] + '" notice';
+              return 'Details of "' + data['name'] + '" facilitie';
             }
           }),
           type: 'column',
@@ -142,11 +123,11 @@
         }
       }
     });
-    $('div.head-label').html('<h5 class="card-title mb-0">Notice</h5>');
+    $('div.head-label').html('<h5 class="card-title mb-0">facilitie</h5>');
   }
-  // Add notice listener to the button to navigate to the URL
+  // Add facilitie listener to the button to navigate to the URL
   $('.create-new').on('click', function() {
-    var addUrl = assetsPath+'admin/notice/add';
+    var addUrl = assetsPath+'admin/facilitie/add';
     window.location.href = addUrl;
   });
 

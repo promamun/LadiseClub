@@ -12,6 +12,6 @@ class Notice extends Model
       'name',
       'image',
       'description',
-      'short_description',
+      'date',
     ];
 }

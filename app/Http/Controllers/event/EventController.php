@@ -64,8 +64,11 @@ class EventController extends Controller
   public function storeEvent(Request $request)
   {
     try {
+      // dd($request->all());
       $request->validate([
-        'image' => 'required|image'
+        'image' => 'required|image',
+        'name' => 'required|string',
+        'date' => 'required'
       ]);
       $fileName = null;
       if ($request->hasFile('image')) {
@@ -75,6 +78,7 @@ class EventController extends Controller
       }
       Event::create([
         'name' => $request->input('name'),
+        'date' => $request->input('date'),
         'image' => $fileName
       ]);
       return redirect()->route('event-list')->with(['success' => "Event Create Successfully"], 200);
@@ -89,6 +93,10 @@ class EventController extends Controller
   {
     try {
       $data = Event::findOrFail($id);
+      $request->validate([
+        'name' => 'required|string',
+        'date' => 'required'
+      ]);
       $fileName = $data->image;
       if ($request->hasFile('image')) {
         $request->validate([
@@ -103,6 +111,7 @@ class EventController extends Controller
       }
       $data->update([
         'name' => $request->input('name'),
+        'date' => $request->input('date'),
         'image' => $fileName
       ]);
       return redirect()->route('event-list')->with(['success' => "Event Update Successfully"], 200);

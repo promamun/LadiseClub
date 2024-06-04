@@ -57,6 +57,12 @@
                                     <input type="text" class="form-control" id="name" placeholder="Name Here"
                                         value="{{ old('name') ?? $data->name }}" name="name" aria-label="Name Here">
                                 </div>
+                                <div class="col">
+                                  <label class="form-label" for="date">Date</label><span
+                                  class="text-info">(optional)</span>
+                                  <input type="datetime-local" class="form-control" id="date"
+                                      placeholder="Short Description Here" value="{{ old('date')?? $data->date }}" name="date" aria-label="date Here">
+                              </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col">

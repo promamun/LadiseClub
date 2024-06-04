@@ -153,7 +153,12 @@
                                 <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example"
                                     rows="3" maxlength="255" spellcheck="false"></textarea>
                             </div>
-                        </div>
+                            <div class="row mb-3 mt-3">
+                              <div class="col">
+                                  <img width="100" src="{{ asset('member/' . $data->image) }}" alt="img">
+                              </div>
+                          </div>
+                          </div>
                         <div>
                             <button class="btn btn-primary">
                                 Update
