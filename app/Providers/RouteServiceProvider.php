@@ -20,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
    * @var string
    */
 
-  public const HOME = '/';
+  public const HOME = '/admin/dashboard';
 
     /**
      * Get the home path for the authenticated user.
@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
                 case 1:
                     return '/';
                 case 2:
-                    return '/admin/dashbord';
+                    return '/admin/dashboard';
                 default:
                     return self::HOME;
             }

@@ -23,10 +23,10 @@ class PermissionSeeder extends Seeder
               "roles.add",
               "roles.edit",
               "roles.delete",
-                "roles.store",
-                "roles.update",
-                "roles.permissions.list",
-                "roles.view",
+              "roles.store",
+              "roles.update",
+              "roles.permissions.list",
+              "roles.view",
             ];
 
             foreach ($permissions as $permissionName) {
