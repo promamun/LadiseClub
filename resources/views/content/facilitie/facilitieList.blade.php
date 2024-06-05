@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Notice')
+@section('title', 'Facilitie')
 
 @section('vendor-style')
     @vite([
@@ -26,7 +26,7 @@
 @endsection
 
 @section('page-script')
-    @vite(['resources/assets/js/notice-list.js',
+    @vite(['resources/assets/js/facilitie-list.js',
     'resources/assets/js/extended-ui-sweetalert2.js'
     ])
 @endsection
@@ -37,14 +37,13 @@
         <div class="col-12 col-xl-12 col-sm-12 order-1 order-lg-2 mb-6 mb-lg-0">
             <div class="card">
                 <div class="card-datatable table-responsive">
-                    <table class="datatables-notice table border-top">
+                    <table class="datatables-facilitie table border-top">
                         <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
                                 <th>Name</th>
                                 <th>Image</th>
-                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

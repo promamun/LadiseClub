@@ -64,12 +64,12 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label" for="description">Description</label><span class="text-info">(optional)</span>
+                                <label class="form-label" for="description">Description</label><span class="text-danger">*</span>
                                 <input type="text" class="form-control" id="description" placeholder="Description Here" value="{{ old('description') }}" name="description" aria-label="description Here">
                             </div>
                             <div class="col">
-                                <label class="form-label" for="short_description">Short Description</label><span class="text-info">(optional)</span>
-                                <input type="text" class="form-control" id="short_description" placeholder="Short Description Here" value="{{ old('short_description') }}" name="short_description" aria-label="short_description Here">
+                              <label class="form-label" for="date">Date</label><span class="text-danger">*</span>
+                              <input type="datetime-local" class="form-control" id="date" value="{{ old('date') }}" name="date" aria-label="date Here">
                             </div>
                         </div>
                         <div class="pt-4 mb-3 float-lg-end">

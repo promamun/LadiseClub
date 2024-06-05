@@ -36,6 +36,25 @@
             return $output;
           }
         },
+        {
+          data: 'date',
+          render: function (data, type, full, meta) {
+              var date = new Date(full['date']);
+
+              var options = {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                  hour: 'numeric',
+                  minute: 'numeric',
+                  hour12: true,
+                  timeZone: 'Asia/Dhaka'  // Set the time zone to Dhaka, Bangladesh
+              };
+
+              var formattedDate = date.toLocaleString('en-US', options);
+              return formattedDate;
+          }
+      },
         { data: '',
           render: function (data, type, full, meta) {
             var editUrl = assetsPath + 'admin/event/edit/' + full.id; // Assuming full.id contains the member's ID

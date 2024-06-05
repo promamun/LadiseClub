@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'Add Event')
+@section('title', 'Add Facilitie')
 
 @section('vendor-style')
     @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
@@ -22,10 +22,10 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
             <div class="d-flex flex-column justify-content-center">
-                <h4 class="mb-1 mt-3">Add a new Event</h4>
+                <h4 class="mb-1 mt-3">Add a new Facilitie</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-3">
-                <a href="{{ route('event-list') }}"><button type="submit" class="btn btn-primary">Event List</button></a>
+                <a href="{{ route('facilitie-list') }}"><button type="submit" class="btn btn-primary">Facilitie List</button></a>
             </div>
         </div>
 
@@ -45,9 +45,9 @@
                 </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
-                    <form action="{{ route('event.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('facilitie.store') }}" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Event</h5>
+                            <h5 class="card-title mb-0">Facilitie</h5>
                         </div>
                         @csrf
                         <div class="card-body">
@@ -56,11 +56,6 @@
                                     <label class="form-label" for="name">Name</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" id="name" placeholder="Name Here"
                                         value="{{ old('name') }}" name="name" aria-label="Name Here">
-                                </div>
-                                <div class="col">
-                                    <label class="form-label" for="date">Date</label><span class="text-danger">*</span>
-                                    <input type="datetime-local" class="form-control" id="date"
-                                        placeholder="Short Description Here" value="{{ old('date') }}" name="date" aria-label="date Here">
                                 </div>
                             </div>
                             <div class="row mb-3">

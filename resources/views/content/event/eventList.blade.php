@@ -44,6 +44,7 @@
                                 <th></th>
                                 <th>Name</th>
                                 <th>Image</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

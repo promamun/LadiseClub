@@ -14,6 +14,7 @@ use App\Http\Controllers\cards\CardGamifications;
 use App\Http\Controllers\notice\NoticeController;
 use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\authentications\LoginBasic;
+use App\Http\Controllers\facilitie\FacilitieController;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
 
@@ -100,7 +101,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('event-list');
     Route::get('/add', [EventController::class, 'addEvent'])->name('event-add');
     Route::get('/edit/{id}', [EventController::class, 'editEvent'])->name('event.edit');
-    Route::get('/view/{id}', [EventController::class, 'viewEvent'])->name('event.view');
   });
   // notice Routes
   Route::group(['prefix' => 'notice'], function () {
@@ -112,6 +112,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [NoticeController::class, 'index'])->name('notice-list');
     Route::get('/add', [NoticeController::class, 'addNotice'])->name('notice-add');
     Route::get('/edit/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
-    Route::get('/view/{id}', [NoticeController::class, 'viewNotice'])->name('notice.view');
+  });
+  // facilitie Routes
+Route::group(['prefix' => 'facilitie'],function(){
+  // API Routes
+  Route::post('/store',[FacilitieController::class,'storeFacilitie'])->name('facilitie.store');
+  Route::post('/update/{id}',[FacilitieController::class, 'updateFacilitie'])->name('facilitie.update');
+  Route::get('/delete/{id}',[FacilitieController::class, 'deleteFacilitie'])->name('facilitie.delete');
+  //View Routes
+  Route::get('/', [FacilitieController::class, 'index'])->name('facilitie-list');
+  Route::get('/add', [FacilitieController::class, 'addFacilitie'])->name('facilitie-add');
+  Route::get('/add/details', [FacilitieController::class, 'addFacilitieDetails'])->name('facilitie-add-details');
+  Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitie'])->name('facilitie.edit');
   });
 });

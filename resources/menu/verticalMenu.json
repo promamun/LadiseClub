@@ -127,6 +127,28 @@
           "slug": "notice-add"
         }
       ]
+    },
+    {
+      "name": "Facilitie",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "facilitie",
+      "submenu": [
+        {
+          "url": "admin/facilitie",
+          "name": "Facilitie List",
+          "slug": "facilitie-list"
+        },
+        {
+          "url": "admin/facilitie/add",
+          "name": "Facilitie Add",
+          "slug": "facilitie-add"
+        },
+        {
+          "url": "admin/facilitie/add/details",
+          "name": "Facilitie Add Details",
+          "slug": "facilitie-add-details"
+        }
+      ]
     }
   ]
 }
