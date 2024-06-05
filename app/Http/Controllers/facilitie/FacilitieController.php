@@ -37,6 +37,14 @@ class FacilitieController extends Controller
           return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
       }
   }
+  public function addFacilitieDetails()
+  {
+      try {
+          return view("content.facilitie.facilitieAdd");
+      } catch (Exception $exception) {
+          return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
+      }
+  }
 
   public function editFacilitie($id)
   {

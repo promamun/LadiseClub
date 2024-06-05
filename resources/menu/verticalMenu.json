@@ -142,6 +142,11 @@
           "url": "admin/facilitie/add",
           "name": "Facilitie Add",
           "slug": "facilitie-add"
+        },
+        {
+          "url": "admin/facilitie/add/details",
+          "name": "Facilitie Add Details",
+          "slug": "facilitie-add-details"
         }
       ]
     }

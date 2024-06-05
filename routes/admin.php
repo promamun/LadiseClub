@@ -122,6 +122,7 @@ Route::group(['prefix' => 'facilitie'],function(){
   //View Routes
   Route::get('/', [FacilitieController::class, 'index'])->name('facilitie-list');
   Route::get('/add', [FacilitieController::class, 'addFacilitie'])->name('facilitie-add');
+  Route::get('/add/details', [FacilitieController::class, 'addFacilitieDetails'])->name('facilitie-add-details');
   Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitie'])->name('facilitie.edit');
   });
 });
