@@ -2,6 +2,8 @@
 <!-- Include Axios via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+
+
 @vite([
 'resources/assets/vendor/libs/jquery/jquery.js',
 'resources/assets/vendor/libs/popper/popper.js',
@@ -10,12 +12,16 @@
 'resources/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js',
 'resources/assets/vendor/libs/hammer/hammer.js',
 'resources/assets/vendor/libs/typeahead-js/typeahead.js',
-'resources/assets/vendor/js/menu.js',])
+'resources/assets/vendor/js/menu.js',
+'resources/assets/vendor/libs/toastr/toastr.js'
+])
 
 @yield('vendor-script')
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Theme JS-->
-@vite(['resources/assets/js/main.js'])
+@vite(['resources/assets/js/main.js',
+'resources/assets/js/ui-toasts.js'
+])
 
 <!-- END: Theme JS-->
 <!-- Pricing Modal JS-->

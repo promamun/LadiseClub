@@ -114,15 +114,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
   });
   // facilitie Routes
-Route::group(['prefix' => 'facilitie'],function(){
-  // API Routes
-  Route::post('/store',[FacilitieController::class,'storeFacilitie'])->name('facilitie.store');
-  Route::post('/update/{id}',[FacilitieController::class, 'updateFacilitie'])->name('facilitie.update');
-  Route::get('/delete/{id}',[FacilitieController::class, 'deleteFacilitie'])->name('facilitie.delete');
-  //View Routes
-  Route::get('/', [FacilitieController::class, 'index'])->name('facilitie-list');
-  Route::get('/add', [FacilitieController::class, 'addFacilitie'])->name('facilitie-add');
-  Route::get('/add/details', [FacilitieController::class, 'addFacilitieDetails'])->name('facilitie-add-details');
-  Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitie'])->name('facilitie.edit');
+  Route::group(['prefix' => 'facilitie'], function () {
+    // API Routes
+    Route::post('/store', [FacilitieController::class, 'storeFacilitie'])->name('facilitie.store');
+    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilitie'])->name('facilitie.update');
+    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilitie'])->name('facilitie.delete');
+    //View Routes
+    Route::get('/', [FacilitieController::class, 'index'])->name('facilitie-list');
+    Route::get('/add', [FacilitieController::class, 'addFacilitie'])->name('facilitie-add');
+    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitie'])->name('facilitie.edit');
+  });
+
+  // FacilitieDetail Routes
+  Route::group(['prefix' => 'facilitie-detail'], function () {
+    // API Routes
+    Route::post('/store', [FacilitieController::class, 'storeFacilitieDetail'])->name('facilitieDetail.store');
+    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilitieDetail'])->name('facilitieDetail.update');
+    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilitieDetail'])->name('facilitieDetail.delete');
+    //View Routes
+    Route::get('/', [FacilitieController::class, 'indexfacilitieDetails'])->name('facilitie-details-list');
+    Route::get('/add', [FacilitieController::class, 'addFacilitieDetail'])->name('facilitie-details-add');
+    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitieDetail'])->name('facilitieDetail.edit');
+    Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitieDetail'])->name('facilitieDetail.view');
   });
 });
