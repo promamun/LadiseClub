@@ -25,6 +25,7 @@ use App\Http\Controllers\facilitie\FacilitieController;
   Route::get('/event-list', [EventController::class, 'eventList'])->name('event.list');
   Route::get('/notice-list', [NoticeController::class, 'noticeList'])->name('notice.list');
   Route::get('/facilitie-list', [FacilitieController::class, 'facilitieList'])->name('facilitie.list');
+  Route::get('/facilitie-detail-list', [FacilitieController::class, 'facilitieDetailsList'])->name('facilitieDetails.list');
 // });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
