@@ -28,8 +28,7 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>@yield('title') |
-        {{ config('variables.templateName') ? config('variables.templateName') : 'TemplateName' }} -
-        {{ config('variables.templateSuffix') ? config('variables.templateSuffix') : 'TemplateSuffix' }}
+        {{ config('variables.templateName') ? config('variables.templateName') : 'TemplateName' }}
     </title>
     <meta name="description"
         content="{{ config('variables.templateDescription') ? config('variables.templateDescription') : '' }}" />
@@ -67,7 +66,6 @@
     <!-- Include Scripts -->
     <!-- $isFront is used to append the front layout scripts only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scripts' . $isFront)
-
 </body>
 
 </html>

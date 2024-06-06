@@ -15,7 +15,6 @@ class PermissionSeeder extends Seeder
   public function run(): void
   {
     $role = Role::where("name", "Administrators")->first();
-
     if ($role) {
       $permissions = [
         "roles",
@@ -28,7 +27,6 @@ class PermissionSeeder extends Seeder
         "roles.permissions.list",
         "roles.view",
       ];
-
       foreach ($permissions as $permissionName) {
         $permission = Permission::firstOrCreate(['name' => $permissionName]);
         $role->permissions()->attach($permission->id);

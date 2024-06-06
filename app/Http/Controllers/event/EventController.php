@@ -81,7 +81,7 @@ class EventController extends Controller
         'date' => $request->input('date'),
         'image' => $fileName
       ]);
-      return redirect()->route('event-list')->with('message', 'Event Create Successfully');
+      return redirect()->route('event-list')->with('success', 'Event Create Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -114,7 +114,7 @@ class EventController extends Controller
         'date' => $request->input('date'),
         'image' => $fileName
       ]);
-      return redirect()->route('event-list')->with('message', 'Event Update Successfully');
+      return redirect()->route('event-list')->with('success', 'Event Update Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {

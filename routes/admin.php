@@ -18,7 +18,7 @@ use App\Http\Controllers\facilitie\FacilitieController;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
 
-Route::get('/login', [LoginBasic::class, 'index'])->name('admin.login');
+Route::get('/', [LoginBasic::class, 'index'])->name('admin.login');
 Route::post('/auth-login', [LoginBasic::class, 'AdminLoginRequest'])->name('admin.login.request');
 Route::get('/auth-reset-password', [ResetPasswordBasic::class, 'index'])->name('admin.reset.password');
 Route::get('/auth-forgot-password', [ForgotPasswordBasic::class, 'index'])->name('admin.forgot.password');

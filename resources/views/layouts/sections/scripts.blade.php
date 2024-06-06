@@ -1,9 +1,6 @@
 <!-- BEGIN: Vendor JS-->
 <!-- Include Axios via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
-
 @vite([
 'resources/assets/vendor/libs/jquery/jquery.js',
 'resources/assets/vendor/libs/popper/popper.js',
