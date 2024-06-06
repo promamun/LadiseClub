@@ -64,7 +64,6 @@ class EventController extends Controller
   public function storeEvent(Request $request)
   {
     try {
-      // dd($request->all());
       $request->validate([
         'image' => 'required|image',
         'name' => 'required|string',

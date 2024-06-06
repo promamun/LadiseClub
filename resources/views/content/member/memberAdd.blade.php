@@ -15,9 +15,26 @@
 @endsection
 
 @section('content')
-
+<div id="app">
+  <toastr-notification
+    :success="{{ json_encode(session('success')) }}"
+    :error="{{ json_encode(session('error')) }}"
+    :warning="{{ json_encode(session('warning')) }}"
+    :info="{{ json_encode(session('info')) }}"
+  />
+</div>
     <div class="app-ecommerce">
-
+      <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
         <!-- Add Product -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
@@ -35,14 +52,14 @@
               <div class="col-sm-12">
                 <div class="row">
                     <div class="col-sm-12">
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
                             </div>
                         @endif
                     </div>
                 </div>
-            </div>
+              </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
                     <form action="{{ route('member.store') }}" method="POST" enctype="multipart/form-data">
@@ -57,7 +74,7 @@
                                     <label for="select2Multiple" class="form-label">Select Member Category</label><span class="text-danger">*</span>
                                     <select id="select2Multiple" name="category_id[]" class="select2 form-select" multiple required>
                                       @foreach ($memberCategory as $data)
-                                      <option value="{{$data->id }}">{{ $data->name }}</option>
+                                      <option value="{{ $data->id }}" {{ (collect(old('category_id'))->contains($data->id)) ? 'selected' : '' }}>{{ $data->name }}</option>
                                       @endforeach
                                     </select>
                                 </div>

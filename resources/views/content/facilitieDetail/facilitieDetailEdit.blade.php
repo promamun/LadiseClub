@@ -27,6 +27,14 @@
 @endsection
 
 @section('content')
+<div id="app">
+  <toastr-notification
+    :success="{{ json_encode(session('success')) }}"
+    :error="{{ json_encode(session('error')) }}"
+    :warning="{{ json_encode(session('warning')) }}"
+    :info="{{ json_encode(session('info')) }}"
+  />
+</div>
     <div class="app-ecommerce">
 
         <!-- Add Product -->

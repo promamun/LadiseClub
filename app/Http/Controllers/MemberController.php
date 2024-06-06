@@ -16,6 +16,92 @@ use Illuminate\Validation\ValidationException;
 
 class MemberController extends Controller
 {
+    //member Category
+    public function memberCategoryList(){
+      try{
+        $memberCategories = MemberCategory::get();
+        return response()->json(['data' => $memberCategories]);
+      }catch(Exception $exception){
+        return response()->json(['error'=>$exception->getMessage()]);
+      }
+    }
+    public function MemberCategory()
+    {
+      try {
+        return view('content.memberCategory.memberCategoryList');
+      } catch (Exception $exception) {
+        return redirect()->back()->with(['error' =>$exception->getMessage()]);
+      }
+    }
+
+    public function addMemberCategory()
+    {
+      try {
+        return view('content.memberCategory.memberCategoryAdd');
+      } catch (Exception $exception) {
+        return redirect()->back()->with(['error' =>$exception->getMessage()]);
+      }
+    }
+
+    public function editMemberCategory($id)
+    {
+      try {
+        $data = MemberCategory::find($id);
+        return view('content.memberCategory.memberCategoryEdit', compact('data'));
+      } catch (Exception $exception) {
+        return redirect()->back();
+      }
+    }
+
+    public function deleteMemberCategory(Request $request)
+    {
+      try {
+        $data = MemberCategory::findOrFail($request->id);
+        $data->delete();
+        return response()->json(['success' => true]);
+      } catch (Exception $exception) {
+        return response()->json([
+          'status' => 'fail',
+          'message' => $exception->getMessage()
+        ]);
+      }
+    }
+
+    public function storeMemberCategory(Request $request)
+    {
+      try {
+        // dd($request->all());
+        $request->validate([
+          'name' => 'required|string'
+        ]);
+        MemberCategory::create([
+          'name' => $request->input('name')
+        ]);
+        return redirect()->route('memberCategory-list')->with('success', 'Member Category Create Successfully');
+      } catch (ValidationException $validationException) {
+        return redirect()->back()->with('error', $validationException->getMessage());
+      } catch (Exception $exception) {
+        return redirect()->back()->with('error', $exception->getMessage());
+      }
+    }
+
+    public function updateMemberCategory(Request $request, $id)
+    {
+      try {
+        $data = MemberCategory::findOrFail($id);
+        $request->validate([
+          'name' => 'required|string'
+        ]);
+        $data->Update([
+          'name' => $request->input('name')
+        ]);
+        return redirect()->route('memberCategory-list')->with('success', 'Member Category Update Successfully');
+      } catch (ValidationException $validationException) {
+        return redirect()->back()->with('error', $validationException->getMessage());
+      } catch (Exception $exception) {
+        return redirect()->back()->with('error', $exception->getMessage());
+      }
+    }
     public function membersList(){
       try{
         $members = Member::get();
@@ -72,8 +158,8 @@ class MemberController extends Controller
     public function storeMember(Request $request)
     {
       try {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+        $request->validate([
+          'name' => 'required|string',
             'designation' => 'required|string',
             'image' => 'required',
             'category_id' => 'required|array',
@@ -87,10 +173,6 @@ class MemberController extends Controller
             'instagram' => ['nullable', 'url'],
             'personal_website' => ['nullable', 'url'],
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->with(['error'=>$validator->getMessageBag()])->withInput();
-        }
-
         $fileName = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -112,9 +194,12 @@ class MemberController extends Controller
             'personal_website' => $request->input('personal_website'),
         ]);
         $member->members()->attach($request->input('category_id'));
-        return redirect()->route('member-list')->with(['success'=>"Member Create Successfully"],200);
-    } catch (Exception $exception) {
-      return redirect()->back()->with(['error'=> $exception->getMessage()])->withInput();
+        return redirect()->route('member-list')->with('success','Member Create Successfully');
+    } catch(ValidationException $e){
+      return redirect()->back()->with(['error'=>$e->getMessage()])->withInput();
+    }
+     catch (Exception $exception) {
+      return redirect()->back()->with('error', $exception->getMessage())->withInput();
     }
   }
   public function updateMember(Request $request, $id)
@@ -163,98 +248,11 @@ class MemberController extends Controller
         'personal_website' => $request->input('personal_website'),
       ]);
       $data->members()->sync($request->input('category_id'));
-      return redirect()->route('member-list')->with(['success'=>"Member Update Successfully"],200);
+      return redirect()->route('member-list')->with('success','Member Update Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
       return redirect()->back()->with('error', $exception->getMessage())->withInput();
-    }
-  }
-  //member Category
-
-  public function memberCategoryList(){
-    try{
-      $memberCategories = MemberCategory::get();
-      return response()->json(['data' => $memberCategories]);
-    }catch(Exception $exception){
-      return response()->json(['error'=>$exception->getMessage()]);
-    }
-  }
-  public function MemberCategory()
-  {
-    try {
-      return view('content.memberCategory.memberCategoryList');
-    } catch (Exception $exception) {
-      return redirect()->back()->with(['error' =>$exception->getMessage()]);
-    }
-  }
-
-  public function addMemberCategory()
-  {
-    try {
-      return view('content.memberCategory.memberCategoryAdd');
-    } catch (Exception $exception) {
-      return redirect()->back()->with(['error' =>$exception->getMessage()]);
-    }
-  }
-
-  public function editMemberCategory($id)
-  {
-    try {
-      $data = MemberCategory::find($id);
-      return view('content.memberCategory.memberCategoryEdit', compact('data'));
-    } catch (Exception $exception) {
-      return redirect()->back();
-    }
-  }
-
-  public function deleteMemberCategory(Request $request)
-  {
-    try {
-      $data = MemberCategory::findOrFail($request->id);
-      $data->delete();
-      return response()->json(['success' => true]);
-    } catch (Exception $exception) {
-      return response()->json([
-        'status' => 'fail',
-        'message' => $exception->getMessage()
-      ]);
-    }
-  }
-
-  public function storeMemberCategory(Request $request)
-  {
-    try {
-      // dd($request->all());
-      $request->validate([
-        'name' => 'required|string'
-      ]);
-      MemberCategory::create([
-        'name' => $request->input('name')
-      ]);
-      return redirect()->route('memberCategory-list');
-    } catch (ValidationException $validationException) {
-      return redirect()->back()->with('error', $validationException->getMessage());
-    } catch (Exception $exception) {
-      return redirect()->back()->with('error', $exception->getMessage());
-    }
-  }
-
-  public function updateMemberCategory(Request $request, $id)
-  {
-    try {
-      $data = MemberCategory::findOrFail($id);
-      $request->validate([
-        'name' => 'required|string'
-      ]);
-      $data->Update([
-        'name' => $request->input('name')
-      ]);
-      return redirect()->route('memberCategory-list');
-    } catch (ValidationException $validationException) {
-      return redirect()->back()->with('error', $validationException->getMessage());
-    } catch (Exception $exception) {
-      return redirect()->back()->with('error', $exception->getMessage());
     }
   }
 }

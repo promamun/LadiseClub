@@ -64,7 +64,6 @@ class NoticeController extends Controller
   public function storeNotice(Request $request)
   {
     try {
-      // dd($request->input('date'));
       $request->validate([
         'name' => 'required|string',
         'image' => 'required|image',
@@ -83,7 +82,7 @@ class NoticeController extends Controller
         'date' => $request->input('date'),
         'image' => $fileName
       ]);
-      return redirect()->route('notice-list')->with(['success' => "Notice Create Successfully"], 200);
+      return redirect()->route('notice-list')->with('success', 'Notice Create Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -118,7 +117,7 @@ class NoticeController extends Controller
         'date' => $request->input('date'),
         'image' => $fileName
       ]);
-      return redirect()->route('notice-list')->with(['success' => "Notice Update Successfully"], 200);
+      return redirect()->route('notice-list')->with('success', 'Notice Update Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
