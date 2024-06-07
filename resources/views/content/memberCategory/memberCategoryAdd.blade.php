@@ -1,23 +1,27 @@
 @extends('layouts/layoutMaster')
 
 @section('title', 'Add Member Category')
-
-@section('vendor-style')
-    @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
-@endsection
-
-@section('vendor-script')
-    @vite(['resources/assets/vendor/libs/quill/katex.js', 'resources/assets/vendor/libs/quill/quill.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js', 'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js', 'resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/tagify/tagify.js'])
-@endsection
-
-@section('page-script')
-    @vite(['resources/assets/js/app-ecommerce-product-add.js'])
-@endsection
-
 @section('content')
-
+<div id="app">
+  <toastr-notification
+    :success="{{ json_encode(session('success')) }}"
+    :error="{{ json_encode(session('error')) }}"
+    :warning="{{ json_encode(session('warning')) }}"
+    :info="{{ json_encode(session('info')) }}"
+  />
+</div>
     <div class="app-ecommerce">
-
+      <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
         <!-- Add Product -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
@@ -33,6 +37,17 @@
         <div class="row">
             <!-- First column-->
             <div class="col-12 col-lg-12">
+              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+              </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
                     <form action="{{ route('memberCategory.store') }}" method="POST">

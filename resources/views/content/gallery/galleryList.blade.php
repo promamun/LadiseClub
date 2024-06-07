@@ -34,7 +34,14 @@
 @endsection
 
 @section('content')
-
+<div id="app">
+  <toastr-notification
+    :success="{{ json_encode(session('success')) }}"
+    :error="{{ json_encode(session('error')) }}"
+    :warning="{{ json_encode(session('warning')) }}"
+    :info="{{ json_encode(session('info')) }}"
+  />
+</div>
 <div class="row">
   <!-- Projects table -->
   <div class="col-12 col-xl-12 col-sm-12 order-1 order-lg-2 mb-6 mb-lg-0">

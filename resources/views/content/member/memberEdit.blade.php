@@ -15,8 +15,28 @@
 @endsection
 
 @section('content')
-    <div class="app-ecommerce">
 
+<div id="app">
+  <div id="app">
+    <toastr-notification
+      :success="{{ json_encode(session('success')) }}"
+      :error="{{ json_encode(session('error')) }}"
+      :warning="{{ json_encode(session('warning')) }}"
+      :info="{{ json_encode(session('info')) }}"
+    />
+  </div>
+    <div class="app-ecommerce">
+      <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
         <!-- Add Product -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
@@ -31,17 +51,6 @@
         <div class="row">
             <!-- First column-->
             <div class="col-12 col-lg-12">
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
                     <form action="{{ route('member.update', $data->id) }}" method="POST" enctype="multipart/form-data">

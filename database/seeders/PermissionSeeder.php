@@ -17,15 +17,15 @@ class PermissionSeeder extends Seeder
     $role = Role::where("name", "Administrators")->first();
     if ($role) {
       $permissions = [
-        "roles",
-        "roles.list",
-        "roles.add",
-        "roles.edit",
-        "roles.delete",
-        "roles.store",
-        "roles.update",
-        "roles.permissions.list",
-        "roles.view",
+        "user-access-roles",
+        "roles-list",
+        "roles-add",
+        "roles-edit",
+        "roles-delete",
+        "roles-store",
+        "roles-update",
+        "roles-permissions-list",
+        "roles-view",
       ];
       foreach ($permissions as $permissionName) {
         $permission = Permission::firstOrCreate(['name' => $permissionName]);
