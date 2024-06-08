@@ -142,7 +142,8 @@ class FacilitieController extends Controller
   public function addFacilitieDetail()
   {
     try {
-      return view("content.facilitieDetail.facilitieDetailAdd");
+      $fasiliti = FacilitieDetail::all();
+      return view("content.facilitieDetail.facilitieDetailAdd", compact('fasiliti'));
     } catch (Exception $exception) {
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
     }

@@ -159,7 +159,7 @@ class MemberController extends Controller
     {
       try {
         $request->validate([
-          'name' => 'required|string',
+            'name' => 'required|string',
             'designation' => 'required|string',
             'image' => 'required',
             'category_id' => 'required|array',
