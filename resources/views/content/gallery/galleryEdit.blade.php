@@ -11,20 +11,18 @@
     :info="{{ json_encode(session('info')) }}"
   />
 </div>
-
     <div class="app-ecommerce">
-      <div class="col-12 col-lg-12">
-       <div class="col-sm-12">
-         <div class="row">
-             <div class="col-sm-12">
-                 @if (session('error'))
-                     <div class="alert alert-danger">
-                         {{ session('error') }}
-                     </div>
-                 @endif
-             </div>
-         </div>
-     </div>
+      <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
         <!-- Add Product -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
@@ -39,31 +37,47 @@
           <!-- First column-->
            <!-- First column-->
           <div class="col-12 col-lg-12">
+            <div class="col-sm-12">
+              <div class="row">
+                  <div class="col-sm-12">
+                      @if (session('message'))
+                          <div class="alert alert-success">
+                              {{ session('message') }}
+                          </div>
+                      @endif
+                  </div>
+              </div>
+            </div>
               <!-- Product Information -->
               <div class="card mb-4">
-                  <form action="{{ route('gallery.update', $data->id) }}" method="POST" enctype="multipart/form-data">
-                      <div class="card-header">
-                          <h5 class="card-title mb-0">Gallery</h5>
-                      </div>
-                      @csrf
-                      <div class="card-body">
-                          <div class="row mb-3">
-                              <div class="col">
-                                  <label class="form-label" for="name">Name</label><span class="text-info">(optional)</span>
-                                  <input type="text" class="form-control" id="name" placeholder="Name Here" value="{{ old('name')?? $data->name }}" name="name" aria-label="Name Here">
-                              </div>
-                          </div>
-                          <div class="row mb-3">
-                              <div class="col">
-                                  <label class="form-label" for="image">Image</label><span class="text-danger">*</span>
-                                  <input type="file" class="form-control" id="image" placeholder="Image Here" name="image" aria-label="Image">
-                              </div>
-                          </div>
-                          <div class="pt-4 mb-3 float-lg-end">
-                              <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                <form action="{{ route('gallery.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                  <div class="card-header">
+                      <h5 class="card-title mb-0">Gallery</h5>
+                  </div>
+                  @csrf
+                  <div class="card-body">
+                      <div class="row mb-3">
+                          <div class="col">
+                              <label class="form-label" for="name">Name</label><span class="text-info">(optional)</span>
+                              <input type="text" class="form-control" id="name" placeholder="Name Here" value="{{ old('name')?? $data->name }}" name="name" aria-label="Name Here">
                           </div>
                       </div>
-                  </form>
+                      <div class="row mb-3">
+                          <div class="col">
+                              <label class="form-label" for="image">Image</label><span class="text-danger">*</span>
+                              <input type="file" class="form-control" id="image" placeholder="Image Here" name="image" aria-label="Image">
+                          </div>
+                      </div>
+                      <div class="row mb-3 mt-3">
+                        <div class="col">
+                            <img width="100" src="{{ asset('gallery/' . $data->image) }}" alt="img">
+                        </div>
+                    </div>
+                      <div class="pt-4 mb-3 float-lg-end">
+                          <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                      </div>
+                  </div>
+              </form>
               </div>
               <!-- /Product Information -->
           </div>
@@ -71,4 +85,3 @@
         </div>
     </div>
 @endsection
-

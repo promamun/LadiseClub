@@ -154,6 +154,23 @@
           "slug": "facilitie-details-list"
         }
       ]
+    },
+    {
+      "name": "About Us",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "notice",
+      "submenu": [
+        {
+          "url": "admin/about-us",
+          "name": "About Us List",
+          "slug": "aboutUs-list"
+        },
+        {
+          "url": "admin/about-us/add",
+          "name": "About Us Add",
+          "slug": "aboutUs-add"
+        }
+      ]
     }
   ]
 }

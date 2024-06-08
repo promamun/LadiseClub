@@ -12,6 +12,7 @@ use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\event\EventController;
 use App\Http\Controllers\cards\CardGamifications;
 use App\Http\Controllers\notice\NoticeController;
+use App\Http\Controllers\aboutus\AboutUsController;
 use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\facilitie\FacilitieController;
@@ -136,5 +137,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/add', [FacilitieController::class, 'addFacilitieDetail'])->name('facilitie-details-add');
     Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitieDetail'])->name('facilitieDetail.edit');
     Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitieDetail'])->name('facilitieDetail.view');
+  });
+  // aboutUs Routes
+Route::group(['prefix' => 'about-us'],function(){
+  // API Routes
+  Route::post('/store',[AboutUsController::class,'storeAboutUs'])->name('aboutUs.store');
+  Route::post('/update/{id}',[AboutUsController::class, 'updateAboutUs'])->name('aboutUs.update');
+  Route::get('/delete/{id}',[AboutUsController::class, 'deleteAboutUs'])->name('aboutUs.delete');
+  //View Routes
+  Route::get('/', [AboutUsController::class, 'index'])->name('aboutUs-list');
+  Route::get('/add', [AboutUsController::class, 'addAboutUs'])->name('aboutUs-add');
+  Route::get('/edit/{id}', [AboutUsController::class, 'editAboutUs'])->name('aboutUs.edit');
+  Route::get('/view/{id}', [AboutUsController::class, 'viewAboutUs'])->name('aboutUs.view');
   });
 });

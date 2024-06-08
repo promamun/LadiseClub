@@ -6,6 +6,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\event\EventController;
 use App\Http\Controllers\notice\NoticeController;
+use App\Http\Controllers\aboutus\AboutUsController;
 use App\Http\Controllers\facilitie\FacilitieController;
 
 /*
@@ -26,6 +27,7 @@ use App\Http\Controllers\facilitie\FacilitieController;
   Route::get('/notice-list', [NoticeController::class, 'noticeList'])->name('notice.list');
   Route::get('/facilitie-list', [FacilitieController::class, 'facilitieList'])->name('facilitie.list');
   Route::get('/facilitie-detail-list', [FacilitieController::class, 'facilitieDetailsList'])->name('facilitieDetails.list');
+  Route::get('/about-us-list', [AboutUsController::class, 'aboutUsList'])->name('aboutUs.list');
 // });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
