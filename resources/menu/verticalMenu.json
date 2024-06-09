@@ -156,19 +156,19 @@
       ]
     },
     {
-      "name": "About Us",
-      "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "notice",
+      "name": "Aplication Settings",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "slug": "aplication-settings",
       "submenu": [
         {
-          "url": "admin/about-us",
-          "name": "About Us List",
-          "slug": "aboutUs-list"
+          "url": "admin/settings/global-settings",
+          "name": "Global Settings",
+          "slug": "global-settings"
         },
         {
-          "url": "admin/about-us/add",
-          "name": "About Us Add",
-          "slug": "aboutUs-add"
+          "url": "admin/settings/pages/about-us",
+          "name": "About Us",
+          "slug": "about-us"
         }
       ]
     }

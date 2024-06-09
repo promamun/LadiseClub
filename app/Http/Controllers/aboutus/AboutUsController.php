@@ -76,7 +76,7 @@ class AboutUsController extends Controller
         $fileName = $file->getClientOriginalName() . '_' . date('Ymdhis') . '.' . $file->getClientOriginalExtension();
         $file->move("aboutUs/", $fileName);
       }
-      AboutUs::create([
+      AboutUs::createOrUpdate([
         'name' => $request->input('name'),
         'title' => $request->input('title'),
         'description' => $request->input('description'),
