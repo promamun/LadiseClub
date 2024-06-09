@@ -18,6 +18,7 @@ use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\facilitie\FacilitieController;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
+use App\Http\Controllers\SettingsController;
 
 Route::get('/', [LoginBasic::class, 'index'])->name('admin.login');
 Route::post('/auth-login', [LoginBasic::class, 'AdminLoginRequest'])->name('admin.login.request');
@@ -139,15 +140,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitieDetail'])->name('facilitieDetail.view');
   });
   // aboutUs Routes
-Route::group(['prefix' => 'about-us'],function(){
-  // API Routes
-  Route::post('/store',[AboutUsController::class,'storeAboutUs'])->name('aboutUs.store');
-  Route::post('/update/{id}',[AboutUsController::class, 'updateAboutUs'])->name('aboutUs.update');
-  Route::get('/delete/{id}',[AboutUsController::class, 'deleteAboutUs'])->name('aboutUs.delete');
-  //View Routes
-  Route::get('/', [AboutUsController::class, 'index'])->name('aboutUs-list');
-  Route::get('/add', [AboutUsController::class, 'addAboutUs'])->name('aboutUs-add');
-  Route::get('/edit/{id}', [AboutUsController::class, 'editAboutUs'])->name('aboutUs.edit');
-  Route::get('/view/{id}', [AboutUsController::class, 'viewAboutUs'])->name('aboutUs.view');
+  Route::group(['prefix' => 'settings'], function () {
+    //View Routes
+    Route::get('/global-settings', [SettingsController::class, 'globalSettings'])->name('global-settings');
+    Route::get('/pages/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
+    Route::post('/pages/about-us-store', [SettingsController::class, 'storeAboutUs'])->name('aboutUs-store');
   });
 });
