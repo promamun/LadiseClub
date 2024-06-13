@@ -143,6 +143,7 @@ Route::middleware('auth')->group(function () {
   Route::group(['prefix' => 'settings'], function () {
     //View Routes
     Route::get('/global-settings', [SettingsController::class, 'globalSettings'])->name('global-settings');
+    Route::post('/global-settings-update', [SettingsController::class, 'globalSettingsUpdate'])->name('global-settings-update');
     Route::get('/pages/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
     Route::post('/pages/about-us-store', [SettingsController::class, 'storeAboutUs'])->name('aboutUs-store');
   });
