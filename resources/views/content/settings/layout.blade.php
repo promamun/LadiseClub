@@ -1,6 +1,11 @@
 @extends('layouts/layoutMaster')
 @section('page-style')
 <link rel="stylesheet" href="{{asset('admin/css/custom/image-preview.css')}}">
+<style>
+  .ck-editor__editable_inline {
+      min-height: 300px;
+  }
+</style>
 @endsection
 @section('page-script')
 <script src="{{asset('admin/js/custom/image-preview.js')}}"></script>
@@ -20,4 +25,12 @@
   </div>
 </div>
 <!-- Pills -->
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

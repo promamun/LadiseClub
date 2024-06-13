@@ -142,7 +142,8 @@ class FacilitieController extends Controller
   public function addFacilitieDetail()
   {
     try {
-      $fasiliti = FacilitieDetail::all();
+      $fasiliti = Facilitie::all();
+      // dd( $fasiliti);
       return view("content.facilitieDetail.facilitieDetailAdd", compact('fasiliti'));
     } catch (Exception $exception) {
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
@@ -179,6 +180,7 @@ class FacilitieController extends Controller
       $request->validate([
         'image' => 'required|image',
         'name' => 'required|string',
+        'fasilitie_id' => 'required|string',
         'description' => 'required|string'
       ]);
       $fileName = null;
@@ -206,7 +208,8 @@ class FacilitieController extends Controller
       $data = FacilitieDetail::findOrFail($id);
       $request->validate([
         'name' => 'required|string',
-        'description' => 'required|string'
+        'description' => 'required|string',
+        'fasilitie_id' => 'required|string'
       ]);
       $fileName = $data->image;
       if ($request->hasFile('image')) {

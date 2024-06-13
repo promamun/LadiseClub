@@ -6,5 +6,6 @@
   <h6 class="text-muted">Pages</h6>
   <li class="nav-item">
     <a href="{{ route('about-us') }}" type="button" class="nav-link {{ Request::route()->getName() == 'about-us' ? 'active' : '' }} ">About Us</a>
+    <a href="{{ route('contact-us') }}" type="button" class="nav-link {{ Request::route()->getName() == 'contact-us' ? 'active' : '' }} ">contact Us</a>
   </li>
 </ul>

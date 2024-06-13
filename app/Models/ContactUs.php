@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FacilitieDetail extends Model
+class ContactUs extends Model
 {
     use HasFactory;
     protected $fillable = [
       'name',
-      'image',
-      'description'
+      'title',
+      'email',
+      'phone',
+      'address',
+      'location',
+      'description',
     ];
-    public function facilitie(){
-      return $this->belongsToMany(Facilitie::class);
-     }
 }

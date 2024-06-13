@@ -81,11 +81,11 @@
                                 <div class="col-md-6 mb-4">
                                     <label for="select2Multiple" class="form-label">Select Facilitie</label><span
                                         class="text-danger">*</span>
-                                    <select id="select2Multiple" name="fasiliti_id" class="select2 form-select"
+                                    <select id="select2Multiple" name="fasilitie_id" class="select2 form-select"
                                         required>
                                         @foreach ($fasiliti as $data)
                                             <option value="{{ $data->id }}"
-                                                {{ collect(old('fasiliti_id'))->contains($data->id) ? 'selected' : '' }}>
+                                                {{ collect(old('fasilitie_id'))->contains($data->id) ? 'selected' : '' }}>
                                                 {{ $data->name }}</option>
                                         @endforeach
                                     </select>

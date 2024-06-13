@@ -169,6 +169,11 @@
           "url": "admin/settings/pages/about-us",
           "name": "About Us",
           "slug": "about-us"
+        },
+        {
+          "url": "admin/settings/pages/contact-us",
+          "name": "Contact Us",
+          "slug": "contact-us"
         }
       ]
     }
