@@ -4,10 +4,10 @@
 namespace App\Traits;
 
 
+use File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use File;
 use Intervention\Image\Facades\Image;
 use Vimeo\Vimeo;
 
@@ -132,7 +132,7 @@ trait ImageSaveTrait
 
         return $data;
     }
-    
+
     private function uploadFontInLocal($destination, $attribute, $name)
     {
         if (!File::isDirectory(base_path().'/public/uploads/'.$destination)){
