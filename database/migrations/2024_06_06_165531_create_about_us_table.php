@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->longText('description');
+            $table->longText('what_to_do');
+            $table->longText('what_we_are');
+            $table->longText('our_aim_mission');
             $table->timestamps();
         });
     }

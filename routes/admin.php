@@ -60,17 +60,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [RollsController::class, 'roles_edit'])->name('roles-edit');
     Route::get('/view/{id}', [RollsController::class, 'roles_view'])->name('roles-view');
   });
-  // member Routes
-  Route::group(['prefix' => 'member'], function () {
-    // API Routes
-    Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
-    Route::post('/update/{id}', [MemberController::class, 'updateMember'])->name('member.update');
-    Route::get('/delete/{id}', [MemberController::class, 'deleteMember'])->name('member.delete');
-    //View Routes
-    Route::get('/', [MemberController::class, 'index'])->name('member-list');
-    Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');
-    Route::get('/edit/{id}', [MemberController::class, 'editMember'])->name('member.edit');
-  });
   // memberCategory Routes
   Route::group(['prefix' => 'member-category'], function () {
     // API Routes
@@ -81,6 +70,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [MemberController::class, 'MemberCategory'])->name('memberCategory-list');
     Route::get('/add', [MemberController::class, 'addMemberCategory'])->name('memberCategory-add');
     Route::get('/edit/{id}', [MemberController::class, 'editMemberCategory'])->name('memberCategory.edit');
+  });
+  // member Routes
+  Route::group(['prefix' => 'member'], function () {
+    // API Routes
+    Route::post('/store', [MemberController::class, 'storeMember'])->name('member.store');
+    Route::post('/update/{id}', [MemberController::class, 'updateMember'])->name('member.update');
+    Route::get('/delete/{id}', [MemberController::class, 'deleteMember'])->name('member.delete');
+    //View Routes
+    Route::get('/', [MemberController::class, 'index'])->name('member-list');
+    Route::get('/add', [MemberController::class, 'addMember'])->name('member-add');
+    Route::get('/edit/{id}', [MemberController::class, 'editMember'])->name('member.edit');
   });
   // gallery Routes
   Route::group(['prefix' => 'gallery'], function () {
@@ -139,7 +139,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitieDetail'])->name('facilitieDetail.edit');
     Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitieDetail'])->name('facilitieDetail.view');
   });
-  // aboutUs Routes
+  // settings Routes
   Route::group(['prefix' => 'settings'], function () {
     //View Routes
     Route::get('/global-settings', [SettingsController::class, 'globalSettings'])->name('global-settings');

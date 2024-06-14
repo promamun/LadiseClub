@@ -12,6 +12,9 @@ class AboutUs extends Model
       'name',
       'title',
       'image',
-      'description'
+      'description',
+      'what_to_do',
+      'what_we_are',
+      'our_aim_mission'
     ];
 }

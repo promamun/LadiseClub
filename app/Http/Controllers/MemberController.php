@@ -70,7 +70,6 @@ class MemberController extends Controller
     public function storeMemberCategory(Request $request)
     {
       try {
-        // dd($request->all());
         $request->validate([
           'name' => 'required|string'
         ]);

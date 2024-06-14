@@ -189,11 +189,12 @@ class FacilitieController extends Controller
         $fileName = $file->getClientOriginalName() . '.' . date('Ymdhis') . '.' . $file->getClientOriginalExtension();
         $file->move("facilitieDetail/", $fileName);
       }
-      FacilitieDetail::create([
+      $facilitiedetail=FacilitieDetail::create([
         'name' => $request->input('name'),
         'description' => $request->input('description'),
         'image' => $fileName
       ]);
+      $facilitiedetail->facilities()->attach($request->input('fasilitie_id'));
       return redirect()->route('facilitie-details-list')->with(['success' => "FacilitieDetail Create Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();

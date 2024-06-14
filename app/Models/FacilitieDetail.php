@@ -13,7 +13,7 @@ class FacilitieDetail extends Model
       'image',
       'description'
     ];
-    public function facilitie(){
+    public function facilities(){
       return $this->belongsToMany(Facilitie::class);
      }
 }

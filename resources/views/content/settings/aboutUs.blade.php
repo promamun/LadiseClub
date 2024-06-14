@@ -88,6 +88,24 @@
                                             <span class="text-black">{{ __('Recommend Size') }}:</span> 817 x 732 (1MB)</p>
                                     </div>
                                 </div>
+                                <div class="mb-3 row">
+                                  <label for="html5-text-input" class="col-md-2 col-form-label">WHAT WE DO</label>
+                                  <div class="col-md-10">
+                                      <textarea name="what_to_do" class="form-control" cols="10" rows="5">{{ old('what_to_do', $aboutUs->what_to_do ?? '') }}</textarea>
+                                  </div>
+                              </div>
+                              <div class="mb-3 row">
+                                  <label for="html5-text-input" class="col-md-2 col-form-label">WHAT WE ARE</label>
+                                  <div class="col-md-10">
+                                      <textarea name="what_we_are" class="form-control" cols="10" rows="5">{{ old('what_we_are', $aboutUs->what_we_are ?? '') }}</textarea>
+                                  </div>
+                              </div>
+                              <div class="mb-3 row">
+                                  <label for="html5-text-input" class="col-md-2 col-form-label">OUR AIM & MISSION</label>
+                                  <div class="col-md-10">
+                                      <textarea name="our_aim_mission" class="form-control" id="editor" cols="10" rows="5">{{ old('our_aim_mission', $aboutUs->our_aim_mission ?? '') }}</textarea>
+                                  </div>
+                              </div>
                                 <div class="pt-4 mb-3 float-lg-end">
                                     <button type="submit"
                                         class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>

@@ -8,8 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Facilitie extends Model
 {
     use HasFactory;
-    protected $fillable = [
-      'name',
-      'image'
-    ];
+    protected $guarded=[];
 }
