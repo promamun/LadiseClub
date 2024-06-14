@@ -100,6 +100,71 @@
                                     @endif
                                     <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                 </div>
+                                <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Forgot Title') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="forgot_title" value="{{get_option('forgot_title')}}" class="form-control" >
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Forgot Subtitle') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="forgot_subtitle" value="{{get_option('forgot_subtitle')}}" class="form-control" >
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Forgot Button Name') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="forgot_btn_name" value="{{get_option('forgot_btn_name')}}" class="form-control" >
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Footer Quote') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <textarea class="form-control" name="footer_quote" id="" rows="5">{{get_option('footer_quote')}}</textarea>
+                                  </div>
+                              </div>
+
+                              <hr>
+
+                              <div class="item-top mb-30"><h2>{{ __('Social Media Profile Link') }}</h2></div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Facebook URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="facebook_url" value="{{get_option('facebook_url')}}" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Twitter URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="twitter_url" value="{{get_option('twitter_url')}}" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('LinkedIn URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="linkedin_url" value="{{get_option('linkedin_url')}}" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Pinterest URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="pinterest_url" value="{{get_option('pinterest_url')}}" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Instagram URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="instagram_url" value="{{get_option('instagram_url')}}" class="form-control">
+                                  </div>
+                              </div>
+
+                              <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('Tiktok URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="tiktok_url" value="{{get_option('tiktok_url')}}" class="form-control">
+                                  </div>
+                              </div>
                             </div>
                                 <div class="pt-4 mb-3 float-lg-end">
                                     <button type="submit"
