@@ -797,7 +797,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Default 
+>>> Default
 ----------------------------------------------------------------*/
 
 .semi-bold {
@@ -1104,7 +1104,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Main Header 
+>>> Main Header
 ----------------------------------------------------------------*/
 
 
@@ -2254,7 +2254,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Home Main section  
+>>> Home Main section
 ----------------------------------------------------------------*/
 
 
@@ -2545,7 +2545,7 @@ input[type=submit]:focus {
 
 
 /*--------------------------------------------------------------
->>> Home home-speaker  
+>>> Home home-speaker
 ----------------------------------------------------------------*/
 
 .speaker-event-section {
@@ -2575,7 +2575,7 @@ input[type=submit]:focus {
 
 .speaker-event-section .group-member .team-member .team-img img {
     width: 100%;
-    
+
 }
 
 .speaker-event-section .group-member .team-member .team-member-info {
@@ -2685,7 +2685,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Home home-schedule  
+>>> Home home-schedule
 ----------------------------------------------------------------*/
 
 .home-schedule-section {
@@ -2928,7 +2928,7 @@ input[type=submit]:focus {
 
 
 /*--------------------------------------------------------------
->>> Home home-gallery  
+>>> Home home-gallery
 ----------------------------------------------------------------*/
 
 .home-gallery {
@@ -3207,7 +3207,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Main Footer  
+>>> Main Footer
 ----------------------------------------------------------------*/
 
 .site-footer {
@@ -3494,7 +3494,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Inner Banner  
+>>> Inner Banner
 ----------------------------------------------------------------*/
 
 .inner-banner-wrap {
@@ -3618,7 +3618,7 @@ input[type=submit]:focus {
 
 
 /*--------------------------------------------------------------
->>> About US 
+>>> About US
 ----------------------------------------------------------------*/
 
 .about-section {
@@ -3826,7 +3826,7 @@ input[type=submit]:focus {
 }
 
 /*--------------------------------------------------------------
->>> Event-schedule-page 
+>>> Event-schedule-page
 ----------------------------------------------------------------*/
 
 .event-schedule-section {
@@ -4525,7 +4525,7 @@ input[type=submit]:focus {
     }
 }
 
-@media screen and (min-device-width: 767px) and (max-device-width: 992px) { 
+@media screen and (min-device-width: 767px) and (max-device-width: 992px) {
     .site-logo img{
         width: 80px!important;
     }
@@ -4537,14 +4537,14 @@ input[type=submit]:focus {
         margin-bottom: 10px;
     }
 }
-@media screen and (min-device-width: 992px) and (max-device-width: 1024px) { 
+@media screen and (min-device-width: 992px) and (max-device-width: 1024px) {
     .site-name h1 {
     font-size: 48px!important;
     margin-top: 30px;
     }
-    
+
 }
-@media screen and (min-device-width: 320px) and (max-device-width: 375px) { 
+@media screen and (min-device-width: 320px) and (max-device-width: 375px) {
     .site-logo img{
         width: 50px!important;
     }
@@ -4552,12 +4552,12 @@ input[type=submit]:focus {
     font-size: 16px!important;
     margin-top: 15px;
     }
-    
+
 }
 
 
 .custom-tb{
-    
+
     display: flex;
 }
 
@@ -4601,4 +4601,16 @@ input[type=submit]:focus {
     color: #000;
     font-size: 16px;
     font-weight: 700;
+}
+.custom-member-list table img{
+  width: 80px;
+}
+
+.custom-member-list thead{
+  background: #fb38ba;
+  color: #fff;
+  font-size: 14px;
+}
+.custom-member-list table tr td{
+  font-size: 15px;
 }
