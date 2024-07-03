@@ -98,6 +98,20 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+                              <div class="col">
+                                  <label class="form-label" for="member_id">ID</label><span class="text-info">
+                                      (optional)</span>
+                                  <input type="number" class="form-control" id="member_id" placeholder="Id Here"
+                                      value="{{ old('member_id') }}" name="member_id" aria-label="member_id">
+                              </div>
+                              <div class="col">
+                                  <label class="form-label" for="address">Address</label><span class="text-info">
+                                      (optional)</span>
+                                  <input type="text" class="form-control" id="address" placeholder="Address Here"
+                                      value="{{ old('address') }}" name="address" aria-label="address">
+                              </div>
+                          </div>
+                            <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label" for="phone">Phone</label><span class="text-info">
                                         (optional)</span>
