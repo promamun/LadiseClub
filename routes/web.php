@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('user_ui.home.home');
 });
+Route::get('/members', function () {
+    return view('user_ui.member.member');
+});
+
 
 require __DIR__.'/auth.php';
