@@ -4,7 +4,7 @@
           <div class="row align-items-center">
               <div class="col-lg-12 col-12">
                   <div class="custom-tb">
-                      <a href="index.html">
+                      <a href="{{route('home')}}">
                           <div class="site-logo">
                               <img src="{{ asset('user_ui') }}/assets/img/logo.png" style="width: 112px;" alt="Purbachal Ladies Club LTD">
                           </div>
@@ -24,16 +24,16 @@
                   <nav id="navigation" class="navigation d-none d-lg-inline-block">
                       <ul>
                           <li class="current-menu-item">
-                              <a href="index.html">Home</a>
+                              <a href="{{route('home')}}">Home</a>
                           </li>
                           <li>
-                              <a href="about-us.html">About us</a>
+                              <a href="{{route('about.us')}}">About us</a>
                           </li>
                           <li class="menu-item-has-children">
                               <a href="#">Member Information</a>
                               <ul>
                                   <li>
-                                      <a href="member-list.html">EC Committee </a>
+                                      <a href="{{route('members')}}">EC Committee </a>
                                   </li>
                                   <li>
                                       <a href="member-list.html">Founder Member</a>
@@ -71,7 +71,7 @@
                               <a href="#">Facilities</a>
                               <ul>
                                   <li>
-                                      <a href="facilities.html">Sports and Health</a>
+                                      <a href="{{route('facilities')}}">Sports and Health</a>
                                   </li>
                                   <li>
                                       <a href="facilities.html">Restaurant</a>
@@ -85,16 +85,16 @@
                               </ul>
                           </li>
                           <li>
-                              <a href="event.html">Event</a>
+                              <a href="{{route('event')}}">Event</a>
                           </li>
                           <li>
-                              <a href="notice.html">Notice</a>
+                              <a href="{{route('notice')}}">Notice</a>
                           </li>
                           <li class="menu-item-has-children">
                               <a href="#">Gallery</a>
                               <ul>
                                   <li>
-                                      <a href="photo-gallery.html">Photo gallery</a>
+                                      <a href="{{route('photo.gallery')}}">Photo gallery</a>
                                   </li>
                                   <li>
                                       <a href="video-gallery.html">Video gallery</a>
@@ -102,7 +102,7 @@
                               </ul>
                           </li>
                           <li>
-                              <a href="contact.html">Contact us</a>
+                              <a href="{{route('contact')}}">Contact us</a>
                           </li>
                       </ul>
                   </nav>

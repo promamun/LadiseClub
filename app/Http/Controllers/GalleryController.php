@@ -76,7 +76,7 @@ class GalleryController extends Controller
                 'name' => $request->input('name'),
                 'image' => $fileName
             ]);
-            return redirect()->route('gallery-list')->with(['success' => "Gallery Create Successfully"], 200);
+            return redirect()->route('gallery-list')->with(['success' => "gallery Create Successfully"], 200);
         } catch (ValidationException $validationException) {
             return redirect()->back()->with('error', $validationException->getMessage())->withInput();
         } catch (Exception $exception) {

@@ -158,7 +158,7 @@
     });
   }
 
-  // Gallery effect
+  // gallery effect
   // --------------------------------------------------------------------
   if (galleryThumbs) {
     galleryInstance = new Swiper(galleryThumbs, {
