@@ -172,7 +172,7 @@
                             </div>
                             <!-- Description -->
                             <div class="col-12">
-                                <label class="form-label" for="bootstrap-maxlength-example2">Textarea</label>
+                                <label class="form-label" for="bootstrap-maxlength-example2">Personal Details</label>
                                 <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example"
                                     rows="3" maxlength="255" spellcheck="false"></textarea>
                             </div>
