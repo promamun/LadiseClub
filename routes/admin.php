@@ -147,6 +147,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/pages/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
     Route::post('/pages/about-us-store', [SettingsController::class, 'storeAboutUs'])->name('aboutUs-store');
     Route::get('/pages/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
-    Route::post('/pages/contactUs-storee', [SettingsController::class, 'storeContactUs'])->name('contactUs-store');
+    Route::post('/pages/contactUs-store', [SettingsController::class, 'storeContactUs'])->name('contactUs-store');
   });
 });

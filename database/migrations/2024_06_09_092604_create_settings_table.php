@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('option_key');
             $table->mediumText('option_value')->nullable();
-            $table->timestamps();
+            $table->timestamps();git 
         });
     }
 
