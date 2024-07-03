@@ -3,7 +3,7 @@
 @section('content')
   <!-- Inner Banner html start-->
   <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
+    <div class="inner-baner-container" style="background-image: url({{asset('user_ui')}}/assets/img/eventum-img1.jpg);">
       <div class="container">
         <div class="inner-banner-content">
           <h1 class="inner-title">Member List</h1>
@@ -41,7 +41,6 @@
                 <td>01709444444</td>
                 <td>farzanaalamsampa@gmail.com</td>
                 <td>House 511,&nbsp;513 Flat 3B,&nbsp;Road-08,&nbsp;Mirpur DOHS,&nbsp;Mirpur,&nbsp;Dhaka 1216</td>
-
               </tr>
               <tr>
                 <td>
