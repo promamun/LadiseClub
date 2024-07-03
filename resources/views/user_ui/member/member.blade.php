@@ -1,5 +1,5 @@
 @extends('user_ui.master')
-@section('title','Member')
+@section('title','Members')
 @section('content')
   <!-- Inner Banner html start-->
   <section class="inner-banner-wrap">

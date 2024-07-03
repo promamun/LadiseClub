@@ -1,7 +1,7 @@
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Add Gallery')
+@section('title', 'Add gallery')
 @section('content')
 <div id="app">
   <toastr-notification

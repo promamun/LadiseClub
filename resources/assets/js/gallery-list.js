@@ -86,7 +86,7 @@
       lengthMenu: [5, 10, 25, 50, 75, 100],
       buttons: [
         {
-          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New Gallery</span>',
+          text: '<i class="ti ti-plus me-sm-1"></i><span class="d-none d-sm-inline-block">Add New gallery</span>',
           className: 'create-new btn btn-primary waves-effect waves-light'
         }
       ],
@@ -123,7 +123,7 @@
         }
       }
     });
-    $('div.head-label').html('<h5 class="card-title mb-0">Gallery</h5>');
+    $('div.head-label').html('<h5 class="card-title mb-0">gallery</h5>');
   }
   // Add event listener to the button to navigate to the URL
   $('.create-new').on('click', function() {
