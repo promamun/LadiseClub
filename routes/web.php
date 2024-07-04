@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Facilitie;
+use App\Models\FacilitieDetail;
+use App\Models\Member;
+use App\Models\MemberCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('user_ui.home.home'); })->name('home');
 Route::get('/about-us', function () { return view('user_ui.about.about_us'); })->name('about.us');
-Route::get('/members', function () { return view('user_ui.member.member'); })->name('members');
-Route::get('/facilities', function () { return view('user_ui.facilities.facilities'); })->name('facilities');
+Route::get('/members/{name}', function ($name) {
+  $id = request()->query('id');
+  $categoryMember = MemberCategory::with('members')->findOrFail($id);
+  return view('user_ui.member.member',compact('categoryMember'));
+})->name('members');
+Route::get('/facilities/{name}', function () {
+  $id = request()->query('id');
+  $facility = Facilitie::find($id);
+  $data = FacilitieDetail::where('id',$id)->get();
+  return view('user_ui.facilities.facilities',compact('data','facility'));
+})->name('user.facilities');
 Route::get('/events', function () { return view('user_ui.event.event'); })->name('event');
 Route::get('/notices', function () { return view('user_ui.notice.notice'); })->name('notice');
 Route::get('/gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');

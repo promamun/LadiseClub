@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Facilitie;
+use App\Models\MemberCategory;
 use App\Models\Setting; // Assuming you have a Setting model
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -26,7 +28,10 @@ class AppServiceProvider extends ServiceProvider
   public function boot(): void
   {
     Schema::defaultStringLength(191);
-
+    \Illuminate\Support\Facades\View::composer('*', function ($view) {
+      $view->with('membersData', MemberCategory::all());
+      $view->with('facilitiesData', Facilitie::all());
+    });
     // Load settings from the database
     $this->loadSettings();
 
