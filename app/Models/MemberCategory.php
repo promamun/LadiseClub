@@ -9,4 +9,8 @@ class MemberCategory extends Model
 {
     use HasFactory;
     protected $guarded=[];
+  public function members()
+  {
+    return $this->belongsToMany(Member::class, 'member_member_category');
+  }
 }

@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
       Route::post('/update', [AdminController::class, 'user_update'])->name('user-update');
       Route::delete('/delete/{id}', [AdminController::class, 'user_delete'])->name('user-delete');
       //View Routes
-      Route::get('/list', [UserList::class, 'index'])->name('user-list');
+      Route::get('/list', [UserList::class, 'index'])->name('user-list.view');
       Route::get('/add', [AdminController::class, 'user_add'])->name('user-add');
       Route::get('/edit/{id}', [AdminController::class, 'user_edit'])->name('user-edit');
       Route::get('/view/{id}', [AdminController::class, 'user_view'])->name('user-view');
@@ -116,18 +116,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
   });
   // facilitie Routes
-  Route::group(['prefix' => 'facilitie'], function () {
+  Route::group(['prefix' => 'facilities'], function () {
     // API Routes
-    Route::post('/store', [FacilitieController::class, 'storeFacilitie'])->name('facilitie.store');
-    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilitie'])->name('facilitie.update');
-    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilitie'])->name('facilitie.delete');
+    Route::post('/store', [FacilitieController::class, 'storeFacilities'])->name('facilities.store');
+    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilities'])->name('facilities.update');
+    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilities'])->name('facilities.delete');
     //View Routes
-    Route::get('/', [FacilitieController::class, 'index'])->name('facilitie-list');
-    Route::get('/add', [FacilitieController::class, 'addFacilitie'])->name('facilitie-add');
-    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitie'])->name('facilitie.edit');
+    Route::get('/', [FacilitieController::class, 'index'])->name('facilities-list');
+    Route::get('/add', [FacilitieController::class, 'addFacilities'])->name('facilities-add');
+    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilities'])->name('facilities.edit');
   });
 
-  // FacilitieDetail Routes
+  // FacilitiesDetail Routes
   Route::group(['prefix' => 'facilitie-detail'], function () {
     // API Routes
     Route::post('/store', [FacilitieController::class, 'storeFacilitieDetail'])->name('facilitieDetail.store');
