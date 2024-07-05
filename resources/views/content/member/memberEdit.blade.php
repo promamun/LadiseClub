@@ -169,6 +169,12 @@
                                         name="personal_website" aria-label="personal_website">
                                 </div>
                             </div>
+                            <div class="col-12">
+                              <label class="form-label" for="company_name">Company Name</label><span class="text-info">
+                                (optional)</span>
+                            <input type="text" class="form-control" id="company_name"
+                                placeholder="Company Nname Here" value="{{ old('company_name')?? $data->company_name }}" name="company_name" aria-label="company_name">
+                            </div>
                             <!-- Description -->
                             <!-- Description -->
                             <div class="col-12">
@@ -183,9 +189,9 @@
                           </div>
                           </div>
                         <div>
-                            <button class="btn btn-primary">
-                                Update
-                            </button>
+                          <div class="pt-4 mb-3 float-lg-end">
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>
+                        </div>
                         </div>
                     </form>
                 </div>

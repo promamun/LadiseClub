@@ -170,7 +170,13 @@
                                         name="personal_website" aria-label="personal_website">
                                 </div>
                             </div>
-                            <!-- Description -->
+                            <div class="col-12">
+                              <label class="form-label" for="company_name">Company Name</label><span class="text-info">
+                                (optional)</span>
+                            <input type="text" class="form-control" id="company_name"
+                                placeholder="Company Nname Here" value="{{ old('company_name') }}" name="company_name" aria-label="company_name">
+                            </div>
+                            <!-- Personal Details -->
                             <div class="col-12">
                                 <label class="form-label" for="bootstrap-maxlength-example2">Personal Details</label>
                                 <textarea id="bootstrap-maxlength-example2" name="descripton" class="form-control bootstrap-maxlength-example"
