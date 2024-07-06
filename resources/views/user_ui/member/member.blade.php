@@ -1,19 +1,11 @@
 @extends('user_ui.master')
 @php(
-    $title = $categoryMember->name . ' Members'
+    $title = $categoryMember->name . ' Members List'
 )
 @section('title',$title)
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url({{asset('user_ui')}}/assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">{{$categoryMember->name}} Members List</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   @if($categoryMember->members->isEmpty())

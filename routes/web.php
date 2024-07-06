@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\aboutus\AboutUsController;
 use App\Models\Facilitie;
 use App\Models\FacilitieDetail;
 use App\Models\Member;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () { return view('user_ui.home.home'); })->name('home');
-Route::get('/about-us', function () { return view('user_ui.about.about_us'); })->name('about.us');
+Route::get('/about-us',[ AboutUsController::class, "aboutUs" ])->name('about.us');
 Route::get('/members/{name}', function ($name) {
   $id = request()->query('id');
   $categoryMember = MemberCategory::with('members')->findOrFail($id);
@@ -31,7 +32,8 @@ Route::get('/facilities/{name}', function () {
 })->name('user.facilities');
 Route::get('/events', function () { return view('user_ui.event.event'); })->name('event');
 Route::get('/notices', function () { return view('user_ui.notice.notice'); })->name('notice');
-Route::get('/gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');
+Route::get('/photo-gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');
+Route::get('/video-gallery', function () { return view('user_ui.gallery.video_gallery'); })->name('video.gallery');
 Route::get('/contact', function () { return view('user_ui.contact.contact'); })->name('contact');
 
 

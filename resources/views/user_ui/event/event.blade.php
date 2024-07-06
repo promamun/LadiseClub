@@ -1,16 +1,8 @@
 @extends('user_ui.master')
-@section('title','About Us')
+@section('title','Event')
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">About Us</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <x-breadcrumb title="Event" images="user_ui/assets/img/eventum-img1.jpg"/>
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   <section class="home-aboutus">

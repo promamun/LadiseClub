@@ -4,16 +4,8 @@
 )
 @section('title',$title)
 @section('content')
-  <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url({{asset('user_ui')}}/assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">{{$title}}</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Inner Banner html start-->  
+  <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
   <section class="home-aboutus pb-100">
     <div class="container">
       <div class="row align-items-center">

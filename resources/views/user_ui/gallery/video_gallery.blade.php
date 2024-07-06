@@ -1,15 +1,8 @@
 @extends('user_ui.master')
-@section('title','About Us')
+@section('title','Photo Gallery')
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">Photo Gallery</h1>
-        </div>
-      </div>
-    </div>
+  <x-breadcrumb title="Video Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
   </section>
   <!-- event deatil html start-->
   <!-- home gallery start -->

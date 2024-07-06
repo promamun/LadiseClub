@@ -2,15 +2,7 @@
 @section('title','Contact Us')
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">Contact</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <x-breadcrumb title="Contact Us" images="user_ui/assets/img/eventum-img1.jpg"/>
   <section class="contact-page-section">
     <div class="container">
       <div class="row align-items-lg-end align-items-center">
