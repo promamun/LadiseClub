@@ -6,7 +6,7 @@
                   <div class="custom-tb">
                       <a href="{{route('home')}}">
                           <div class="site-logo">
-                              <img src="{{ asset('user_ui') }}/assets/img/logo.png" style="width: 112px;" alt="Purbachal Ladies Club LTD">
+                              <img src="{{getImageFile(get_option('app_logo'))}}" style="width: 112px;" alt="Purbachal Ladies Club LTD">
                           </div>
                       </a>
                       <div class="site-name">

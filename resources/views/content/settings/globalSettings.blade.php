@@ -101,6 +101,27 @@
                                     <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                 </div>
                                 <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('App Fav Icon') }} </label>
+                                  <div class="col-lg-4">
+                                    <div class="upload-img-box">
+                                      @if(get_option('app_fav_icon') != '')
+                                        <img src="{{getImageFile(get_option('app_fav_icon'))}}">
+                                      @else
+                                        <img src="{{ asset('uploads/default/no-image-found.png') }}">
+                                      @endif
+                                      <input type="file" name="app_fav_icon" id="app_fav_icon" accept="image/*" onchange="previewFile(this)">
+                                      <div class="upload-img-box-icon">
+                                        <i class="fa fa-camera"></i>
+                                        <p class="m-0">{{ __('App Fav Icon') }}</p>
+                                      </div>
+                                    </div>
+                                    @if ($errors->has('app_fav_icon'))
+                                      <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('app_fav_icon') }}</span>
+                                    @endif
+                                    <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG<br> <span class="text-black">{{ __('Recommend Size') }}:</span> 16 x 16</p>
+                                  </div>
+                                </div>
+                                <div class="row input__group mb-25">
                                   <label class="col-lg-3">{{ __('Forgot Title') }} <span class="text-danger">*</span></label>
                                   <div class="col-lg-9">
                                       <input type="text" name="forgot_title" value="{{get_option('forgot_title')}}" class="form-control" >
@@ -132,6 +153,12 @@
                                   <label class="col-lg-3">{{ __('Facebook URL') }} <span class="text-danger">*</span></label>
                                   <div class="col-lg-9">
                                       <input type="text" name="facebook_url" value="{{get_option('facebook_url')}}" class="form-control">
+                                  </div>
+                              </div>
+                                <div class="row input__group mb-25">
+                                  <label class="col-lg-3">{{ __('YouTube URL') }} <span class="text-danger">*</span></label>
+                                  <div class="col-lg-9">
+                                      <input type="text" name="youtube_url" value="{{get_option('youtube_url')}}" class="form-control">
                                   </div>
                               </div>
                               <div class="row input__group mb-25">
