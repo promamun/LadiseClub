@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\aboutus\AboutUsController;
 use App\Models\Facilitie;
 use App\Models\FacilitieDetail;
 use App\Models\Member;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () { return view('user_ui.home.home'); })->name('home');
-Route::get('/about-us', function () { return view('user_ui.about.about_us'); })->name('about.us');
+Route::get('/about-us',[ AboutUsController::class, "aboutUs" ])->name('about.us');
 Route::get('/members/{name}', function ($name) {
   $id = request()->query('id');
   $categoryMember = MemberCategory::with('members')->findOrFail($id);

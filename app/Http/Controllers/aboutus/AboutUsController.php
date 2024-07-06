@@ -10,6 +10,15 @@ use Illuminate\Validation\ValidationException;
 
 class AboutUsController extends Controller
 {
+  public function aboutUs(){
+    try {
+      $aboutUs = AboutUs::first();
+      // dd($aboutUs);
+      return view("user_ui.about.about_us", compact('aboutUs'));
+    } catch (Exception $exception) {
+      return response()->json(['error' => $exception->getMessage()]);
+    }
+  }
   public function aboutUsList()
   {
     try {

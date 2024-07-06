@@ -2,15 +2,9 @@
 @section('title','About Us')
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">About Us</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!--breadcrumb section start-->
+  <x-breadcrumb title="About Us" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <!--breadcrumb section end-->
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   <section class="home-aboutus">
@@ -18,7 +12,7 @@
       <div class="row">
 
         <div class="col-lg-6 col-md-6">
-          <img src="assets/img/about/about.png">
+          <img src="{{ asset($aboutUs->image?? '') }}" alt="about-us">
         </div>
         <div class="col-lg-6 col-md-6">
           <div class="home-about-right">
