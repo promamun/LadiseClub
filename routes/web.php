@@ -32,7 +32,8 @@ Route::get('/facilities/{name}', function () {
 })->name('user.facilities');
 Route::get('/events', function () { return view('user_ui.event.event'); })->name('event');
 Route::get('/notices', function () { return view('user_ui.notice.notice'); })->name('notice');
-Route::get('/gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');
+Route::get('/photo-gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');
+Route::get('/video-gallery', function () { return view('user_ui.gallery.video_gallery'); })->name('video.gallery');
 Route::get('/contact', function () { return view('user_ui.contact.contact'); })->name('contact');
 
 

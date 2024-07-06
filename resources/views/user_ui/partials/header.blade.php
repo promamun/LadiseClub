@@ -62,7 +62,7 @@
                                       <a href="{{route('photo.gallery')}}">Photo gallery</a>
                                   </li>
                                   <li>
-                                      <a href="video-gallery.html">Video gallery</a>
+                                      <a href="{{ route('video.gallery') }}">Video gallery</a>
                                   </li>
                               </ul>
                           </li>

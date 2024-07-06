@@ -2,15 +2,7 @@
 @section('title','Notice')
 @section('content')
   <!-- Inner Banner html start-->
-  <section class="inner-banner-wrap">
-    <div class="inner-baner-container" style="background-image: url(assets/img/eventum-img1.jpg);">
-      <div class="container">
-        <div class="inner-banner-content">
-          <h1 class="inner-title">Notice</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <x-breadcrumb title="Notice" images="user_ui/assets/img/eventum-img1.jpg"/>
   <section class="home-schedule-section" style="background: #fff;padding: 0px;">
     <div class="container">
       <div class="row align-items-start">
