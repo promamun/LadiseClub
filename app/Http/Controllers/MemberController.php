@@ -146,7 +146,13 @@ class MemberController extends Controller
     try {
       $data = Member::findOrFail($request->id);
       $data->members()->detach();
+      if ($data->image) {
+        if (file_exists(public_path('member/' . $data->image))) {
+          unlink(public_path('member/' . $data->image));
+        }
+      }
       $data->delete();
+
       return response()->json(['success' => true]);
     } catch (Exception $exception) {
       return response()->json([
@@ -161,6 +167,7 @@ class MemberController extends Controller
     try {
       $request->validate([
         'member_id' => 'nullable|string',
+        'company_name' => 'nullable|string',
         'address' => 'nullable|string',
         'name' => 'required|string',
         'designation' => 'required|string',
@@ -184,6 +191,7 @@ class MemberController extends Controller
       }
       $member = Member::create([
         'member_id' => $request->input('member_id'),
+        'company_name' => $request->input('company_name'),
         'address' => $request->input('address'),
         'name' => $request->input('name'),
         'designation' => $request->input('designation'),
@@ -211,6 +219,7 @@ class MemberController extends Controller
     try {
       $data = Member::find($id);
       $request->validate([
+        'company_name' => 'nullable|string',
         'member_id' => 'nullable|string',
         'address' => 'nullable|string',
         'name' => 'required|string',
@@ -240,6 +249,7 @@ class MemberController extends Controller
         $file->move("member/", $fileName);
       }
       $data->Update([
+        'company_name' => $request->input('company_name'),
         'member_id' => $request->input('member_id'),
         'address' => $request->input('address'),
         'name' => $request->input('name'),
