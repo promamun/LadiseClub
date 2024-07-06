@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class FacilitieController extends Controller
 {
-  public function facilitieList()
+  public function facilitiesList()
   {
     try {
       $facilitie = Facilitie::get();
@@ -30,7 +30,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function addFacilitie()
+  public function addFacilities()
   {
     try {
       return view("content.facilitie.facilitieAdd");
@@ -39,7 +39,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function editFacilitie($id)
+  public function editFacilities($id)
   {
     try {
       $data = Facilitie::findOrFail($id);
@@ -49,7 +49,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function deleteFacilitie(Request $request)
+  public function deleteFacilities(Request $request)
   {
     try {
       $data = Facilitie::findOrFail($request->id);
@@ -63,7 +63,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function storeFacilitie(Request $request)
+  public function storeFacilities(Request $request)
   {
     try {
       $request->validate([
@@ -80,7 +80,7 @@ class FacilitieController extends Controller
         'name' => $request->input('name'),
         'image' => $fileName
       ]);
-      return redirect()->route('facilitie-list')->with(['success' => "Facilitie Create Successfully"], 200);
+      return redirect()->route('facilities-list')->with(['success' => "Facilitie Create Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -88,7 +88,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function updateFacilitie(Request $request, $id)
+  public function updateFacilities(Request $request, $id)
   {
     try {
       $data = Facilitie::findOrFail($id);
@@ -111,7 +111,7 @@ class FacilitieController extends Controller
         'name' => $request->input('name'),
         'image' => $fileName
       ]);
-      return redirect()->route('facilitie-list')->with(['success' => "Facilitie Update Successfully"], 200);
+      return redirect()->route('facilities-list')->with(['success' => "Facilitie Update Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -120,7 +120,7 @@ class FacilitieController extends Controller
   }
 
   // Facilitie Details FacilitieDetail
-  public function facilitieDetailsList()
+  public function facilitiesDetailsList()
   {
     try {
       $facilitieDetails = FacilitieDetail::get();
@@ -130,7 +130,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function indexfacilitieDetails()
+  public function indexfacilitiesDetails()
   {
     try {
       $data = FacilitieDetail::all();
@@ -139,7 +139,7 @@ class FacilitieController extends Controller
       return redirect()->back()->with(['error' => $exception->getMessage()])->withInput();
     }
   }
-  public function addFacilitieDetail()
+  public function addFacilitiesDetail()
   {
     try {
       $fasiliti = Facilitie::all();
@@ -150,7 +150,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function editFacilitieDetail($id)
+  public function editFacilitiesDetail($id)
   {
     try {
       $data = FacilitieDetail::findOrFail($id);
@@ -160,7 +160,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function deleteFacilitieDetail(Request $request)
+  public function deleteFacilitiesDetail(Request $request)
   {
     try {
       $data = FacilitieDetail::findOrFail($request->id);
@@ -174,7 +174,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function storeFacilitieDetail(Request $request)
+  public function storeFacilitiesDetail(Request $request)
   {
     try {
       $request->validate([
@@ -195,7 +195,7 @@ class FacilitieController extends Controller
         'image' => $fileName
       ]);
       $facilitiedetail->facilities()->attach($request->input('fasilitie_id'));
-      return redirect()->route('facilitie-details-list')->with(['success' => "FacilitieDetail Create Successfully"], 200);
+      return redirect()->route('facilities-details-list')->with(['success' => "Facilities Detail Create Successfully"], 200);
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {
@@ -203,7 +203,7 @@ class FacilitieController extends Controller
     }
   }
 
-  public function updateFacilitieDetail(Request $request, $id)
+  public function updateFacilitiesDetail(Request $request, $id)
   {
     try {
       $data = FacilitieDetail::findOrFail($id);
@@ -229,7 +229,8 @@ class FacilitieController extends Controller
         'description' => $request->input('description'),
         'image' => $fileName
       ]);
-      return redirect()->route('facilitie-details-list')->with('success' , 'FacilitieDetail Update Successfully');
+      $data->facilities()->sync($request->input('fasilitie_id'));
+      return redirect()->route('facilities-details-list')->with('success' , 'Facilities Detail Update Successfully');
     } catch (ValidationException $validationException) {
       return redirect()->back()->with('error', $validationException->getMessage())->withInput();
     } catch (Exception $exception) {

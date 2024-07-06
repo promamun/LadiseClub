@@ -9,4 +9,7 @@ class Facilitie extends Model
 {
     use HasFactory;
     protected $guarded=[];
+  public function facilitiesDetails(){
+    return $this->belongsToMany(FacilitieDetail::class);
+  }
 }

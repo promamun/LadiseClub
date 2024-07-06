@@ -25,8 +25,8 @@ use App\Http\Controllers\facilitie\FacilitieController;
   Route::get('/gallery-list', [GalleryController::class, 'galleryList'])->name('gallery.list');
   Route::get('/event-list', [EventController::class, 'eventList'])->name('event.list');
   Route::get('/notice-list', [NoticeController::class, 'noticeList'])->name('notice.list');
-  Route::get('/facilitie-list', [FacilitieController::class, 'facilitieList'])->name('facilitie.list');
-  Route::get('/facilitie-detail-list', [FacilitieController::class, 'facilitieDetailsList'])->name('facilitieDetails.list');
+  Route::get('/facilities-list', [FacilitieController::class, 'facilitiesList'])->name('facilities.list');
+  Route::get('/facilities-detail-list', [FacilitieController::class, 'facilitiesDetailsList'])->name('facilitiesDetails.list');
   Route::get('/about-us-list', [AboutUsController::class, 'aboutUsList'])->name('aboutUs.list');
 // });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

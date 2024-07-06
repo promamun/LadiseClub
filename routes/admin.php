@@ -128,16 +128,16 @@ Route::middleware('auth')->group(function () {
   });
 
   // FacilitiesDetail Routes
-  Route::group(['prefix' => 'facilitie-detail'], function () {
+  Route::group(['prefix' => 'facilities-detail'], function () {
     // API Routes
-    Route::post('/store', [FacilitieController::class, 'storeFacilitieDetail'])->name('facilitieDetail.store');
-    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilitieDetail'])->name('facilitieDetail.update');
-    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilitieDetail'])->name('facilitieDetail.delete');
+    Route::post('/store', [FacilitieController::class, 'storeFacilitiesDetail'])->name('facilitiesDetail.store');
+    Route::post('/update/{id}', [FacilitieController::class, 'updateFacilitiesDetail'])->name('facilitiesDetail.update');
+    Route::get('/delete/{id}', [FacilitieController::class, 'deleteFacilitiesDetail'])->name('facilitiesDetail.delete');
     //View Routes
-    Route::get('/', [FacilitieController::class, 'indexfacilitieDetails'])->name('facilitie-details-list');
-    Route::get('/add', [FacilitieController::class, 'addFacilitieDetail'])->name('facilitie-details-add');
-    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitieDetail'])->name('facilitieDetail.edit');
-    Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitieDetail'])->name('facilitieDetail.view');
+    Route::get('/', [FacilitieController::class, 'indexfacilitiesDetails'])->name('facilities-details-list');
+    Route::get('/add', [FacilitieController::class, 'addFacilitiesDetail'])->name('facilities-details-add');
+    Route::get('/edit/{id}', [FacilitieController::class, 'editFacilitiesDetail'])->name('facilitiesDetail.edit');
+    Route::get('/view/{id}', [FacilitieController::class, 'viewFacilitiesDetail'])->name('facilitiesDetail.view');
   });
   // settings Routes
   Route::group(['prefix' => 'settings'], function () {

@@ -129,34 +129,34 @@
       ]
     },
     {
-      "name": "Facilitie",
+      "name": "Facilities",
       "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "facilitie",
+      "slug": "facilities",
       "submenu": [
         {
-          "url": "admin/facilitie",
-          "name": "Facilitie List",
-          "slug": "facilitie-list"
+          "url": "admin/facilities",
+          "name": "Facilities List",
+          "slug": "facilities-list"
         },
         {
-          "url": "admin/facilitie/add",
-          "name": "Facilitie Add",
-          "slug": "facilitie-add"
+          "url": "admin/facilities/add",
+          "name": "Facilities Add",
+          "slug": "facilities-add"
         },
         {
-          "url": "admin/facilitie-detail/add",
-          "name": "Facilitie Add Details",
-          "slug": "facilitie-details-add"
+          "url": "admin/facilities-detail/add",
+          "name": "Facilities Add Details",
+          "slug": "facilities-details-add"
         },
         {
-          "url": "admin/facilitie-detail",
-          "name": "Facilitie List Details",
-          "slug": "facilitie-details-list"
+          "url": "admin/facilities-detail",
+          "name": "Facilities List Details",
+          "slug": "facilities-details-list"
         }
       ]
     },
     {
-      "name": "Aplication Settings",
+      "name": "Application Settings",
       "icon": "menu-icon tf-icons ti ti-settings",
       "slug": "aplication-settings",
       "submenu": [
