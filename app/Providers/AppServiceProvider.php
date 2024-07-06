@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ContactUs;
 use App\Models\Facilitie;
 use App\Models\MemberCategory;
 use App\Models\Setting; // Assuming you have a Setting model
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
     \Illuminate\Support\Facades\View::composer('*', function ($view) {
       $view->with('membersData', MemberCategory::all());
       $view->with('facilitiesData', Facilitie::all());
+      $view->with('contactData', ContactUs::first());
     });
     // Load settings from the database
     $this->loadSettings();

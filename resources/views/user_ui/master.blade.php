@@ -7,7 +7,7 @@
     <meta name="keywords" content="Purbachal Ladies Club LTD, Purbachal Ladies Club, Ladies Club In Purbachal, Purbachal, Ladies Club, Ladies Club In Dhaka">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('user_ui') }}/assets/img/favicon.ico">
+    <link rel="icon" type="image/png" href="{{getImageFile(get_option('app_fav_icon'))}}">
     @include('user_ui.partials.css')
     <title>@yield('title') - PURBACHAL LADIES CLUB LTD.</title>
 </head>
