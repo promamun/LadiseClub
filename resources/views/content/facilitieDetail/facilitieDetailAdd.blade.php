@@ -50,7 +50,7 @@
                 <h4 class="mb-1 mt-3">Add a new Facilitie Detail</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-3">
-                <a href="{{ route('facilitie-details-list') }}"><button type="submit" class="btn btn-primary">Facilitie
+                <a href="{{ route('facilities-details-list') }}"><button type="submit" class="btn btn-primary">Facilitie
                         Detail List</button></a>
             </div>
         </div>
@@ -70,7 +70,7 @@
                 </div>
                 <!-- Product Information -->
                 <div class="card mb-4">
-                    <form action="{{ route('facilitieDetail.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('facilitiesDetail.store') }}" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Facilitie Detail</h5>
                         </div>

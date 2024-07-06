@@ -10,7 +10,7 @@
   if (dt_projects_table.length) {
     var dt_project = dt_projects_table.DataTable({
       ajax: {
-        url: '/api/facilitie-detail-list',
+        url: '/api/facilities-detail-list',
         type: 'GET',
         dataType: 'json',
         dataSrc: 'data' // If your API returns data within a specific key, specify it here
@@ -38,8 +38,8 @@
         },
         { data: '',
           render: function (data, type, full, meta) {
-            var editUrl = assetsPath + 'admin/facilitie-detail/edit/' + full.id; // Assuming full.id contains the member's ID
-            var deleteUrl = assetsPath + 'admin/facilitie-detail/delete/' + full.id; // Assuming full.id contains the member's ID
+            var editUrl = assetsPath + 'admin/facilities-detail/edit/' + full.id; // Assuming full.id contains the member's ID
+            var deleteUrl = assetsPath + 'admin/facilities-detail/delete/' + full.id; // Assuming full.id contains the member's ID
             return (
               '<div class="d-inline-block">' +
               '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></a>' +
@@ -95,7 +95,7 @@
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of "' + data['name'] + '" Facilitie Detail';
+              return 'Details of "' + data['name'] + '" Facilities Detail';
             }
           }),
           type: 'column',
@@ -127,7 +127,7 @@
   }
   // Add facilitie-detail listener to the button to navigate to the URL
   $('.create-new').on('click', function() {
-    var addUrl = assetsPath+'admin/facilitie-detail/add';
+    var addUrl = assetsPath+'admin/facilities-detail/add';
     window.location.href = addUrl;
   });
 

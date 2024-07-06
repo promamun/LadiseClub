@@ -26,9 +26,8 @@ Route::get('/members/{name}', function ($name) {
 })->name('members');
 Route::get('/facilities/{name}', function () {
   $id = request()->query('id');
-  $facility = Facilitie::find($id);
-  $data = FacilitieDetail::where('id',$id)->get();
-  return view('user_ui.facilities.facilities',compact('data','facility'));
+  $facility = Facilitie::with('facilitiesDetails')->find($id);
+  return view('user_ui.facilities.facilities',compact('facility'));
 })->name('user.facilities');
 Route::get('/events', function () { return view('user_ui.event.event'); })->name('event');
 Route::get('/notices', function () { return view('user_ui.notice.notice'); })->name('notice');

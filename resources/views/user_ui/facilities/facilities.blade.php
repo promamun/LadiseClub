@@ -17,7 +17,7 @@
   <section class="home-aboutus pb-100">
     <div class="container">
       <div class="row align-items-center">
-        @if($data->isEmpty())
+        @if($facility->facilitiesDetails->isEmpty())
           <div class="col-lg-12 col-md-12">
             <div class="home-about-right">
               <div class="about-content">
@@ -30,11 +30,11 @@
             </div>
           </div>
         @else
-          @foreach($data as $index => $item)
-            @if($index % 1 == 0)
+          @foreach($facility->facilitiesDetails as $index => $item)
+            @if($index % 2 == 0)
               <!-- Even index: Image first, text second -->
               <div class="col-lg-6 col-md-6">
-                <img src="{{ asset('facilitie/' . $item->image) }}" style="border-radius: 20px;">
+                <img src="{{ asset('facilitieDetail/' . $item->image) }}" style="border-radius: 20px;">
               </div>
               <div class="col-lg-6 col-md-6">
                 <div class="home-about-right">
@@ -46,6 +46,7 @@
                   </div>
                 </div>
               </div>
+              <div class="facilities-gap"></div>
             @else
               <!-- Odd index: Text first, image second -->
               <div class="col-lg-6 col-md-6">
@@ -59,10 +60,10 @@
                 </div>
               </div>
               <div class="col-lg-6 col-md-6">
-                <img src="{{ asset('facilitie/' . $item->image) }}" style="border-radius: 20px;">
+                <img src="{{ asset('facilitieDetail/' . $item->image) }}" style="border-radius: 20px;">
               </div>
+              <div class="facilities-gap"></div>
             @endif
-            <div class="facilities-gap"></div>
           @endforeach
         @endif
       </div>
