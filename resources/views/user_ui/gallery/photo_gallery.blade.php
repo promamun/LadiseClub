@@ -1,8 +1,8 @@
 @extends('user_ui.master')
-@section('title','Video Gallery')
+@section('title','Photo Gallery')
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Video Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Photo Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
   </section>
   <!-- event deatil html start-->
   <!-- home gallery start -->

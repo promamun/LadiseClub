@@ -8,31 +8,27 @@
   <section class="home-aboutus">
     <div class="container">
       <div class="row">
-
-        <div class="col-lg-6 col-md-6">
-          <img src="assets/img/about/about.png">
+        @foreach ($events as $data)
+        <div class="col-lg-6 col-md-6 mt-5">
+          <img src="{{ asset('event/' . $data->image) }}">
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 mt-5">
           <div class="home-about-right">
             <div class="about-content">
               <div class="section-head">
+                
                 <span class="section-sub-title ">INTRODUCTION</span>
                 <h3 class="section-title">
-                  KNOW MORE ABOUT OUR GRAND EVENT
+                  {{ $data->name }}
                 </h3>
                 <p class="section-paragraph">
-                  Step into our world at the Ladies Club, where sophistication intertwines with empowerment. We're more than a club; we're a sanctuary for women seeking connection, growth, and inspiration.
+                  {!! $data->description !!}
                 </p><br>
-                <p class="section-paragraph">
-                  Through a blend of engaging workshops, enriching discussions, and vibrant social gatherings, we create an environment where every woman can flourish. From fostering lifelong friendships to nurturing personal development, our community is dedicated to celebrating the diverse strengths and talents of women from all walks of life.
-                </p><br>
-                <p class="section-paragraph">
-                  Join us on this empowering journey as we redefine what it means to be a modern woman, united in sisterhood and limitless potential.
-                </p>
               </div>
             </div>
           </div>
         </div>
+        @endforeach
 
 
       </div>
