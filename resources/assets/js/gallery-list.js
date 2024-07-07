@@ -18,21 +18,35 @@
       columns: [
         { data: '' },
         { data: 'id' },
-        { data: 'name' },
-        { data: 'image',
+        { data: 'key' },
+        {
+          data: 'value',
           render: function (data, type, full, meta) {
-            var $team = full['image'],
-              $output;
-            $output = '<div class="d-flex align-items-center avatar-group">';
-            $output +=
+            var $team = full['value'];
+            var $output;
+
+            // Function to check if the value has an image extension
+            function isImage(value) {
+              var extensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+              var ext = value.split('.').pop().toLowerCase();
+              return extensions.includes(ext);
+            }
+
+            // Construct the output based on the file type
+            if (isImage($team)) {
+              // If the value has an image extension, show the image
+              $output = '<div class="d-flex align-items-center avatar-group">' +
                 '<div class="avatar avatar-xl">' +
-                '<img src="' +
-                assetsPath +
-                'gallery/' +
-                $team +
-                '" alt="Avatar" class="rounded-circle pull-up">' +
+                '<img src="' + assetsPath + 'gallery/' + $team + '" alt="Avatar" class="rounded-circle pull-up">' +
+                '</div>' +
                 '</div>';
-            $output += '</div>';
+            } else {
+              // If the value does not have an image extension, assume it's a YouTube URL
+              $output = '<div class="d-flex align-items-center">' +
+                '<iframe width="560" height="315" src="' + $team + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                '</div>';
+            }
+
             return $output;
           }
         },
@@ -95,7 +109,7 @@
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of "' + data['name'] + '" gallery';
+              return 'Details of "' + data['key'] + '" gallery';
             }
           }),
           type: 'column',

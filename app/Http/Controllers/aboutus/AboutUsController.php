@@ -13,7 +13,6 @@ class AboutUsController extends Controller
   public function aboutUs(){
     try {
       $aboutUs = AboutUs::first();
-      // dd($aboutUs->image);
       return view("user_ui.about.about_us", compact('aboutUs'));
     } catch (Exception $exception) {
       return response()->json(['error' => $exception->getMessage()]);

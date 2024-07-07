@@ -1,6 +1,6 @@
 @extends('content.settings.layout')
 
-@section('title', 'Aplication Settings')
+@section('title', 'Application Settings')
 @section('subcontent')
     <div class="tab-pane fade show active">
         <div id="app">
@@ -36,7 +36,7 @@
                     </div>
                     <!-- Product Information -->
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Aplication Settings</h5>
+                        <h5 class="card-title mb-0">Application Settings</h5>
                     </div>
                     <div class="mb-4">
                         <form action="{{ route('global-settings-update') }}" method="POST" enctype="multipart/form-data">

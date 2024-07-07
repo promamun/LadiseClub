@@ -16,10 +16,10 @@
         </div>
       </div>
       <div class="routine-content">
-        @foreach ($notices as $data)    
+        @foreach ($notices as $data)
         <div class="routine-detail">
           <div class="time-detail">
-            <span class="time-title">{{ $data->date }}</span>
+            <span class="time-title">{{date('d M Y || h.i A',strtotime($data->date))}}</span>
           </div>
           <div class="routine-description">
             <h5 class="chapter-title">{{ $data->name }}</h5>
@@ -27,12 +27,12 @@
               {!! $data->description !!}
             </p>
             <span class="chapter-link">
-                                    <a href="notice-details.html">View Details..</a>
-                                </span>
+              <a href="{{route('notice-details',['name'=>Str::slug($data->name),'id'=>$data->id])}}">View Details..</a>
+            </span>
           </div>
           <div class="lecture-image">
             <figure class="author-img">
-              <img src="assets/img/gallery/g1.jpg" alt="">
+              <img src="{{asset('notice/' . $data->image)}}" alt="">
             </figure>
           </div>
         </div>

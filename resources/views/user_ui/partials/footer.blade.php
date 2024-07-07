@@ -55,20 +55,45 @@
               </div>
               <div class="col-lg-2 col-sm-6">
                   <aside class="widget">
-                      <h6 class="widget-title">Socail Media</h6>
+                      <h6 class="widget-title">Social Media</h6>
                   </aside>
                   <div class="footer-social-links">
                       <ul>
+                        @if(get_option('facebook_url'))
                           <li>
                               <a href="{{get_option('facebook_url')}}" target="_blank">
                                   <i class="fab fa-facebook-f" aria-hidden="true"></i>
                               </a>
                           </li>
+                        @endif
+                          @if(get_option('youtube_url'))
                           <li>
                               <a href="{{get_option('youtube_url')}}" target="_blank">
                                   <i class="fab fa-youtube" aria-hidden="true"></i>
                               </a>
                           </li>
+                          @endif
+                        @if(get_option('twitter_url'))
+                          <li>
+                            <a href="{{get_option('twitter_url')}}" target="_blank">
+                              <i class="fab fa-twitter" aria-hidden="true"></i>
+                            </a>
+                          </li>
+                        @endif
+                        @if(get_option('instagram_url'))
+                          <li>
+                            <a href="{{get_option('instagram_url')}}" target="_blank">
+                              <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                          </li>
+                        @endif
+                        @if(get_option('linkedin_url'))
+                          <li>
+                            <a href="{{get_option('linkedin_url')}}" target="_blank">
+                              <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                          </li>
+                        @endif
                       </ul>
                   </div>
               </div>

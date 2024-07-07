@@ -44,21 +44,15 @@
                           <div class="section-head">
                               <span class="section-sub-title ">INTRODUCTION</span>
                               <h3 class="section-title">
-                                  KNOW MORE ABOUT OUR GRAND EVENT
+                                {{$aboutUs->title}}
                               </h3>
                               <p class="section-paragraph">
-                                  Step into our world at the Ladies Club, where sophistication intertwines with empowerment. We're more than a club; we're a sanctuary for women seeking connection, growth, and inspiration.
-                              </p><br>
-                              <p class="section-paragraph">
-                                  Through a blend of engaging workshops, enriching discussions, and vibrant social gatherings, we create an environment where every woman can flourish. From fostering lifelong friendships to nurturing personal development, our community is dedicated to celebrating the diverse strengths and talents of women from all walks of life.
-                              </p><br>
-                              <p class="section-paragraph">
-                                  Join us on this empowering journey as we redefine what it means to be a modern woman, united in sisterhood and limitless potential.
+                                {!! $aboutUs->description?? '' !!}
                               </p>
                           </div>
                       </div>
                       <div class="event-speaker-btn">
-                          <a href="about-us.html" class="button-round-primary">Know More</a>
+                          <a href="{{route('about.us')}}" class="button-round-primary">Know More</a>
                       </div>
                   </div>
               </div>
@@ -77,46 +71,18 @@
               </h3>
           </div>
           <div class="row">
+            @foreach($facility as $data)
               <div class="col-lg-3 col-md-6 mb-3">
-                  <a href="facilities.html">
+                  <a href="{{route('user.facilities',['name'=>Str::slug($data->name),'id'=>$data->id])}}">
                       <div class="card">
-                        <img src="{{ asset('user_ui') }}/assets/img/facilities/health.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('facilitie/' . $data->image) }}" class="card-img-top" alt="...">
                         <div class="card-body text-center">
-                          <h5 class="card-title">Sports and Health</h5>
+                          <h5 class="card-title">{{$data->name??''}}</h5>
                         </div>
                       </div>
                   </a>
               </div>
-              <div class="col-lg-3 col-md-6 mb-3">
-                  <a href="facilities.html">
-                      <div class="card">
-                        <img src="{{ asset('user_ui') }}/assets/img/facilities/kid.jpg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                          <h5 class="card-title">Kid Zone</h5>
-                        </div>
-                      </div>
-                  </a>
-              </div>
-              <div class="col-lg-3 col-md-6 mb-3">
-                  <a href="acilities.html">
-                      <div class="card">
-                        <img src="{{ asset('user_ui') }}/assets/img/facilities/restaurant.jpg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                          <h5 class="card-title">Restaurant</h5>
-                        </div>
-                      </div>
-                  </a>
-              </div>
-              <div class="col-lg-3 col-md-6 mb-3">
-                  <a href="acilities.html">
-                      <div class="card">
-                        <img src="{{ asset('user_ui') }}/assets/img/facilities/entertainment.jpg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                          <h5 class="card-title">Entertainment</h5>
-                        </div>
-                      </div>
-                  </a>
-              </div>
+            @endforeach
           </div>
       </div>
   </section>
@@ -136,66 +102,31 @@
               </div>
           </div>
           <div class="routine-content">
+            @foreach($notices as $data)
+              @break($loop->index === 3 )
               <div class="routine-detail">
                   <div class="time-detail">
-                      <span class="time-title">Date : 01 May 2024</span>
+                      <span class="time-title">Date : {{date('d M y',strtotime($data->date))}}</span>
                   </div>
                   <div class="routine-description">
-                      <h5 class="chapter-title">Notice Title Will Be Here</h5>
+                      <h5 class="chapter-title">{{$data->name??''}}</h5>
                       <p class="ch-paragraph">
-                          Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
+                        {{$data->details??''}}
                       </p>
                       <span class="chapter-link">
-                          <a href="notice-details.html">View Details..</a>
+                          <a href="{{route('notice-details',['name'=>Str::slug($data->name),'id'=>$data->id])}}">View Details..</a>
                       </span>
                   </div>
                   <div class="lecture-image">
                       <figure class="author-img">
-                          <img src="{{ asset('user_ui') }}/assets/img/gallery/g1.jpg" alt="">
+                          <img src="{{ asset('notice/' . $data->image) }}" alt="">
                       </figure>
                   </div>
               </div>
-              <div class="routine-detail">
-                  <div class="time-detail">
-                      <span class="time-title">Date : 03 May 2024</span>
-                  </div>
-                  <div class="routine-description">
-                      <h5 class="chapter-title">Notice Title Will Be Here</h5>
-                      <p class="ch-paragraph">
-                          Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
-                      </p>
-                      <span class="chapter-link">
-                          <a href="notice-details.html">View Details..</a>
-                      </span>
-                  </div>
-                  <div class="lecture-image">
-                      <figure class="author-img">
-                          <img src="{{ asset('user_ui') }}/assets/img/gallery/g2.jpg" alt="">
-                      </figure>
-                  </div>
-              </div>
-              <div class="routine-detail">
-                  <div class="time-detail">
-                      <span class="time-title">Date : 05 May 2024</span>
-                  </div>
-                  <div class="routine-description">
-                      <h5 class="chapter-title">Notice Title Will Be Here</h5>
-                      <p class="ch-paragraph">
-                          Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
-                      </p>
-                      <span class="chapter-link">
-                          <a href="notice-details.html">View Details..</a>
-                      </span>
-                  </div>
-                  <div class="lecture-image">
-                      <figure class="author-img">
-                          <img src="{{ asset('user_ui') }}/assets/img/gallery/g8.jpg" alt="">
-                      </figure>
-                  </div>
-              </div>
+            @endforeach
           </div>
           <div class="schedule-btn">
-              <a href="notice.html" class="button-round-primary">VIEW MORE</a>
+              <a href="{{route('notice')}}" class="button-round-primary">VIEW MORE</a>
           </div>
       </div>
   </section>
@@ -212,66 +143,19 @@
           </div>
           <div class="gallery-container">
               <div class="row grid">
+                @foreach($galleries as $data)
                   <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
                       <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g1.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g1.jpg" alt="">
+                          <a href="{{ asset('gallery/' . $data->value) }}" data-fancybox="gallery">
+                              <img src="{{ asset('gallery/' . $data->value) }}" alt="">
                           </a>
                       </figure>
                   </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g2.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g2.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g4.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g4.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g6.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g6.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g5.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g5.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g7.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g7.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g8.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g8.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
-                  <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
-                      <figure class="gallery-img">
-                          <a href="{{ asset('user_ui') }}/assets/img/gallery/g3.jpg" data-fancybox="gallery">
-                              <img src="{{ asset('user_ui') }}/assets/img/gallery/g3.jpg" alt="">
-                          </a>
-                      </figure>
-                  </div>
+                @endforeach
               </div>
           </div>
           <div class="schedule-btn text-center" style="margin-top: 20px;">
-              <a href="photo-gallery.html" class="button-round-primary">VIEW MORE IMAGES</a>
+              <a href="{{route('photo.gallery')}}" class="button-round-primary">VIEW MORE IMAGES</a>
           </div>
       </div>
   </section>
