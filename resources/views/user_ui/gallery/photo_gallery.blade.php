@@ -3,7 +3,6 @@
 @section('content')
   <!-- Inner Banner html start-->
   <x-breadcrumb title="Photo Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
-  </section>
   <!-- event deatil html start-->
   <!-- home gallery start -->
   <section class="home-gallery homo-photo-gallery">
@@ -18,8 +17,8 @@
           @foreach ($galleries as $data)
           <div class="single-gallery grid-item col-lg-3 col-md-4 col-sm-6 mb-3">
             <figure class="gallery-img">
-              <a href="assets/img/gallery/g1.jpg" data-fancybox="gallery">
-                <img src="{{ asset('gallery/'.$data->image)}}" alt="">
+              <a href="{{asset('gallery/' . $data->value)}}" data-fancybox="gallery">
+                <img src="{{ asset('gallery/'.$data->value)}}" alt="">
               </a>
             </figure>
           </div>

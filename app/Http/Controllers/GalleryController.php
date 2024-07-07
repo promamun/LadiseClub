@@ -64,17 +64,18 @@ class GalleryController extends Controller
     {
         try {
             $request->validate([
-                'image' => 'required'
+                'key' => 'required',
+                'value' => 'required'
             ]);
-            $fileName = null;
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
+            $fileName = $request->input('value');
+            if ($request->hasFile('value')) {
+                $file = $request->file('value');
                 $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
                 $file->move("gallery/", $fileName);
             }
             Gallery::create([
-                'name' => $request->input('name'),
-                'image' => $fileName
+                'key' => $request->input('key'),
+                'value' => $fileName
             ]);
             return redirect()->route('gallery-list')->with(['success' => "gallery Create Successfully"], 200);
         } catch (ValidationException $validationException) {
@@ -87,24 +88,34 @@ class GalleryController extends Controller
     public function updateGallery(Request $request, $id)
     {
         try {
+            $request->validate([
+              'key' => 'required',
+              'value' => 'required'
+            ]);
             $data = Gallery::findOrFail($id);
-            $fileName = $data->image;
-            if ($request->hasFile('image')) {
-                $request->validate([
-                    'image' => 'required'
-                ]);
+            $fileName = $data->value;
+            // Check if the existing file is an image
+            $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+            $existingExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+          if ($request->key === 'Video' && $existingExtension){
+              if (in_array(strtolower($existingExtension), $imageExtensions) && file_exists(public_path('gallery/' . $data->value))) {
+                unlink(public_path('gallery/' . $data->value));
+              }
+              $fileName = $request->input('value');
+            }
+            if ($request->hasFile('value')) {
                 if (file_exists(public_path('gallery/' . $fileName))) {
                     unlink(public_path('gallery/' . $fileName));
                 }
-                $file = $request->file('image');
+                $file = $request->file('value');
                 $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
                 $file->move("gallery/", $fileName);
             }
             $data->update([
-                'name' => $request->input('name'),
-                'image' => $fileName
+                'key' => $request->input('key'),
+                'value' => $fileName
             ]);
-            return redirect()->route('gallery-list')->with(['success' => "Gellery Update Successfully"], 200);
+            return redirect()->route('gallery-list')->with(['success' => "Gallery Update Successfully"], 200);
         } catch (ValidationException $validationException) {
             return redirect()->back()->with('error', $validationException->getMessage())->withInput();
         } catch (Exception $exception) {

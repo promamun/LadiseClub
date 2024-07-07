@@ -24,13 +24,11 @@
                 </h3>
                 <p class="section-paragraph">
                  {!! $aboutUs->description?? '' !!}
-                </p><br>                
+                </p><br>
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
@@ -43,21 +41,21 @@
           <div class="iconbox-content-bg">
             <i aria-hidden="true" class="icon icon-idea_generate"></i>
             <h5>WHAT WE DO?</h5>
-            <p>Habitant porta viverra voluptatum facilisi. Dolor mi sit! Recusandae, nisl, habitasse justo architecto viverra volupt.</p>
+            <p>{{$aboutUs->what_to_do?? '' }}</p>
           </div>
         </div>
         <div class="iconbox-item-bg">
           <div class="iconbox-content-bg">
             <i aria-hidden="true" class="icon icon-users"></i>
             <h5>WHAT WE ARE?</h5>
-            <p>Habitant porta viverra voluptatum facilisi. Dolor mi sit! Recusandae, nisl, habitasse justo architecto viverra volupt.</p>
+            <p>{{$aboutUs->what_we_are?? '' }}</p>
           </div>
         </div>
         <div class="iconbox-item-bg item-3">
           <div class="iconbox-content-bg ">
             <i aria-hidden="true" class="icon icon-rocket"></i>
             <h5>OUR AIM &amp; MISSION</h5>
-            <p>Habitant porta viverra voluptatum facilisi. Dolor mi sit! Recusandae, nisl, habitasse justo architecto viverra volupt.</p>
+            <p>{{$aboutUs->our_aim_mission?? '' }}</p>
           </div>
         </div>
       </div>

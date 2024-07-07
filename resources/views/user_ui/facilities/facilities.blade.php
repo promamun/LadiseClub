@@ -4,7 +4,7 @@
 )
 @section('title',$title)
 @section('content')
-  <!-- Inner Banner html start-->  
+  <!-- Inner Banner html start-->
   <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
   <section class="home-aboutus pb-100">
     <div class="container">
