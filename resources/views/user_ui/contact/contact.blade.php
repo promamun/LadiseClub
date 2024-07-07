@@ -6,11 +6,14 @@
   <section class="contact-page-section">
     <div class="container">
       <div class="row align-items-lg-end align-items-center">
+        
+         
+        
         <div class="col-lg-6">
           <div class="section-head">
-            <span class="section-sub-title ">GET IN TOUCH</span>
+            <span class="section-sub-title ">GET IN TOUCH  </span>
             <h3 class="section-title">
-              CONTACT US FOR FURTHER INFORMATION!
+              {{ $contactData->name??'' }}
             </h3>
           </div>
         </div>

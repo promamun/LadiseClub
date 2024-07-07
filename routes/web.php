@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\aboutus\AboutUsController;
-use App\Models\Facilitie;
-use App\Models\FacilitieDetail;
+use App\Models\Event;
 use App\Models\Member;
+use App\Models\Notice;
+use App\Models\Gallery;
+use App\Models\Facilitie;
 use App\Models\MemberCategory;
+use App\Models\FacilitieDetail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\aboutus\AboutUsController;
+use App\Models\ContactUs;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +22,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('user_ui.home.home'); })->name('home');
-Route::get('/about-us',[ AboutUsController::class, "aboutUs" ])->name('about.us');
+Route::get('/', function () {
+  return view('user_ui.home.home');
+})->name('home');
+Route::get('/about-us', [AboutUsController::class, "aboutUs"])->name('about.us');
 Route::get('/members/{name}', function ($name) {
   $id = request()->query('id');
   $categoryMember = MemberCategory::with('members')->findOrFail($id);
-  return view('user_ui.member.member',compact('categoryMember'));
+  return view('user_ui.member.member', compact('categoryMember'));
 })->name('members');
 Route::get('/facilities/{name}', function () {
   $id = request()->query('id');
   $facility = Facilitie::with('facilitiesDetails')->find($id);
-  return view('user_ui.facilities.facilities',compact('facility'));
+  return view('user_ui.facilities.facilities', compact('facility'));
 })->name('user.facilities');
-Route::get('/events', function () { return view('user_ui.event.event'); })->name('event');
-Route::get('/notices', function () { return view('user_ui.notice.notice'); })->name('notice');
-Route::get('/photo-gallery', function () { return view('user_ui.gallery.photo_gallery'); })->name('photo.gallery');
-Route::get('/video-gallery', function () { return view('user_ui.gallery.video_gallery'); })->name('video.gallery');
-Route::get('/contact', function () { return view('user_ui.contact.contact'); })->name('contact');
+Route::get(
+  '/events',
+  function () {
+    $events = Event::all();
+    return view('user_ui.event.event', compact('events'));
+  }
+)->name('event');
+Route::get('/notices', function () {
+  $notices = Notice::all();
+  return view('user_ui.notice.notice', compact("notices"));
+})->name('notice');
+Route::get('/photo-gallery', function () {
+  $galleries = Gallery::all();
+  return view('user_ui.gallery.photo_gallery', compact("galleries"));
+})->name('photo.gallery');
+Route::get('/video-gallery', function () {
+  $galleries = Gallery::all();
+  return view('user_ui.gallery.video_gallery',compact("galleries"));
+})->name('video.gallery');
+Route::get('/contact', function () {
+  $contactUs= ContactUs::first();
+  return view('user_ui.contact.contact', compact("contactUs"));
+})->name('contact');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

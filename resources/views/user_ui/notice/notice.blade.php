@@ -16,14 +16,15 @@
         </div>
       </div>
       <div class="routine-content">
+        @foreach ($notices as $data)    
         <div class="routine-detail">
           <div class="time-detail">
-            <span class="time-title">Date : 01 May 2024</span>
+            <span class="time-title">{{ $data->date }}</span>
           </div>
           <div class="routine-description">
-            <h5 class="chapter-title">Notice Title Will Be Here</h5>
+            <h5 class="chapter-title">{{ $data->name }}</h5>
             <p class="ch-paragraph">
-              Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
+              {!! $data->description !!}
             </p>
             <span class="chapter-link">
                                     <a href="notice-details.html">View Details..</a>
@@ -35,44 +36,7 @@
             </figure>
           </div>
         </div>
-        <div class="routine-detail">
-          <div class="time-detail">
-            <span class="time-title">Date : 03 May 2024</span>
-          </div>
-          <div class="routine-description">
-            <h5 class="chapter-title">Notice Title Will Be Here</h5>
-            <p class="ch-paragraph">
-              Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
-            </p>
-            <span class="chapter-link">
-                                    <a href="notice-details.html">View Details..</a>
-                                </span>
-          </div>
-          <div class="lecture-image">
-            <figure class="author-img">
-              <img src="assets/img/gallery/g2.jpg" alt="">
-            </figure>
-          </div>
-        </div>
-        <div class="routine-detail">
-          <div class="time-detail">
-            <span class="time-title">Date : 05 May 2024</span>
-          </div>
-          <div class="routine-description">
-            <h5 class="chapter-title">Notice Title Will Be Here</h5>
-            <p class="ch-paragraph">
-              Quam amet tristique adipisicing incididunt arcu, excepturi molestie turpis deserunt ducimus malesuada minus mauris veniam.
-            </p>
-            <span class="chapter-link">
-                                    <a href="notice-details.html">View Details..</a>
-                                </span>
-          </div>
-          <div class="lecture-image">
-            <figure class="author-img">
-              <img src="assets/img/gallery/g8.jpg" alt="">
-            </figure>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
