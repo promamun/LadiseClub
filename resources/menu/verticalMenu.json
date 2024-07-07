@@ -129,6 +129,23 @@
       ]
     },
     {
+      "name": "Slider",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "slider",
+      "submenu": [
+        {
+          "url": "admin/slider",
+          "name": "Slider List",
+          "slug": "slider-list"
+        },
+        {
+          "url": "admin/slider/add",
+          "name": "Slider Add",
+          "slug": "slider-add"
+        }
+      ]
+    },
+    {
       "name": "Facilities",
       "icon": "menu-icon tf-icons ti ti-users",
       "slug": "facilities",

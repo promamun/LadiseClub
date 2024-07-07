@@ -14,12 +14,11 @@
       <div class="carousel-item active">
         <img src="{{ asset('user_ui') }}/assets/img/banner/banner1.png" class="d-block w-100" alt="...">
       </div>
+      @foreach ($sliders as $data)
       <div class="carousel-item">
-        <img src="{{ asset('user_ui') }}/assets/img/banner/banner1.png" class="d-block w-100" alt="...">
+        <img src="{{ asset('slider/'.$data->image)}}" class="d-block w-100" alt="...">
       </div>
-      <div class="carousel-item">
-        <img src="{{ asset('user_ui') }}/assets/img/banner/banner1.png" class="d-block w-100" alt="...">
-      </div>
+      @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

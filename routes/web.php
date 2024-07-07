@@ -3,13 +3,14 @@
 use App\Models\Event;
 use App\Models\Member;
 use App\Models\Notice;
+use App\Models\Slider;
 use App\Models\Gallery;
+use App\Models\ContactUs;
 use App\Models\Facilitie;
 use App\Models\MemberCategory;
 use App\Models\FacilitieDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\aboutus\AboutUsController;
-use App\Models\ContactUs;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ use App\Models\ContactUs;
 */
 
 Route::get('/', function () {
-  return view('user_ui.home.home');
+  $sliders = Slider::all();
+  return view('user_ui.home.home', compact('sliders'));
 })->name('home');
 Route::get('/about-us', [AboutUsController::class, "aboutUs"])->name('about.us');
 Route::get('/members/{name}', function ($name) {

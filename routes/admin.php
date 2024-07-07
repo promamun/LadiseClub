@@ -8,17 +8,18 @@ use App\Http\Controllers\apps\AccessRoles;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\layouts\NavbarFull;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\event\EventController;
 use App\Http\Controllers\cards\CardGamifications;
 use App\Http\Controllers\notice\NoticeController;
+use App\Http\Controllers\slider\SliderController;
 use App\Http\Controllers\aboutus\AboutUsController;
 use App\Http\Controllers\layouts\NavbarFullSidebar;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\facilitie\FacilitieController;
 use App\Http\Controllers\authentications\ResetPasswordBasic;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
-use App\Http\Controllers\SettingsController;
 
 Route::get('/login', [LoginBasic::class, 'index'])->name('admin.login');
 Route::post('/auth-login', [LoginBasic::class, 'AdminLoginRequest'])->name('admin.login.request');
@@ -148,5 +149,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/pages/about-us-store', [SettingsController::class, 'storeAboutUs'])->name('aboutUs-store');
     Route::get('/pages/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
     Route::post('/pages/contactUs-store', [SettingsController::class, 'storeContactUs'])->name('contactUs-store');
+  });
+
+  // slider Routes
+Route::group(['prefix' => 'slider'],function(){
+  // API Routes
+  Route::post('/store',[SliderController::class,'storeSlider'])->name('slider.store');
+  Route::post('/update/{id}',[SliderController::class, 'updateSlider'])->name('slider.update');
+  Route::get('/delete/{id}',[SliderController::class, 'deleteSlider'])->name('slider.delete');
+  //View Routes
+  Route::get('/', [SliderController::class, 'index'])->name('slider-list');
+  Route::get('/add', [SliderController::class, 'addSlider'])->name('slider-add');
+  Route::get('/edit/{id}', [SliderController::class, 'editSlider'])->name('slider.edit');
   });
 });
