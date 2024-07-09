@@ -28,7 +28,7 @@
                         @foreach($membersData as $members)
                           @break($loop->index===4)
                           <li class="{{ Request::route()->getName() === 'members' ? 'current-menu-item ': '' }}">
-                            <a href="{{route('members',['name'=> Str::slug($members->name),'id'=>$members->id])}}">{{$members->name}} </a>
+                            <a href="{{route('members',['slug'=> $members->slug])}}">{{$members->name}} </a>
                           </li>
                         @endforeach
                       </ul>

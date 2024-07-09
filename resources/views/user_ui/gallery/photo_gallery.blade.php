@@ -29,22 +29,6 @@
   </section>
   <!-- home gallery end -->
   <div class="post-navigation-wrap pb-100">
-    <nav>
-      <ul class="pagination">
-        <li>
-          <a href="#">
-            <i class="fas fa-arrow-left"></i>
-          </a>
-        </li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li>
-          <a href="#">
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <x-paginator :paginator="$galleries"/>
   </div>
 @endsection

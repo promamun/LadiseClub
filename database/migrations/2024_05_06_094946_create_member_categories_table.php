@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('member_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('status')->default(true)->comment('1=category active, 0=category in active',);
             $table->timestamps();
         });

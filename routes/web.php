@@ -33,25 +33,25 @@ Route::get('/', function () {
   return view('user_ui.home.home',compact('aboutUs','facility','notices','galleries','sliders'));
 })->name('home');
 Route::get('/about-us', [AboutUsController::class, "aboutUs"])->name('about.us');
-Route::get('/members/{name}', function ($name) {
-  $id = request()->query('id');
-  $categoryMember = MemberCategory::with('members')->findOrFail($id);
-  return view('user_ui.member.member', compact('categoryMember'));
+Route::get('/members/{slug}', function ($slug) {
+  $categoryMember = MemberCategory::where('slug',$slug)->firstOrFail();
+  $members = $categoryMember->members()->paginate(); // Adjust the number as needed
+  return view('user_ui.member.member', compact('categoryMember', 'members'));
 })->name('members');
-Route::get('/facilities/{name}', function () {
-  $id = request()->query('id');
-  $facility = Facilitie::with('facilitiesDetails')->find($id);
+
+Route::get('/facilities/{slug}', function ($slug) {
+  $facility = Facilitie::where('slug',$slug)->with('facilitiesDetails')->firstOrFail();
   return view('user_ui.facilities.facilities', compact('facility'));
 })->name('user.facilities');
 Route::get(
   '/events',
   function () {
-    $events = Event::all();
+    $events = Event::paginate();
     return view('user_ui.event.event', compact('events'));
   }
 )->name('event');
 Route::get('/notices', function () {
-  $notices = Notice::all();
+  $notices = Notice::paginate();
   return view('user_ui.notice.notice', compact("notices"));
 })->name('notice');
 Route::get('/notice-details/{name}', function () {

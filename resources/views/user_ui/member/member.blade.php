@@ -8,7 +8,7 @@
   <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
-  @if($categoryMember->members->isEmpty())
+  @if($members->isEmpty())
     <section class="custom-member-list">
       <div class="container">
         <div class="row">
@@ -44,17 +44,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categoryMember->members as $members)
+                @foreach($members as $member)
                   <tr>
                     <td>
-                      <img src="{{asset('member/' . $members->image)}}" class="img-fluid">
+                      <img src="{{asset('member/' . $member->image)}}" class="img-fluid">
                     </td>
-                    <td>{{$members->member_id??""}}</td>
-                    <td>{{$members->name??''}}</td>
-                    <td>{{$members->designation??''}}<br>{{$members->company_name??''}}</td>
-                    <td>{{$members->phone??''}}</td>
-                    <td>{{$members->email??""}}</td>
-                    <td>{{$members->address??''}}</td>
+                    <td>{{$member->member_id??""}}</td>
+                    <td>{{$member->name??''}}</td>
+                    <td>{{$member->designation??''}}<br>{{$member->company_name??''}}</td>
+                    <td>{{$member->phone??''}}</td>
+                    <td>{{$member->email??""}}</td>
+                    <td>{{$member->address??''}}</td>
                   </tr>
                 @endforeach
                 </tbody>
@@ -65,23 +65,7 @@
       </div>
     </section>
     <div class="post-navigation-wrap pb-100">
-      <nav>
-        <ul class="pagination">
-          <li>
-            <a href="#">
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li>
-            <a href="#">
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <x-paginator :paginator="$members"/>
     </div>
   @endif
 @endsection

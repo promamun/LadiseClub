@@ -34,7 +34,7 @@
                               <ul>
                                 @foreach($membersData as $members)
                                   <li class="{{ Request::route()->getName() === 'members' ? 'current-menu-item ': '' }}">
-                                      <a href="{{route('members',['name'=> Str::slug($members->name),'id'=>$members->id])}}">{{$members->name}} </a>
+                                      <a href="{{route('members',['slug'=> $members->slug])}}">{{$members->name}} </a>
                                   </li>
                                 @endforeach
                               </ul>
@@ -44,7 +44,7 @@
                               <ul>
                                 @foreach($facilitiesData as $data)
                                   <li class="{{ Request::route()->getName() === 'user.facilities' ? 'current-menu-item ': '' }}">
-                                      <a href="{{route('user.facilities',['name'=>Str::slug($data->name),'id'=>$data->id])}}">{{$data->name}}</a>
+                                      <a href="{{route('user.facilities',['slug'=>$data->slug])}}">{{$data->name}}</a>
                                   </li>
                                 @endforeach
                               </ul>

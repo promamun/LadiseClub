@@ -12,6 +12,7 @@ use App\Models\MemberCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class MemberController extends Controller
@@ -75,7 +76,8 @@ class MemberController extends Controller
         'name' => 'required|string'
       ]);
       MemberCategory::create([
-        'name' => $request->input('name')
+        'name' => $request->input('name'),
+        'slug' => Str::slug($request->input('name'))
       ]);
       return redirect()->route('memberCategory-list')->with('success', 'Member Category Create Successfully');
     } catch (ValidationException $validationException) {
@@ -93,7 +95,8 @@ class MemberController extends Controller
         'name' => 'required|string'
       ]);
       $data->Update([
-        'name' => $request->input('name')
+        'name' => $request->input('name'),
+        'slug' => Str::slug($request->input('name'))
       ]);
       return redirect()->route('memberCategory-list')->with('success', 'Member Category Update Successfully');
     } catch (ValidationException $validationException) {
