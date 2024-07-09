@@ -51,6 +51,11 @@ class NoticeController extends Controller
   {
     try {
       $data = Notice::findOrFail($request->id);
+      if($data->image){
+        if (file_exists(public_path('notice/' . $data->image))) {
+          unlink(public_path('notice/' . $data->image));
+      }
+      }
       $data->delete();
       return response()->json(['success' => true]);
     } catch (Exception $exception) {

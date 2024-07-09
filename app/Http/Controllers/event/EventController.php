@@ -51,6 +51,11 @@ class EventController extends Controller
   {
     try {
       $data = Event::findOrFail($request->id);
+      if($data->image){
+        if (file_exists(public_path('event/' . $data->image))) {
+          unlink(public_path('event/' . $data->image));
+      }
+      }
       $data->delete();
       return response()->json(['success' => true]);
     } catch (Exception $exception) {
