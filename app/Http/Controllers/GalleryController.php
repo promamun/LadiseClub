@@ -50,6 +50,11 @@ class GalleryController extends Controller
     {
         try {
             $data = Gallery::findOrFail($request->id);
+            if($data->image){
+              if (file_exists(public_path('gallery/' . $data->image))) {
+                unlink(public_path('gallery/' . $data->image));
+            }
+            }
             $data->delete();
             return response()->json(['success' => true]);
         } catch (Exception $exception) {

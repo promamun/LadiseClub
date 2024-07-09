@@ -54,6 +54,11 @@ class FacilitieController extends Controller
   {
     try {
       $data = Facilitie::findOrFail($request->id);
+      if($data->image){
+        if (file_exists(public_path('facilitie/' . $data->image))) {
+          unlink(public_path('facilitie/' . $data->image));
+      }
+      }
       $data->delete();
       return response()->json(['success' => true]);
     } catch (Exception $exception) {
@@ -167,6 +172,11 @@ class FacilitieController extends Controller
   {
     try {
       $data = FacilitieDetail::findOrFail($request->id);
+      if($data->image){
+        if (file_exists(public_path('facilitieDetail/' . $data->image))) {
+          unlink(public_path('facilitieDetail/' . $data->image));
+      }
+      }
       $data->delete();
       return response()->json(['success' => true]);
     } catch (Exception $exception) {
