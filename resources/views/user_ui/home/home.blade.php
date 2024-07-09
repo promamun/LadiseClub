@@ -38,7 +38,7 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-6 col-md-6">
-                  <img src="{{ asset('aboutUs/' . $aboutUs->image) }}">
+                <img src="{{ asset('aboutUs/' . ($aboutUs->image ?? 'default_about.png')) }}" alt="About Us Image">
               </div>
               <div class="col-lg-6 col-md-6">
                   <div class="home-about-right">
@@ -46,7 +46,7 @@
                           <div class="section-head">
                               <span class="section-sub-title ">INTRODUCTION</span>
                               <h3 class="section-title">
-                                {{$aboutUs->title}}
+                                {{$aboutUs->title?? ''}}
                               </h3>
                               <p class="section-paragraph">
                                 {!! $aboutUs->description?? '' !!}

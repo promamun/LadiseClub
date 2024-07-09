@@ -72,7 +72,7 @@
     },
     {
       "name": "Gallery",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon icon-gallery",
       "slug": "gallery",
       "submenu": [
         {
