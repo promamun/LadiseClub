@@ -7,6 +7,7 @@ use App\Models\Facilitie;
 use Illuminate\Http\Request;
 use App\Models\FacilitieDetail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class FacilitieController extends Controller
@@ -83,6 +84,7 @@ class FacilitieController extends Controller
       }
       Facilitie::create([
         'name' => $request->input('name'),
+        'slug' => Str::slug($request->input('name')),
         'image' => $fileName
       ]);
       return redirect()->route('facilities-list')->with(['success' => "Facilitie Create Successfully"], 200);
@@ -114,6 +116,7 @@ class FacilitieController extends Controller
       }
       $data->update([
         'name' => $request->input('name'),
+        'slug' => Str::slug($request->input('name')),
         'image' => $fileName
       ]);
       return redirect()->route('facilities-list')->with(['success' => "Facilitie Update Successfully"], 200);

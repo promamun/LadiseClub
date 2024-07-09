@@ -101,7 +101,7 @@
                               <div class="col">
                                   <label class="form-label" for="member_id">ID</label><span class="text-info">
                                       (optional)</span>
-                                  <input type="number" class="form-control" id="member_id" placeholder="Id Here"
+                                  <input type="text" class="form-control" id="member_id" placeholder="Id Here"
                                       value="{{ old('member_id') }}" name="member_id" aria-label="member_id">
                               </div>
                               <div class="col">

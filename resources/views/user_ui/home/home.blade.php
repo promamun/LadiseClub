@@ -6,18 +6,21 @@
   <!----Banner Slider Start--------->
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      @foreach ($sliders as $index => $data)
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
+      @endforeach
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ asset('user_ui') }}/assets/img/banner/banner1.png" class="d-block w-100" alt="...">
-      </div>
-      @foreach ($sliders as $data)
-      <div class="carousel-item">
-        <img src="{{ asset('slider/'.$data->image)}}" class="d-block w-100" alt="...">
-      </div>
+      @foreach ($sliders as $index => $data)
+        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+          <img src="{{ asset('slider/' . $data->image) }}" class="d-block w-100" alt="...">
+          @if($data->caption)
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ $data->title }}</h5>
+              <p>{{ $data->caption }}</p>
+            </div>
+          @endif
+        </div>
       @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -29,14 +32,13 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <!----Banner Slider end--------->
-
+  <!----Banner Slider End--------->
   <!-- home about us section Start -->
   <section class="home-aboutus pt-100">
       <div class="container">
           <div class="row">
               <div class="col-lg-6 col-md-6">
-                  <img src="{{ asset('user_ui') }}/assets/img/about/about.png">
+                  <img src="{{ asset('aboutUs/' . $aboutUs->image) }}">
               </div>
               <div class="col-lg-6 col-md-6">
                   <div class="home-about-right">
@@ -73,7 +75,7 @@
           <div class="row">
             @foreach($facility as $data)
               <div class="col-lg-3 col-md-6 mb-3">
-                  <a href="{{route('user.facilities',['name'=>Str::slug($data->name),'id'=>$data->id])}}">
+                  <a href="{{route('user.facilities',['slug'=>$data->slug])}}">
                       <div class="card">
                         <img src="{{ asset('facilitie/' . $data->image) }}" class="card-img-top" alt="...">
                         <div class="card-body text-center">

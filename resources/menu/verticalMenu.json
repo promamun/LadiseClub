@@ -49,23 +49,6 @@
       "slug": "member",
       "submenu": [
         {
-          "url": "admin/member",
-          "name": "Member List",
-          "slug": "member-list"
-        },
-        {
-          "url": "admin/member/add",
-          "name": "Member add",
-          "slug": "member-add"
-        }
-      ]
-    },
-    {
-      "name": "Member Category",
-      "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "member",
-      "submenu": [
-        {
           "url": "admin/member-category",
           "name": "Member Category List",
           "slug": "memberCategory-list"
@@ -74,6 +57,16 @@
           "url": "admin/member-category/add",
           "name": "Member Category Add",
           "slug": "memberCategory-add"
+        },
+        {
+          "url": "admin/member",
+          "name": "Member List",
+          "slug": "member-list"
+        },
+        {
+          "url": "admin/member/add",
+          "name": "Member add",
+          "slug": "member-add"
         }
       ]
     },
