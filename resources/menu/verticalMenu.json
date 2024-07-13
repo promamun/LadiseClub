@@ -32,20 +32,8 @@
       ]
     },
     {
-      "name": "Roles & Permissions",
-      "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "app-access",
-      "submenu": [
-        {
-          "url": "admin/roles",
-          "name": "Roles",
-          "slug": "user-access-roles"
-        }
-      ]
-    },
-    {
       "name": "Member",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-user",
       "slug": "member",
       "submenu": [
         {
@@ -72,7 +60,7 @@
     },
     {
       "name": "Gallery",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-layout-grid",
       "slug": "gallery",
       "submenu": [
         {
@@ -89,7 +77,7 @@
     },
     {
       "name": "Event",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-checkbox",
       "slug": "event",
       "submenu": [
         {
@@ -106,7 +94,7 @@
     },
     {
       "name": "Notice",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-cards",
       "slug": "notice",
       "submenu": [
         {
@@ -123,7 +111,7 @@
     },
     {
       "name": "Slider",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-layout-grid",
       "slug": "slider",
       "submenu": [
         {
@@ -140,7 +128,7 @@
     },
     {
       "name": "Facilities",
-      "icon": "menu-icon tf-icons ti ti-users",
+      "icon": "menu-icon tf-icons ti ti-checkbox",
       "slug": "facilities",
       "submenu": [
         {
@@ -168,7 +156,7 @@
     {
       "name": "Application Settings",
       "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "aplication-settings",
+      "slug": "application-settings",
       "submenu": [
         {
           "url": "admin/settings/global-settings",

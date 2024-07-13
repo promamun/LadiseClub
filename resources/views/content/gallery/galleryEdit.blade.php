@@ -33,7 +33,7 @@
       </div>
       <div class="d-flex align-content-center flex-wrap gap-3">
         <a href="{{ route('gallery-list') }}">
-          <button type="submit" class="btn btn-primary">Gellery List</button>
+          <button type="submit" class="btn btn-primary">Gallery List</button>
         </a>
       </div>
     </div>
