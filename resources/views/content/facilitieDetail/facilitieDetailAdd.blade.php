@@ -72,14 +72,14 @@
                 <div class="card mb-4">
                     <form action="{{ route('facilitiesDetail.store') }}" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Facilitie Detail</h5>
+                            <h5 class="card-title mb-0">Facilities Details</h5>
                         </div>
                         @csrf
                         <div class="card-body">
                             <div class="row">
 
                                 <div class="col-md-6 mb-4">
-                                    <label for="select2Multiple" class="form-label">Select Facilitie</label><span
+                                    <label for="select2Multiple" class="form-label">Select Facilities</label><span
                                         class="text-danger">*</span>
                                     <select id="select2Multiple" name="fasilitie_id" class="select2 form-select"
                                         required>
