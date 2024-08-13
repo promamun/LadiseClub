@@ -42,3 +42,20 @@ onMounted(() => {
   }
 });
 </script>
+<style>
+.toast-success {
+  background-color: green !important;
+}
+
+.toast-error {
+  background-color: red !important;
+}
+
+.toast-warning {
+  background-color: orange !important;
+}
+
+.toast-info {
+  background-color: blue !important;
+}
+</style>

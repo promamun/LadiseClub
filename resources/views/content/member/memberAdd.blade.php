@@ -1,19 +1,17 @@
 @extends('layouts/layoutMaster')
 
 @section('title', 'Add Member')
-
 @section('vendor-style')
-    @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
+  @vite(['resources/assets/vendor/libs/quill/typography.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/quill/katex.scss', 'resources/assets/vendor/libs/quill/editor.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss', 'resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/tagify/tagify.scss'])
 @endsection
 
 @section('vendor-script')
-    @vite(['resources/assets/vendor/libs/quill/katex.js', 'resources/assets/vendor/libs/quill/quill.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js', 'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js', 'resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/tagify/tagify.js'])
+  @vite(['resources/assets/vendor/libs/quill/katex.js', 'resources/assets/vendor/libs/quill/quill.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js', 'resources/assets/vendor/libs/jquery-repeater/jquery-repeater.js', 'resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/tagify/tagify.js'])
 @endsection
 
 @section('page-script')
-    @vite(['resources/assets/js/app-ecommerce-product-add.js', 'resources/assets/js/forms-editors.js'])
+  @vite(['resources/assets/js/app-ecommerce-product-add.js', 'resources/assets/js/forms-editors.js'])
 @endsection
-
 @section('content')
 <div id="app">
   <toastr-notification
@@ -105,56 +103,62 @@
                                       value="{{ old('member_id') }}" name="member_id" aria-label="member_id">
                               </div>
                               <div class="col">
-                                  <label class="form-label" for="address">Address</label><span class="text-info">
+                                  <label class="form-label" for="email">Email</label><span class="text-info">
                                       (optional)</span>
-                                  <input type="text" class="form-control" id="address" placeholder="Address Here"
-                                      value="{{ old('address') }}" name="address" aria-label="address">
+                                  <input type="email" class="form-control" id="email" placeholder="Email Here"
+                                      value="{{ old('email') }}" name="email" aria-label="email">
                               </div>
                           </div>
                             <div class="row mb-3">
+                              <div class="col">
+                                <label class="form-label" for="address">Address</label><span class="text-info">
+                                      (optional)</span>
+                                <input type="text" class="form-control" id="address" placeholder="Address Here"
+                                       value="{{ old('address') }}" name="address" aria-label="address">
+                              </div>
                                 <div class="col">
                                     <label class="form-label" for="phone">Phone</label><span class="text-info">
                                         (optional)</span>
                                     <input type="number" class="form-control" id="phone" placeholder="Phone Here"
                                         value="{{ old('phone') }}" name="phone" aria-label="Phone">
                                 </div>
-                                <div class="col">
-                                    <label class="form-label" for="mobile">Mobile</label><span class="text-info">
-                                        (optional)</span>
-                                    <input type="number" class="form-control" id="mobile" placeholder="mobile Here"
-                                        value="{{ old('mobile') }}" name="mobile" aria-label="mobile">
-                                </div>
                             </div>
                             <div class="row mb-3">
+                              <div class="col">
+                                <label class="form-label" for="mobile">Mobile</label><span class="text-info">
+                                        (optional)</span>
+                                <input type="number" class="form-control" id="mobile" placeholder="mobile Here"
+                                       value="{{ old('mobile') }}" name="mobile" aria-label="mobile">
+                              </div>
                                 <div class="col">
                                     <label class="form-label" for="fax">Fax</label><span class="text-info">
                                         (optional)</span>
                                     <input type="text" class="form-control" id="fax" placeholder="fax Here"
                                         value="{{ old('fax') }}" name="fax" aria-label="fax">
                                 </div>
-                                <div class="col">
-                                    <label class="form-label" for="facebook">Facebook</label><span class="text-info">
-                                        (optional)</span>
-                                    <input type="text" class="form-control" id="facebook"
-                                        placeholder="facebook Here" value="{{ old('facebook') }}" name="facebook"
-                                        aria-label="facebook">
-                                </div>
                             </div>
                             <div class="row mb-3">
+                              <div class="col">
+                                <label class="form-label" for="facebook">Facebook</label><span class="text-info">
+                                        (optional)</span>
+                                <input type="text" class="form-control" id="facebook"
+                                       placeholder="facebook Here" value="{{ old('facebook') }}" name="facebook"
+                                       aria-label="facebook">
+                              </div>
                                 <div class="col">
                                     <label class="form-label" for="twitter">Twitter</label><span class="text-info">
                                         (optional)</span>
                                     <input type="text" class="form-control" id="twitter" placeholder="twitter Here"
                                         value="{{ old('twitter') }}" name="twitter" aria-label="twitter">
                                 </div>
-                                <div class="col">
-                                    <label class="form-label" for="linkedin">Linkedin</label><span class="text-info">
-                                        (optional)</span>
-                                    <input type="text" class="form-control" id="linkedin"
-                                        placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin" aria-label="linkedin">
-                                </div>
                             </div>
                             <div class="row mb-3">
+                              <div class="col">
+                                <label class="form-label" for="linkedin">Linkedin</label><span class="text-info">
+                                        (optional)</span>
+                                <input type="text" class="form-control" id="linkedin"
+                                       placeholder="linkedin Here" value="{{ old('linkedin') }}" name="linkedin" aria-label="linkedin">
+                              </div>
                                 <div class="col">
                                     <label class="form-label" for="instagram">Instagram</label><span class="text-info">
                                         (optional)</span>
@@ -162,19 +166,21 @@
                                         placeholder="instagram Here" value="{{ old('instagram') }}" name="instagram"
                                         aria-label="instagram">
                                 </div>
-                                <div class="col">
-                                    <label class="form-label" for="personal_website">Personal Website</label><span
-                                        class="text-info"> (optional)</span>
-                                    <input type="text" class="form-control" id="personal_website"
-                                        placeholder="personal_website Here" value="{{ old('personal_website') }}"
-                                        name="personal_website" aria-label="personal_website">
-                                </div>
                             </div>
-                            <div class="col-12">
+                          <div class="row mb-3">
+                            <div class="col">
+                              <label class="form-label" for="personal_website">Personal Website</label><span
+                                class="text-info"> (optional)</span>
+                              <input type="text" class="form-control" id="personal_website"
+                                     placeholder="personal_website Here" value="{{ old('personal_website') }}"
+                                     name="personal_website" aria-label="personal_website">
+                            </div>
+                            <div class="col">
                               <label class="form-label" for="company_name">Company Name</label><span class="text-info">
                                 (optional)</span>
-                            <input type="text" class="form-control" id="company_name"
-                                placeholder="Company Nname Here" value="{{ old('company_name') }}" name="company_name" aria-label="company_name">
+                              <input type="text" class="form-control" id="company_name"
+                                     placeholder="Company Nname Here" value="{{ old('company_name') }}" name="company_name" aria-label="company_name">
+                            </div>
                             </div>
                             <!-- Personal Details -->
                             <div class="col-12">

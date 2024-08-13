@@ -6,12 +6,6 @@ $customizerHidden = 'customizer-hide';
 
 @section('title', 'Register Basic - Pages')
 
-@section('vendor-style')
-@vite([
-  'resources/assets/vendor/libs/@form-validation/form-validation.scss'
-])
-@endsection
-
 @section('page-style')
 @vite([
   'resources/assets/vendor/scss/pages/page-auth.scss'

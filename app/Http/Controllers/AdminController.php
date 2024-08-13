@@ -46,7 +46,6 @@ class AdminController extends Controller
         'role_id' => 'required|numeric',
         'id' => 'required|numeric',
       ]);
-      dd($validatedData);
       $user = User::findOrFail($validatedData['id']); // Find the user by ID
 
       // Update user information

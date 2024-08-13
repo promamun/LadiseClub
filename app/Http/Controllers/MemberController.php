@@ -127,7 +127,7 @@ class MemberController extends Controller
   {
     try {
       $memberCategory = MemberCategory::all();
-      return view("content.member.memberadd", compact('memberCategory'));
+      return view("content.member.memberAdd", compact('memberCategory'));
     } catch (Exception $exception) {
       return redirect()->back();
     }
@@ -173,6 +173,7 @@ class MemberController extends Controller
         'company_name' => 'nullable|string',
         'address' => 'nullable|string',
         'name' => 'required|string',
+        'email' => 'nullable|email',
         'designation' => 'required|string',
         'image' => 'required',
         'category_id' => 'required|array',
@@ -197,6 +198,7 @@ class MemberController extends Controller
         'company_name' => $request->input('company_name'),
         'address' => $request->input('address'),
         'name' => $request->input('name'),
+        'email' => $request->input('email'),
         'designation' => $request->input('designation'),
         'image' => $fileName,
         'description' => $request->input('description'),
@@ -225,6 +227,7 @@ class MemberController extends Controller
         'company_name' => 'nullable|string',
         'member_id' => 'nullable|string',
         'address' => 'nullable|string',
+        'email' => 'nullable|string',
         'name' => 'required|string',
         'designation' => 'required|string',
         'category_id' => 'required|array',
@@ -256,6 +259,7 @@ class MemberController extends Controller
         'member_id' => $request->input('member_id'),
         'address' => $request->input('address'),
         'name' => $request->input('name'),
+        'email' => $request->input('email'),
         'designation' => $request->input('designation'),
         'image' => $fileName,
         'description' => $request->input('description'),

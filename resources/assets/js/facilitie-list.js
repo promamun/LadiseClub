@@ -6,7 +6,7 @@
   //  For Datatable
   // --------------------------------------------------------------------
   var dt_projects_table = $('.datatables-facilitie');
-  var assetsPath = document.querySelector('meta[name="assetPath"]').getAttribute('content');
+  var assetsPath = document.querySelector('meta[name="APP_URL"]').getAttribute('content');
   if (dt_projects_table.length) {
     var dt_project = dt_projects_table.DataTable({
       ajax: {

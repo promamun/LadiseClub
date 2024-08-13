@@ -46,7 +46,6 @@ Route::middleware('auth')->group(function () {
       Route::get('/edit/{id}', [AdminController::class, 'user_edit'])->name('user-edit');
       Route::get('/view/{id}', [AdminController::class, 'user_view'])->name('user-view');
     });
-  });
   // role permission Routes
   Route::group(['prefix' => 'roles'], function () {
     // API Routes
@@ -150,16 +149,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/pages/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
     Route::post('/pages/contactUs-store', [SettingsController::class, 'storeContactUs'])->name('contactUs-store');
   });
-
   // slider Routes
-Route::group(['prefix' => 'slider'],function(){
-  // API Routes
-  Route::post('/store',[SliderController::class,'storeSlider'])->name('slider.store');
-  Route::post('/update/{id}',[SliderController::class, 'updateSlider'])->name('slider.update');
-  Route::get('/delete/{id}',[SliderController::class, 'deleteSlider'])->name('slider.delete');
-  //View Routes
-  Route::get('/', [SliderController::class, 'index'])->name('slider-list');
-  Route::get('/add', [SliderController::class, 'addSlider'])->name('slider-add');
-  Route::get('/edit/{id}', [SliderController::class, 'editSlider'])->name('slider.edit');
+  Route::group(['prefix' => 'slider'],function(){
+    // API Routes
+    Route::post('/store',[SliderController::class,'storeSlider'])->name('slider.store');
+    Route::post('/update/{id}',[SliderController::class, 'updateSlider'])->name('slider.update');
+    Route::get('/delete/{id}',[SliderController::class, 'deleteSlider'])->name('slider.delete');
+    //View Routes
+    Route::get('/', [SliderController::class, 'index'])->name('slider-list');
+    Route::get('/add', [SliderController::class, 'addSlider'])->name('slider-add');
+    Route::get('/edit/{id}', [SliderController::class, 'editSlider'])->name('slider.edit');
+  });
   });
 });

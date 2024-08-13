@@ -14,6 +14,7 @@
                 : '');
     $isFront = ($isFront ?? '') == true ? 'Front' : '';
     $contentLayout = isset($container) ? ($container === 'container-xxl' ? 'layout-compact' : 'layout-wide') : '';
+    $appUrl = app()->environment('production') ? env('APP_URL_PROD') : env('APP_URL');
 @endphp
 
 <html lang="{{ session()->get('locale') ?? app()->getLocale() }}"
@@ -37,6 +38,7 @@
     <!-- laravel CRUD token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="assetPath" content="{{ asset('') }}">
+    <meta name="APP_URL" content="{{ $appUrl  }}">
     <!-- Canonical SEO -->
     <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
     <!-- Favicon -->

@@ -41,10 +41,10 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
             <div class="d-flex flex-column justify-content-center">
-                <h4 class="mb-1 mt-3">Update Facilitie Detail</h4>
+                <h4 class="mb-1 mt-3">Update Facilities Detail</h4>
             </div>
             <div class="d-flex align-content-center flex-wrap gap-3">
-                <a href="{{ route('facilities-details-list') }}"><button type="submit" class="btn btn-primary">Facilitie Detail List</button></a>
+                <a href="{{ route('facilities-details-list') }}"><button type="submit" class="btn btn-primary">Facilities Detail List</button></a>
             </div>
         </div>
 
@@ -66,24 +66,35 @@
                 <div class="card mb-4">
                     <form action="{{ route('facilitiesDetail.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Facilitie Detail</h5>
+                            <h5 class="card-title mb-0">Facilities Details</h5>
                         </div>
                         @csrf
                         <div class="card-body">
+                          <div class="row">
+
+                            <div class="col-md-6 mb-4">
+                              <label for="select2Multiple" class="form-label">Select Facilities</label><span
+                                class="text-danger">*</span>
+                              <select id="select2Multiple" name="fasilitie_id" class="select2 form-select"
+                                      required>
+                                @foreach ($fasiliti as $datas)
+                                  <option {{ $data->facilities->contains('id', $datas->id) ? 'selected' : '' }}
+                                          value="{{ $datas->id }}">{{ $datas->name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                              <label class="form-label" for="image">Image</label><span class="text-danger">*</span>
+                              <input type="file" class="form-control" id="image" placeholder="Image Here"
+                                     name="image" aria-label="Image">
+                            </div>
+                          </div>
                             <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label" for="name">Name</label><span
                                         class="text-info">(optional)</span>
                                     <input type="text" class="form-control" id="name" placeholder="Name Here"
                                         value="{{ old('name') ?? $data->name }}" name="name" aria-label="Name Here">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <label class="form-label" for="image">Image</label><span
-                                        class="text-info">(optional)</span>
-                                    <input type="file" class="form-control" id="image" placeholder="Image Here"
-                                        name="image" aria-label="Image">
                                 </div>
                             </div>
                             <div class="row mb-3">
