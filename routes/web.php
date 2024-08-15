@@ -25,7 +25,7 @@ use App\Http\Controllers\aboutus\AboutUsController;
 */
 
 Route::get('/', function () {
-  $sliders = Slider::all();
+  $sliders = Slider::orderBy('created_at', 'desc')->get();
   $aboutUs = AboutUs::first();
   $facility = Facilitie::with('facilitiesDetails')->get();
   $notices = Notice::all();

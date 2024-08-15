@@ -153,8 +153,7 @@ class SettingsController extends Controller
         'email' => 'nullable|email', // 'required' replaced with 'sometimes' to allow updates without an image
         'phone' => 'nullable|string',
         'address' => 'nullable|string',
-        'location' => 'nullable|string',
-        'description' => 'nullable|string'
+        'location' => 'nullable|string'
       ]);
 
       $contactUs = ContactUs::first();
@@ -165,8 +164,7 @@ class SettingsController extends Controller
         'email' => $request->input('email'),
         'phone' => $request->input('phone'),
         'address' => $request->input('address'),
-        'location' => $request->input('location'),
-        'description' => $request->input('description')
+        'location' => $request->input('location')
       ];
 
       if ($contactUs) {

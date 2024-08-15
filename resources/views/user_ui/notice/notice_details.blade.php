@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-12">
           <div class="page-content">
-            <p style="font-weight: 700;">{{date('d M Y || h.i A',strtotime($notice_details->date))}}</p>
+            <p style="font-weight: 700;">{{$notice_details->name}}</p>
             <p style="text-align: justify;line-height: 1.8;">{!! $notice_details->description !!}</p>
           </div>
         </div>

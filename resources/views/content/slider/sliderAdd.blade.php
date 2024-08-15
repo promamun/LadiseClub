@@ -56,7 +56,7 @@
                         @csrf
                         <div class="card-body">
                           <div class="col">
-                            <label class="form-label" for="name">Image</label><span class="text-danger">*</span>
+                            <label class="form-label" for="name">Image</label><span class="text-danger">*</span><span class="text-warning"> 1920*600</span>
                             <input type="file" class="form-control" id="image" placeholder="image Here"
                                 name="image" aria-label="image">
                         </div>

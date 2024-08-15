@@ -61,7 +61,7 @@
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th>Name</th>
+                                <th>Notice Title</th>
                                 <th>Image</th>
                                 <th>Date</th>
                                 <th>Action</th>

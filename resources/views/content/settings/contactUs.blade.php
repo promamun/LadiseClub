@@ -90,12 +90,6 @@
                                             aria-label="Location Here">
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-2 col-form-label">Enter Details</label>
-                                    <div class="col-md-10">
-                                        <textarea name="description" class="form-control" id="editor" cols="10" rows="10">{{ old('description', $contactUs->description ?? '') }}</textarea>
-                                    </div>
-                                </div>
                                 <div class="pt-4 mb-3 float-lg-end">
                                     <button type="submit"
                                         class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Update</button>

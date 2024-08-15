@@ -21,6 +21,7 @@
       columns: [
         { data: '' },
         { data: 'id' },
+        { data: 'member_id' },
         { data: 'name' },
         { data: 'designation' },
         { data: 'image',

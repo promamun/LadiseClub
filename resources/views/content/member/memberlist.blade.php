@@ -63,6 +63,7 @@
             <tr>
               <th></th>
               <th></th>
+              <th>Member ID</th>
               <th>Name</th>
               <th>Designation</th>
               <th>Image</th>

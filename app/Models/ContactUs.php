@@ -15,6 +15,5 @@ class ContactUs extends Model
       'phone',
       'address',
       'location',
-      'description',
     ];
 }
