@@ -1,14 +1,14 @@
 @extends('user_ui.master')
 @section('title','Contact Us')
+@php
+  $contactUs_imge =  getImageFile(get_option('bg_contactus'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Contact Us" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Contact Us" :images="$contactUs_imge"/>
   <section class="contact-page-section">
     <div class="container">
       <div class="row align-items-lg-end align-items-center">
-        
-         
-        
         <div class="col-lg-6">
           <div class="section-head">
             <span class="section-sub-title ">GET IN TOUCH  </span>

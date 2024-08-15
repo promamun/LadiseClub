@@ -1,8 +1,11 @@
 @extends('user_ui.master')
 @section('title','Event')
+@php
+  $event_image =  getImageFile(get_option('bg_event'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Event" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Event" :images="$event_image"/>
   <!-- event deatil html start-->
   <section class="home-gallery">
     <div class="container">

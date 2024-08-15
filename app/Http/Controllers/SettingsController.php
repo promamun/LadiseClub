@@ -69,7 +69,63 @@ class SettingsController extends Controller
         $this->deleteFile('faq_image');
         $option->option_value = $this->saveImage('setting', $request->faq_image, null, null);
         $option->save();
-      } else {
+      } elseif ($request->hasFile('bg_about') && $key == 'bg_about') {
+        $request->validate([
+          'bg_about' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_about');
+        $option->option_value = $this->saveImage('setting', $request->bg_about, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_member') && $key == 'bg_member') {
+        $request->validate([
+          'bg_member' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_member');
+        $option->option_value = $this->saveImage('setting', $request->bg_member, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_facilities') && $key == 'bg_facilities') {
+        $request->validate([
+          'bg_facilities' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_facilities');
+        $option->option_value = $this->saveImage('setting', $request->bg_facilities, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_event') && $key == 'bg_event') {
+        $request->validate([
+          'bg_event' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_event');
+        $option->option_value = $this->saveImage('setting', $request->bg_event, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_notice') && $key == 'bg_notice') {
+        $request->validate([
+          'bg_notice' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_notice');
+        $option->option_value = $this->saveImage('setting', $request->bg_notice, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_contactus') && $key == 'bg_contactus') {
+        $request->validate([
+          'bg_contactus' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_contactus');
+        $option->option_value = $this->saveImage('setting', $request->bg_contactus, null, null);
+        $option->save();
+      }
+      elseif ($request->hasFile('bg_gallery') && $key == 'bg_gallery') {
+        $request->validate([
+          'bg_gallery' => 'mimes:png,jpg,jpeg'
+        ]);
+        $this->deleteFile('bg_gallery');
+        $option->option_value = $this->saveImage('setting', $request->bg_gallery, null, null);
+        $option->save();
+      }
+       else {
         $option->option_value = $value;
         $option->save();
       }

@@ -1,8 +1,11 @@
 @extends('user_ui.master')
 @section('title','Photo Gallery')
+@php
+  $bg_gallery =  getImageFile(get_option('bg_gallery'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Photo Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Photo Gallery" :images="$bg_gallery"/>
   <!-- event deatil html start-->
   <!-- home gallery start -->
   <section class="home-gallery homo-photo-gallery">

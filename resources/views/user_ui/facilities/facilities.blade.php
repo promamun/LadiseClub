@@ -1,11 +1,13 @@
 @extends('user_ui.master')
-@php(
-    $title = $facility->name . ' Facilities'
-)
+@php
+  $title = $facility->name . ' Facilities';
+  $bg_facilities =  getImageFile(get_option('bg_facilities'));
+@endphp
+
 @section('title',$title)
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="{{ $title }}" :images="$bg_facilities"/>
   <section class="home-aboutus pb-100">
     <div class="container">
       <div class="row align-items-center">

@@ -1,16 +1,19 @@
 @extends('user_ui.master')
+
 @section('title','About Us')
+@php
+  $about_imge =  getImageFile(get_option('bg_about'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
   <!--breadcrumb section start-->
-  <x-breadcrumb title="About Us" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="About Us" :images="$about_imge"/>
   <!--breadcrumb section end-->
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   <section class="home-aboutus">
     <div class="container">
       <div class="row">
-
         <div class="col-lg-6 col-md-6 mt-5">
           <img src="{{ asset("aboutUs/".$aboutUs->image ?? '') }}" alt="about-us">
         </div>

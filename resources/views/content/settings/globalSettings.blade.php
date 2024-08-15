@@ -133,7 +133,8 @@
                                                     {{ $errors->first('app_fav_icon') }}</span>
                                             @endif
                                             <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG<br>
-                                                <span class="text-black">{{ __('Recommend Size') }}:</span> 16 x 16</p>
+                                                <span class="text-black">{{ __('Recommend Size') }}:</span> 16 x 16
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row input__group mb-25">
@@ -256,179 +257,155 @@
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                 {{ $errors->first('bg_about') }}</span>
                                         @endif
-                                        <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, jpeg,jpg,img <br> <span
-                                                class="text-black">{{ __('Recommend Size') }}:</span> 1500 x 1000</p>
+                                        <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, jpeg,jpg,img
+                                            <br> <span class="text-black">{{ __('Recommend Size') }}:</span> 1500 x 1000
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG Member') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_member') != '')
+                                                <img src="{{ getImageFile(get_option('bg_member')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_member" id="bg_member" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG Member') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_member'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_member') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG Facilities') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_facilities') != '')
+                                                <img src="{{ getImageFile(get_option('bg_facilities')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_facilities" id="bg_facilities" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG Facilities') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_facilities'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_facilities') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG Event') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_event') != '')
+                                                <img src="{{ getImageFile(get_option('bg_event')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_event" id="bg_event" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG Event') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_event'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_event') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG Notice') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_notice') != '')
+                                                <img src="{{ getImageFile(get_option('bg_notice')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_notice" id="bg_notice" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG Notice') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_notice'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_notice') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG ContactUS') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_contactus') != '')
+                                                <img src="{{ getImageFile(get_option('bg_contactus')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_contactus" id="bg_contactus" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG ContactUS') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_contactus'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_contactus') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
                                 <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
+                                    <label class="col-lg-3">{{ __('BG Gallery') }}</label>
                                     <div class="col-lg-4">
                                         <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
+                                            @if (get_option('bg_gallery') != '')
+                                                <img src="{{ getImageFile(get_option('bg_gallery')) }}">
                                             @else
                                                 <img src="">
                                             @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
+                                            <input type="file" name="bg_gallery" id="bg_gallery" accept="image/*"
                                                 onchange="previewFile(this)">
                                             <div class="upload-img-box-icon">
                                                 <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
+                                                <p class="m-0">{{ __('BG Gallery') }}</p>
                                             </div>
                                         </div>
-                                        @if ($errors->has('app_logo'))
+                                        @if ($errors->has('bg_gallery'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
+                                                {{ $errors->first('bg_gallery') }}</span>
                                         @endif
                                         <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
                                                 class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
                                     </div>
                                 </div>
-                                <div class="row input__group mb-25">
-                                    <label class="col-lg-3">{{ __('App Logo') }}</label>
-                                    <div class="col-lg-4">
-                                        <div class="upload-img-box">
-                                            @if (get_option('app_logo') != '')
-                                                <img src="{{ getImageFile(get_option('app_logo')) }}">
-                                            @else
-                                                <img src="">
-                                            @endif
-                                            <input type="file" name="app_logo" id="app_logo" accept="image/*"
-                                                onchange="previewFile(this)">
-                                            <div class="upload-img-box-icon">
-                                                <i class="fa fa-camera"></i>
-                                                <p class="m-0">{{ __('App Logo') }}</p>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('app_logo'))
-                                            <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                                {{ $errors->first('app_logo') }}</span>
-                                        @endif
-                                        <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, SVG <br> <span
-                                                class="text-black">{{ __('Recommend Size') }}:</span> 140 x 40</p>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <div class="pt-4 mb-3 float-lg-end">

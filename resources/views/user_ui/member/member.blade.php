@@ -1,11 +1,14 @@
 @extends('user_ui.master')
-@php(
-    $title = $categoryMember->name . ' Members List'
-)
+@php
+$title = $categoryMember->name . ' Members List';
+$bg_member =  getImageFile(get_option('bg_member'));
+@endphp
 @section('title',$title)
+
+
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="{{ $title }}" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="{{ $title }}" images="$bg_member"/>
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   @if($members->isEmpty())

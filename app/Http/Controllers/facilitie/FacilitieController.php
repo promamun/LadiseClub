@@ -191,6 +191,7 @@ class FacilitieController extends Controller
   public function storeFacilitiesDetail(Request $request)
   {
     try {
+      // dd($request->all());
       $request->validate([
         'image' => 'required|image',
         'name' => 'required|string',
