@@ -1,8 +1,11 @@
 @extends('user_ui.master')
 @section('title','Video Gallery')
+@php
+  $bg_gallery =  getImageFile(get_option('bg_gallery'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Video Gallery" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Video Gallery" :images="$bg_gallery" />
   <!-- event deatil html start-->
   <section class="video-gallery">
     <div class="container">

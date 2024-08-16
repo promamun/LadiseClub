@@ -1,8 +1,11 @@
 @extends('user_ui.master')
 @section('title','Notice Details')
+@php
+  $bg_notice =  getImageFile(get_option('bg_notice'));
+@endphp
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="Notice Details" images="user_ui/assets/img/eventum-img1.jpg"/>
+  <x-breadcrumb title="Notice Details" :images="$bg_notice" />
   <div class="single-page-section" style="padding: 0 0 100px 0;">
     <div class="container">
       <div class="row">
@@ -18,8 +21,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 @endsection

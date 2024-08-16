@@ -8,7 +8,7 @@ $bg_member =  getImageFile(get_option('bg_member'));
 
 @section('content')
   <!-- Inner Banner html start-->
-  <x-breadcrumb title="{{ $title }}" images="$bg_member"/>
+  <x-breadcrumb title="{{ $title }}" :images="$bg_member"/>
   <!-- event deatil html start-->
   <!-- home event speaker section html start -->
   @if($members->isEmpty())
