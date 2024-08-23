@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('description')->nullable();
             $table->string('phone')->nullable();
+            $table->unsignedBigInteger('phone_is_active')->default(false);
             $table->string('mobile')->nullable();
             $table->string('fax')->nullable();
             $table->string('facebook')->nullable();

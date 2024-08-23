@@ -33,11 +33,18 @@ Route::get('/', function () {
   return view('user_ui.home.home',compact('aboutUs','facility','notices','galleries','sliders'));
 })->name('home');
 Route::get('/about-us', [AboutUsController::class, "aboutUs"])->name('about.us');
+
 Route::get('/members/{slug}', function ($slug) {
-  $categoryMember = MemberCategory::where('slug',$slug)->firstOrFail();
-  $members = $categoryMember->members()->paginate(); // Adjust the number as needed
+  $categoryMember = MemberCategory::where('slug', $slug)->firstOrFail();
+
+  $members = $categoryMember->members()
+    ->select('members.*') // Ensures that only columns from the members table are selected
+    ->orderByRaw('SUBSTRING(members.member_id, 1, 2) ASC, CAST(SUBSTRING(members.member_id, 4) AS UNSIGNED) ASC')
+    ->paginate(); // Adjust the number as needed
+
   return view('user_ui.member.member', compact('categoryMember', 'members'));
 })->name('members');
+
 
 Route::get('/facilities/{slug}', function ($slug) {
   $facility = Facilitie::where('slug',$slug)->with('facilitiesDetails')->firstOrFail();

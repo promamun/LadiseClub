@@ -186,6 +186,7 @@ class MemberController extends Controller
         'linkedin' => ['nullable', 'url'],
         'instagram' => ['nullable', 'url'],
         'personal_website' => ['nullable', 'url'],
+        'phone_is_active' => ['nullable', 'boolean'],
       ]);
       $fileName = null;
       if ($request->hasFile('image')) {
@@ -210,6 +211,7 @@ class MemberController extends Controller
         'linkedin' => $request->input('linkedin'),
         'instagram' => $request->input('instagram'),
         'personal_website' => $request->input('personal_website'),
+        'phone_is_active' => isset($request->phone_is_active) ? $request->phone_is_active : 0,
       ]);
       $member->members()->attach($request->input('category_id'));
       return redirect()->route('member-list')->with('success', 'Member Create Successfully');
@@ -222,7 +224,7 @@ class MemberController extends Controller
   public function updateMember(Request $request, $id)
   {
     try {
-      $data = Member::find($id);
+
       $request->validate([
         'company_name' => 'nullable|string',
         'member_id' => 'nullable|string',
@@ -240,14 +242,16 @@ class MemberController extends Controller
         'linkedin' => ['nullable', 'url'],
         'instagram' => ['nullable', 'url'],
         'personal_website' => ['nullable', 'url'],
+        'phone_is_active' => ['nullable', 'boolean'],
       ]);
+      $data = Member::find($id);
       $fileName = $data->image;
       if ($request->hasFile('image')) {
         $request->validate([
           'image' => 'required'
         ]);
-        // Delete the old image file
-        if (file_exists(public_path('member/' . $fileName))) {
+        // Delete the old image file only if it's a file and exists
+        if (!empty($fileName) && is_file(public_path('member/' . $fileName))) {
           unlink(public_path('member/' . $fileName));
         }
         $file = $request->file('image');
@@ -271,6 +275,7 @@ class MemberController extends Controller
         'linkedin' => $request->input('linkedin'),
         'instagram' => $request->input('instagram'),
         'personal_website' => $request->input('personal_website'),
+        'phone_is_active' => isset($request->phone_is_active) ? $request->phone_is_active : 0,
       ]);
       $data->members()->sync($request->input('category_id'));
       return redirect()->route('member-list')->with('success', 'Member Update Successfully');

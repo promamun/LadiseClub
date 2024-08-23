@@ -117,10 +117,14 @@
                                        value="{{ old('address') }}" name="address" aria-label="address">
                               </div>
                                 <div class="col">
-                                    <label class="form-label" for="phone">Phone</label><span class="text-info">
+                                  <label class="form-label" for="phone">Phone</label><span class="text-info">
                                         (optional)</span>
-                                    <input type="number" class="form-control" id="phone" placeholder="Phone Here"
-                                        value="{{ old('phone') }}" name="phone" aria-label="Phone">
+                                  <div class="input-group">
+                                    <input type="tel" value="{{ old('phone') }}" name="phone" class="form-control" aria-label="Text input with checkbox">
+                                    <div class="input-group-text">
+                                      <input class="form-check-input mt-0" name="phone_is_active" title="Make Active" type="checkbox" value="1" aria-label="Checkbox for following text input">
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                             <div class="row mb-3">

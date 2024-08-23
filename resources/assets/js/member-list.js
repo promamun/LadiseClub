@@ -5,8 +5,18 @@
 'use strict';
 
 (function () {
-  //  For Datatable
-  // --------------------------------------------------------------------
+  // Custom sorting function for member_id
+  jQuery.fn.dataTable.ext.type.order['member-id-pre'] = function (member_id) {
+    // Extract the alphabetic and numeric parts of the member_id
+    var match = member_id.match(/^([a-zA-Z]+)-(\d+)$/);
+    if (match) {
+      // Create a combined value to sort by letters first and then by numbers
+      return match[1].toLowerCase() + ('00000' + match[2]).slice(-5);
+    }
+    return member_id;
+  };
+
+  // DataTable initialization
   var dt_projects_table = $('.datatables-members');
   var assetsPath = document.querySelector('meta[name="APP_URL"]').getAttribute('content');
 
@@ -16,27 +26,27 @@
         url: '/api/member-list',
         type: 'GET',
         dataType: 'json',
-        dataSrc: 'data' // If your API returns data within a specific key, specify it here
+        dataSrc: 'data'
       },
       columns: [
         { data: '' },
         { data: 'id' },
         { data: 'member_id' },
         { data: 'name' },
-        { data: 'designation' },
+        { data: 'designation', defaultContent: 'N/A' },
         { data: 'image',
           render: function (data, type, full, meta) {
             var $team = full['image'],
               $output;
             $output = '<div class="d-flex align-items-center avatar-group">';
             $output +=
-                '<div class="avatar avatar-xl">' +
-                '<img src="' +
-                assetsPath +
-                'member/' +
-                $team +
-                '" alt="Avatar" class="rounded-circle pull-up">' +
-                '</div>';
+              '<div class="avatar avatar-xl">' +
+              '<img src="' +
+              assetsPath +
+              'member/' +
+              $team +
+              '" alt="Avatar" class="rounded-circle pull-up">' +
+              '</div>';
             $output += '</div>';
             return $output;
           }
@@ -44,8 +54,8 @@
         { data: 'phone' },
         { data: '',
           render: function (data, type, full, meta) {
-            var editUrl = assetsPath + 'admin/member/edit/' + full.id; // Assuming full.id contains the member's ID
-            var deleteUrl = assetsPath + 'admin/member/delete/' + full.id; // Assuming full.id contains the member's ID
+            var editUrl = assetsPath + 'admin/member/edit/' + full.id;
+            var deleteUrl = assetsPath + 'admin/member/delete/' + full.id;
             return (
               '<div class="d-inline-block">' +
               '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></a>' +
@@ -57,11 +67,10 @@
               '</div>'
             );
           }
-       }
+        }
       ],
       columnDefs: [
         {
-          // For Responsive
           className: 'control',
           searchable: false,
           orderable: false,
@@ -72,7 +81,6 @@
           }
         },
         {
-          // For Checkboxes
           targets: 1,
           orderable: false,
           searchable: false,
@@ -84,11 +92,16 @@
           checkboxes: {
             selectAllRender: '<input type="checkbox" class="form-check-input">'
           }
+        },
+        {
+          // Apply the custom sorting function to the member_id column (index 2)
+          targets: 2,
+          type: 'member-id'
         }
       ],
-      order: [[2, 'desc']],
+      order: [[2, 'asc']], // Default ordering by member_id in ascending order
       dom: '<"card-header flex-column flex-md-row"<"head-label text-center"><"dt-action-buttons text-end pt-3 pt-md-0"B>><"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-      displayLength: 7,
+      displayLength: 10,
       lengthMenu: [5, 10, 25, 50, 75, 100],
       buttons: [
         {
@@ -107,20 +120,20 @@
           type: 'column',
           renderer: function (api, rowIdx, columns) {
             var data = $.map(columns, function (col, i) {
-              return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
+              return col.title !== ''
                 ? '<tr data-dt-row="' +
-                    col.rowIndex +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td>' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td>' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIndex +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td>' +
+                col.title +
+                ':' +
+                '</td> ' +
+                '<td>' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : '';
             }).join('');
 
@@ -131,6 +144,7 @@
     });
     $('div.head-label').html('<h5 class="card-title mb-0">Members</h5>');
   }
+
   // Add event listener to the button to navigate to the URL
   $('.create-new').on('click', function() {
     var addUrl = assetsPath+'admin/member/add';
@@ -138,13 +152,13 @@
   });
 
   // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
   setTimeout(() => {
     $('.dataTables_filter .form-control').removeClass('form-control-sm');
     $('.dataTables_length .form-select').removeClass('form-select-sm');
   }, 300);
-
 })();
+
+// Delete record
 $(document).on('click', '.delete-record', function() {
   var deleteUrl = $(this).data('delete-url');
   Swal.fire({
@@ -157,30 +171,27 @@ $(document).on('click', '.delete-record', function() {
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if (result.isConfirmed) {
-     // Perform the AJAX request
-     $.ajax({
-      url: deleteUrl, // Use the deleteUrl variable here
-      type: 'GET',
-      dataType: 'json',
-      success: function(response) {
-        // Handle the success response here, if needed
-        // For example, you can show a success message using Swal.fire
-        Swal.fire({
-          title: 'Deleted!',
-          text: response.success,
-          icon: 'success',
-          showCancelButton: false,
-          showOKButton: false,
-        }).then((result=>{
-          window.location.reload();
-        }));
-      },
-      error: function(xhr, status, error) {
-        // Handle any errors that occur during the AJAX request
-        // For example, you can show an error message using Swal.fire
-        Swal.fire('Error!', error.response.data, 'error');
-      }
-    });
+      // Perform the AJAX request
+      $.ajax({
+        url: deleteUrl,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          Swal.fire({
+            title: 'Deleted!',
+            text: response.success,
+            icon: 'success',
+            showCancelButton: false,
+            showOKButton: false,
+          }).then((result=>{
+            window.location.reload();
+          }));
+        },
+        error: function(xhr, status, error) {
+          Swal.fire('Error!', error.response.data, 'error');
+        }
+      });
     }
   });
 });
+

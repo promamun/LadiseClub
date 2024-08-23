@@ -55,7 +55,12 @@ $bg_member =  getImageFile(get_option('bg_member'));
                     <td>{{$member->member_id??""}}</td>
                     <td>{{$member->name??''}}</td>
                     <td>{{$member->designation??''}}<br>{{$member->company_name??''}}</td>
-                    <td>{{$member->phone??''}}</td>
+                    <td> @if($member->phone_is_active)
+                        {{ $member->phone , $member->phone ? : 'Not Provided' }}
+                      @else
+                        Phone is inactive
+                      @endif
+                    </td>
                     <td>{{$member->email??""}}</td>
                     <td>{{$member->address??''}}</td>
                   </tr>
